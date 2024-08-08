@@ -1,1 +1,5 @@
-Sezione 4 di "The Level 1 Scouting system of the CMS experiment" contiene informazioni sul nuovo sistema di trigger di CMS
+- Sezione 4 di "The Level 1 Scouting system of the CMS experiment" contiene informazioni sul nuovo sistema di trigger di CMS
+
+- (IMPORTANTE)Da pagina 13 in poi di "CMS Level-1 Trigger Muon Momentum assignment with Machine Learning", informazioni sul sistma di Muon Detection con drift tubes e CSC. 
+	Da pagina 21 in poi spiegazione sul riconoscimento del trigger locale
+
