@@ -1,12 +1,14 @@
 from UtilityAndConst import *
 import uproot
+import numpy as np
 import matplotlib.pyplot as plt
+import awkward as ak
 import mplhep as hep
 
 hep.style.use("CMS")
 
 
-#Funzioni
+#--------------------------------------Funzioni ------------------------------------------------------------#
 
 def OpenRootFile(file, features):
   with uproot.open(file) as f:
@@ -16,9 +18,26 @@ def OpenRootFile(file, features):
   return awk_array
 
 
-def ConvertToHz(counts, n_ls = 1):
+def ConvertToKHz(counts, n_ls = 1):
   return counts / n_ls / ONE_LUMI_IN_S / 1e3
 
+
+def ConvertToHz(counts, n_ls = 1):
+  return counts / n_ls / ONE_LUMI_IN_S
+
+    
+def FlattenAndArray(Station, Sector, Wheel):
+
+  Station_count = ConvertToKHz(np.bincount(ak.flatten(Station) - 1))    #Inizia da 1 e non da 0
+  Sector_count = ConvertToKHz(np.bincount(ak.flatten(Sector)))
+  Wheel_count = ConvertToKHz(np.bincount(ak.flatten(Wheel) + 2))        #Possiede numeri negativi -2, -1
+
+  CMS = ak.Array([Station_count, Sector_count, Wheel_count])
+
+  return CMS
+
+
+#--------------------------------------Funzioni per la grafica------------------------------------------------------------#
 def draw_cms_label(ax: plt.Axes, label: str = "Preliminary", rlabel: str = "L1DS", fontsize: int = 28, data: bool = True):
     
     hep.cms.label(
