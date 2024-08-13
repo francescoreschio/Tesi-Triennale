@@ -23,7 +23,9 @@ ONE_BX_IN_NS       = 25
 ONE_LUMI_IN_NS = ONE_LUMI_IN_ORBITS * ONE_ORBIT_IN_BX * ONE_BX_IN_NS
 ONE_LUMI_IN_S = ONE_LUMI_IN_NS / 1e9
 
-#Wheel, Section and Station bidimensional array:
+
+
+#Wheel, Section and Station bidimensional array: --------------------------------------------------------
 
 WheelAndSectorLS133 = np.array([[43384, 45011, 45195, 45938, 46171, 42894, 42912, 43724, 41862, 39764, 38934, 45237], 
                                 [87952, 90259, 80675, 96334, 90133, 91125, 87938, 92025, 92315, 88892, 88096, 85939], 
