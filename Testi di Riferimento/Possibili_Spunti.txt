@@ -3,5 +3,5 @@
 - (IMPORTANTE) Da pagina 13 in poi di "CMS Level-1 Trigger Muon Momentum assignment with Machine Learning", informazioni sul sistma di Muon Detection con drift tubes e CSC. 
 	Da pagina 21 in poi spiegazione sul riconoscimento del trigger locale
 
-
+- (IMPORTANTE) "FPGA implementation of Muon Momentum assignment with Machine Learning at the CMS Level-1 Trigger" Spiegazione dettagliata del sistema di tracciamento dei muoni (da pagina 26 in poi)
 

@@ -25,7 +25,7 @@ def ConvertToKHz(counts, n_ls = 1):
 def ConvertToHz(counts, n_ls = 1):
   return counts / n_ls / ONE_LUMI_IN_S
 
-    
+#Non va bene---------------------------------------------------
 def FlattenAndArray(Station, Sector, Wheel):
 
   Station_count = ConvertToKHz(np.bincount(ak.flatten(Station) - 1))    #Inizia da 1 e non da 0
@@ -35,6 +35,18 @@ def FlattenAndArray(Station, Sector, Wheel):
   CMS = ak.Array([Station_count, Sector_count, Wheel_count])
 
   return CMS
+#-------------------------------------------------------------
+
+def BiDimWheelSector(DimRow, DimCol):
+  BiDimMatrix = np.zeros((DimRow, DimCol))
+
+
+
+
+  return BiDimMatrix
+
+
+
 
 
 #--------------------------------------Funzioni per la grafica------------------------------------------------------------#
