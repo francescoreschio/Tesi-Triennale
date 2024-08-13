@@ -37,12 +37,14 @@ def FlattenAndArray(Station, Sector, Wheel):
   return CMS
 #-------------------------------------------------------------
 
-def BiDimWheelSector(DimRow, DimCol):
-  BiDimMatrix = np.zeros((DimRow, DimCol))
+#Funzione per creare grafico bidimensionale
+def BiDimHist(DimRow, DimCol, feature1, feature2):                 #Feature1, Feature 2 rappresentano Wheel, Sector o Station
+  BiDimMatrix = np.zeros((DimRow, DimCol), dtype = 'int32')
 
-
-
-
+  for i in range(len(feature1)):
+    for j in range(len(feature1[i])):
+       BiDimMatrix[feature1[i][j]][feature2[i][j]] += 1
+      
   return BiDimMatrix
 
 
