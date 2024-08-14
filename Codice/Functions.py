@@ -48,9 +48,6 @@ def BiDimHist(DimRow, DimCol, feature1, feature2):                 #Feature1, Fe
   return BiDimMatrix
 
 
-
-
-
 #--------------------------------------Funzioni per la grafica------------------------------------------------------------#
 def draw_cms_label(ax: plt.Axes, label: str = "Preliminary", rlabel: str = "L1DS", fontsize: int = 28, data: bool = True):
     
