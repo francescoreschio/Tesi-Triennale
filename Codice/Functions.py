@@ -25,17 +25,6 @@ def ConvertToKHz(counts, n_ls = 1):
 def ConvertToHz(counts, n_ls = 1):
   return counts / n_ls / ONE_LUMI_IN_S
 
-#Non va bene---------------------------------------------------
-def FlattenAndArray(Station, Sector, Wheel):
-
-  Station_count = ConvertToKHz(np.bincount(ak.flatten(Station) - 1))    #Inizia da 1 e non da 0
-  Sector_count = ConvertToKHz(np.bincount(ak.flatten(Sector)))
-  Wheel_count = ConvertToKHz(np.bincount(ak.flatten(Wheel) + 2))        #Possiede numeri negativi -2, -1
-
-  CMS = ak.Array([Station_count, Sector_count, Wheel_count])
-
-  return CMS
-#-------------------------------------------------------------
 
 #Funzione per creare grafico bidimensionale
 def BiDimHist(DimRow, DimCol, feature1, feature2):                 #Feature1, Feature 2 rappresentano Wheel, Sector o Station
@@ -46,6 +35,30 @@ def BiDimHist(DimRow, DimCol, feature1, feature2):                 #Feature1, Fe
        BiDimMatrix[feature1[i][j]][feature2[i][j]] += 1
       
   return BiDimMatrix
+
+#Funzione per trovare il numero di stubs per orbit 
+
+def StubsPerOrbit(BX, nStubs):
+   
+  '''Spiegazione: il primo ciclo for permette di ricavare l'argomento all'interno dell'array BX in cui avviene l'orbita;
+  Il secondo ciclo invece somma tutte le stub dell'orbita corrispondente, facendone il bincount'''
+
+
+  BxPerOrbit = [0]
+
+  for i in range(len(BX) - 1):
+    if (BX[i] > BX[i + 1]):
+       BxPerOrbit.append(i)
+
+  StubsPerOrbit = np.zeros(len(BxPerOrbit), dtype='int16')
+  
+  for i in range(len(BxPerOrbit) - 1):
+    StubsPerOrbit[i] = np.sum(nStubs[BxPerOrbit[i] : BxPerOrbit[i + 1]])
+
+  StubsPerOrbit_BC = np.bincount(StubsPerOrbit)
+
+#361 è il numero minimo corrispondente a LS306
+  return StubsPerOrbit_BC[:316]
 
 
 #--------------------------------------Funzioni per la grafica------------------------------------------------------------#
