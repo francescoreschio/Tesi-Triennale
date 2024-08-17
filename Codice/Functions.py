@@ -79,6 +79,8 @@ def PhiPerSector(Phi, Sector):
       Max[i] = np.max(PhiDistribution[i])
       PhiDistributionBC[i] = np.bincount(np.array(PhiDistribution[i]) + np.abs(Min[i]))
 
+    PhiDistributionBC = ak.Array(PhiDistributionBC)
+
     return PhiDistributionBC, Min, Max
    
 
