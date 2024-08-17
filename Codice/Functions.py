@@ -65,23 +65,11 @@ def StubsPerOrbit(BX, nStubs):
 def PhiPerSector(Phi, Sector):
 
     PhiDistribution = [[] for _ in range(12)]
-    PhiDistributionBC = [[] for _ in range(12)]
-
-    Min = np.zeros(12, dtype='int16')
-    Max = np.zeros(12, dtype = 'int16')
-
 
     for i in range(len(Phi)):
       PhiDistribution[Sector[i]].append(Phi[i])
 
-    for i in range(12):
-      Min[i] = np.min(PhiDistribution[i])
-      Max[i] = np.max(PhiDistribution[i])
-      PhiDistributionBC[i] = np.bincount(np.array(PhiDistribution[i]) + np.abs(Min[i]))
-
-    PhiDistributionBC = ak.Array(PhiDistributionBC)
-
-    return PhiDistributionBC, Min, Max
+    return ak.Array(PhiDistribution)
    
 
 #--------------------------------------Funzioni per la grafica------------------------------------------------------------#
