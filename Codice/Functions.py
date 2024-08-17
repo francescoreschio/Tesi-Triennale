@@ -37,7 +37,6 @@ def BiDimHist(DimRow, DimCol, feature1, feature2):                 #Feature1, Fe
   return BiDimMatrix
 
 #Funzione per trovare il numero di stubs per orbit 
-
 def StubsPerOrbit(BX, nStubs):
    
   '''Spiegazione: il primo ciclo for permette di ricavare l'argomento all'interno dell'array BX in cui avviene l'orbita;
@@ -60,6 +59,28 @@ def StubsPerOrbit(BX, nStubs):
 #361 è il numero minimo corrispondente a LS306
   return StubsPerOrbit_BC[:316]
 
+
+
+#Funzione per distribuzione degli angoli in funzione del sector 
+def PhiPerSector(Phi, Sector):
+
+    PhiDistribution = [[] for _ in range(12)]
+    PhiDistributionBC = [[] for _ in range(12)]
+
+    Min = np.zeros(12, dtype='int16')
+    Max = np.zeros(12, dtype = 'int16')
+
+
+    for i in range(len(Phi)):
+      PhiDistribution[Sector[i]].append(Phi[i])
+
+    for i in range(12):
+      Min[i] = np.min(PhiDistribution[i])
+      Max[i] = np.max(PhiDistribution[i])
+      PhiDistributionBC[i] = np.bincount(np.array(PhiDistribution[i]) + np.abs(Min[i]))
+
+    return PhiDistributionBC, Min, Max
+   
 
 #--------------------------------------Funzioni per la grafica------------------------------------------------------------#
 def draw_cms_label(ax: plt.Axes, label: str = "Preliminary", rlabel: str = "L1DS", fontsize: int = 28, data: bool = True):
