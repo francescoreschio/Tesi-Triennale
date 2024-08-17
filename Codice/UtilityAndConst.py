@@ -7,6 +7,7 @@ dir = "/Users/francescolarovere/Documents/Tesi-Triennale/Dati"
 os.chdir(dir)
 
 
+
 #Utility
 stub_features = ['orbit', 'bx', 'nStubs', 'stubHwPhi', 'stubHwPhiB', 'stubHwQual', 'stubHwEta', 'stubHwQEta', 'stubStation', 'stubWheel', 'stubSector', 'stubTag']
 bmtf_features = ['nBmtfMuons', 'bmtfHwPt', 'bmtfHwPtu', 'bmtfHwPhi', 'bmtfHwEta', 'bmtfPt', 'bmtfPtu', 'bmtfPhi', 'bmtfEta', 'bmtfHwSign', 'bmtfHwSignValid', 'bmtfHwDXY', 'bmtfHwQual', 'bmtfProcessor']
@@ -161,11 +162,3 @@ PhiDistributionLS133 = ak.from_parquet('PhiDistributionLS133.parquet')
 PhiDistributionLS263 = ak.from_parquet('PhiDistributionLS263.parquet')
 PhiDistributionLS264 = ak.from_parquet('PhiDistributionLS264.parquet')
 PhiDistributionLS306 = ak.from_parquet('PhiDistributionLS306.parquet')  
-
-
-MinLS133 = np.array([-1588, -1586, -1589, -1682, -1130, -1130, -1130, -1129, -1131, -1428, -1129, -1504])
-MinLS263 = np.array([-1587, -1587, -1586, -1683, -1130, -1130, -1130, -1129, -1129, -1428, -1130, -1505])
-MinLS264 = np.array([-1588, -1587, -1587, -1684, -1130, -1130, -1131, -1130, -1130, -1428, -1131, -1503])
-MinLS306 = np.array([-1587, -1587, -1587, -1683, -1129, -1129, -1130, -1130, -1130, -1427, -1129, -1502])
-
-MaxLS133 = 2044
