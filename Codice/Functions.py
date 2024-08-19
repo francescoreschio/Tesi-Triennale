@@ -42,7 +42,6 @@ def StubsPerOrbit(BX, nStubs):
   '''Spiegazione: il primo ciclo for permette di ricavare l'argomento all'interno dell'array BX in cui avviene l'orbita;
   Il secondo ciclo invece somma tutte le stub dell'orbita corrispondente, facendone il bincount'''
 
-
   BxPerOrbit = [0]
 
   for i in range(len(BX) - 1):
@@ -57,20 +56,20 @@ def StubsPerOrbit(BX, nStubs):
   StubsPerOrbit_BC = np.bincount(StubsPerOrbit)
 
 #361 è il numero minimo corrispondente a LS306
-  return StubsPerOrbit_BC[:316]
+  return StubsPerOrbit_BC#[:316]
 
 
 
 #Funzione per distribuzione degli angoli in funzione del sector 
 def PhiPerSector(Phi, Sector):
 
-    PhiDistribution = [[] for _ in range(12)]
+  PhiDistribution = [[] for _ in range(12)]
 
-    for i in range(len(Phi)):
-      PhiDistribution[Sector[i]].append(Phi[i])
+  for i in range(len(Phi)):
+    PhiDistribution[Sector[i]].append(Phi[i])
 
-    return ak.Array(PhiDistribution)
-   
+  return ak.Array(PhiDistribution)
+  
 
 #--------------------------------------Funzioni per la grafica------------------------------------------------------------#
 def draw_cms_label(ax: plt.Axes, label: str = "Preliminary", rlabel: str = "L1DS", fontsize: int = 28, data: bool = True):
