@@ -71,6 +71,16 @@ def PhiPerSector(Phi, Sector):
   return ak.Array(PhiDistribution)
   
 
+def ArrayConcatenation(LS133, LS263, LS264, LS306):
+
+  Distribution = [[] for _ in range(12)]
+
+  for i in range(12):
+    Distribution[i] = np.concatenate((LS133[i], LS263[i], LS264[i], LS306[i]))
+
+  return ak.Array(Distribution)
+
+
 #--------------------------------------Funzioni per la grafica------------------------------------------------------------#
 def draw_cms_label(ax: plt.Axes, label: str = "Preliminary", rlabel: str = "L1DS", fontsize: int = 28, data: bool = True):
     
