@@ -81,6 +81,19 @@ def ArrayConcatenation(LS133, LS263, LS264, LS306):
   return ak.Array(Distribution)
 
 
+def CheckChargeAndMomentum(SignValid, Sign, Pt, Ptu):
+  NotValidSign = np.where(SignValid == 0)[0]
+
+  NotSign = [Sign[NotValidSign[i]] for i in range(len(NotValidSign))]
+  NotPt = [Pt[NotValidSign[i]] for i in range(len(NotValidSign))]
+  #NotPtu = [Ptu[NotValidSign[i]] for i in range(len(NotValidSign))]
+
+  return NotSign, NotPt
+
+
+#def WeightedBiDimHist()
+
+
 #--------------------------------------Funzioni per la grafica------------------------------------------------------------#
 def draw_cms_label(ax: plt.Axes, label: str = "Preliminary", rlabel: str = "L1DS", fontsize: int = 28, data: bool = True):
     
