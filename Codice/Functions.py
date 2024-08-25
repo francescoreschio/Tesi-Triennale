@@ -91,8 +91,23 @@ def CheckChargeAndMomentum(SignValid, Sign, Pt, Ptu):
   return NotSign, NotPt
 
 
-#def WeightedBiDimHist()
+def Bins(Start, Stop, NOB, Data):
+  #Inizio, fine del'intervallo, e NumbmerOfBins
 
+  Range = np.linspace(Start, Stop, NOB)
+
+  Indicies = np.digitize(Data, Range, right=True)
+  #Ritorna gli indici di Data nel corripondente bin definito prima
+
+  return Range, Indicies  
+
+def WeightedBiDimHist(NumRow, NumCol, Index1, Index2, Weights):
+
+  BiDimHist = np.zeros((NumRow, NumCol))
+
+  np.add.at(BiDimHist, (Index1, Index2), Weights)
+  
+  return BiDimHist
 
 #--------------------------------------Funzioni per la grafica------------------------------------------------------------#
 def draw_cms_label(ax: plt.Axes, label: str = "Preliminary", rlabel: str = "L1DS", fontsize: int = 28, data: bool = True):

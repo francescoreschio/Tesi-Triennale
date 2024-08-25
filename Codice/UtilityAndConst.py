@@ -197,6 +197,12 @@ BmtfPerOrbitLS306 = np.array([1,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	2,
                               301,	215,	188,	112,	95,	66,	49,	27,	15,	10,	15,	6,	1,	2,	
                               2,	0,	1,	1, 0, 0, 0])
 
+
+#Importing BMTF Phi distribution per sector for each file:
+BmtfPhiDistributionLS133 = ak.from_parquet('BmtfPhiDistributionLS133.parquet')
+BmtfPhiDistributionLS263 = ak.from_parquet('BmtfPhiDistributionLS263.parquet')
+BmtfPhiDistributionLS264 = ak.from_parquet('BmtfPhiDistributionLS264.parquet')
+BmtfPhiDistributionLS306 = ak.from_parquet('BmtfPhiDistributionLS306.parquet')  
 								
 												
 											
