@@ -1,4 +1,5 @@
 
 *.root
 *.pyc
-/Testi di Riferimento
+./Testi di Riferimento
+./Dati
