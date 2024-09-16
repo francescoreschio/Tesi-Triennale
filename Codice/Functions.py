@@ -25,17 +25,7 @@ def ConvertToKHz(counts, n_ls = 1):
 def ConvertToHz(counts, n_ls = 1):
   return counts / n_ls / ONE_LUMI_IN_S
 
-
-#Funzione per creare grafico bidimensionale
-def BiDimHist(DimRow, DimCol, feature1, feature2):                 #Feature1, Feature 2 rappresentano Wheel, Sector o Station
-  BiDimMatrix = np.zeros((DimRow, DimCol), dtype = 'int32')
-
-  for i in range(len(feature1)):
-    for j in range(len(feature1[i])):
-       BiDimMatrix[feature1[i][j]][feature2[i][j]] += 1
-      
-  return BiDimMatrix
-
+  
 
 #Funzione per trovare il numero di stubs per orbit 
 def StubsPerOrbit(BX, nStubs):
@@ -72,6 +62,7 @@ def PhiPerSector(Phi, Sector):
   return ak.Array(PhiDistribution)
   
 
+
 def ArrayConcatenation(LS133, LS263, LS264, LS306):
 
   Distribution = [[] for _ in range(12)]
@@ -80,6 +71,7 @@ def ArrayConcatenation(LS133, LS263, LS264, LS306):
     Distribution[i] = np.concatenate((LS133[i], LS263[i], LS264[i], LS306[i]))
 
   return ak.Array(Distribution)
+
 
 
 def CheckChargeAndMomentum(SignValid, Sign, Pt, Ptu):
@@ -92,6 +84,7 @@ def CheckChargeAndMomentum(SignValid, Sign, Pt, Ptu):
   return NotSign, NotPt
 
 
+
 def Bins(Start, Stop, NOB, Data):
   #Inizio, fine del'intervallo, e NumbmerOfBins
 
@@ -102,6 +95,8 @@ def Bins(Start, Stop, NOB, Data):
 
   return Range, Indicies  
 
+
+
 def WeightedBiDimHist(NumRow, NumCol, Index1, Index2, Weights):
 
   BiDimHist = np.zeros((NumRow, NumCol))
@@ -109,6 +104,12 @@ def WeightedBiDimHist(NumRow, NumCol, Index1, Index2, Weights):
   np.add.at(BiDimHist, (Index1, Index2), Weights)
   
   return BiDimHist
+
+
+
+
+
+
 
 #--------------------------------------Funzioni per la grafica------------------------------------------------------------#
 def draw_cms_label(ax: plt.Axes, label: str = "Preliminary", rlabel: str = "L1DS", fontsize: int = 28, data: bool = True):

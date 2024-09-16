@@ -3,3 +3,4 @@
 *.pyc
 ./Testi di Riferimento
 ./Dati
+*.parquet
