@@ -19,6 +19,7 @@
 \usepackage{textcomp}
 \usepackage{cite}
 \usepackage{multirow}
+\usepackage{subfiles} % Best loaded last in the preamble
 \usepackage[utf8]{inputenc}   %per riuscire a scrivere gli accenti
 \usepackage[italian]{babel}   %per riuscire a scrivere gli accenti
 \usepackage{setspace}
@@ -66,6 +67,12 @@
 \end{center}
 \end{titlepage}
 \clearpage{\pagestyle{empty}\cleardoublepage}
+
+\section{Introduzione:}
+\subfile{Capitoli/Introduzione.tex}
+
+\section{CMS in LHC:}
+\subfile{Capitoli/PrimoCapitolo}
 
 \end{document}
 

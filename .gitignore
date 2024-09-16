@@ -1,6 +1,16 @@
 *.parquet
 *.root
 *.pyc
+
+*.aux
+*.fdb_latexmk
+*.fls
+*.log
+*.synctex.gz
+*.pdf
+
+
 Testi di Riferimento/
 Dati/
 Immagini/
+
