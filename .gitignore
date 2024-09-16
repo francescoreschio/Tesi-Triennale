@@ -1,6 +1,7 @@
-
+*.parquet
 *.root
 *.pyc
 ./Testi di Riferimento
 ./Dati
-*.parquet
+./Immagini
+
