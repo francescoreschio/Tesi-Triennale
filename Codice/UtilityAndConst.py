@@ -158,6 +158,15 @@ BmtfPhiDistributionLS133 = ak.from_parquet('BmtfPhiDistributionLS133.parquet')
 BmtfPhiDistributionLS263 = ak.from_parquet('BmtfPhiDistributionLS263.parquet')
 BmtfPhiDistributionLS264 = ak.from_parquet('BmtfPhiDistributionLS264.parquet')
 BmtfPhiDistributionLS306 = ak.from_parquet('BmtfPhiDistributionLS306.parquet')  
+
+
+#GMT
+
+#Importing DeltaR
+DeltaR_LS133 = ak.from_parquet('DeltaR_LS133.parquet')
+DeltaR_LS263 = ak.from_parquet('DeltaR_LS263.parquet')
+DeltaR_LS264 = ak.from_parquet('DeltaR_LS264.parquet')
+DeltaR_LS306 = ak.from_parquet('DeltaR_LS306.parquet')
 								
 												
 											
