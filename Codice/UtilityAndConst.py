@@ -119,11 +119,6 @@ PhiDistributionLS264 = ak.from_parquet('PhiDistributionLS264.parquet')
 PhiDistributionLS306 = ak.from_parquet('PhiDistributionLS306.parquet')  
 
 
-
-
-
-
-
 #----------------BMTF---------------------------------------------------------------------------------------
 
 BmtfPerOrbitLS133 = np.array([1,	0,	0,	0,	0,	0,	0,	0,	0,	1,	1,	0,	0,	7,
@@ -160,7 +155,7 @@ BmtfPhiDistributionLS264 = ak.from_parquet('BmtfPhiDistributionLS264.parquet')
 BmtfPhiDistributionLS306 = ak.from_parquet('BmtfPhiDistributionLS306.parquet')  
 
 
-#GMT
+#----------------GMT---------------------------------------------------------------------------------------
 
 #Importing DeltaR
 DeltaR_LS133 = ak.from_parquet('DeltaR_LS133.parquet')
