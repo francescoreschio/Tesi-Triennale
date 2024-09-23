@@ -14,3 +14,7 @@ Testi di Riferimento/
 Dati/
 Immagini/
 
+*.pages
+Tesi/Main.bbl
+Tesi/Main.run.xml
+Tesi/Main.synctex.gz
