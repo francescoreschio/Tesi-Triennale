@@ -157,11 +157,12 @@ BmtfPhiDistributionLS306 = ak.from_parquet('BmtfPhiDistributionLS306.parquet')
 
 #----------------GMT---------------------------------------------------------------------------------------
 
-#Importing DeltaR
-DeltaR_LS133 = ak.from_parquet('DeltaR_LS133.parquet')
-DeltaR_LS263 = ak.from_parquet('DeltaR_LS263.parquet')
-DeltaR_LS264 = ak.from_parquet('DeltaR_LS264.parquet')
-DeltaR_LS306 = ak.from_parquet('DeltaR_LS306.parquet')
+#Importing BX QUESTI SONO TUTTI TEST:
+BX_BMTF_LS133 = ak.from_parquet('BX_BMTF_LS133.parquet')
+BX_GMT_LS133 = ak.from_parquet('BX_GMT_LS133.parquet')
+
+RDist = ak.from_parquet('RDistTEST.parquet')
+INDEX = ak.from_parquet('INDEXTEST.parquet')
 								
 												
 											
