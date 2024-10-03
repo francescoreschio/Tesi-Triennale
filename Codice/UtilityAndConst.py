@@ -163,7 +163,5 @@ BX_GMT_LS133 = ak.from_parquet('BX_GMT_LS133.parquet')
 
 RDist = ak.from_parquet('RDistTEST.parquet')
 INDEX = ak.from_parquet('INDEXTEST.parquet')
-								
-												
 											
 														
