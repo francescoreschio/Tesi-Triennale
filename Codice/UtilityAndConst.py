@@ -158,8 +158,8 @@ BmtfPhiDistributionLS306 = ak.from_parquet('BmtfPhiDistributionLS306.parquet')
 #----------------GMT---------------------------------------------------------------------------------------
 
 #Importing BX QUESTI SONO TUTTI TEST:
-BX_BMTF_LS133 = ak.from_parquet('BX_BMTF_LS133.parquet')
-BX_GMT_LS133 = ak.from_parquet('BX_GMT_LS133.parquet')
+#BX_BMTF_LS133 = ak.from_parquet('BX_BMTF_LS133.parquet')
+#BX_GMT_LS133 = ak.from_parquet('BX_GMT_LS133.parquet')
 
 RDist_LS133 = ak.from_parquet('RDist_LS133.parquet')
 INDEX_LS133 = ak.from_parquet('Index_LS133.parquet')
