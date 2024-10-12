@@ -172,7 +172,7 @@ BX_GMT_LS306 = ak.from_parquet('BX_GMT_LS306.parquet')
 
 #-----------------------------------PRIMO METODO----------------------------------
 
-
+'''
 DeltaR_BMTF_LS133 = ak.from_parquet('DeltaR_BMTF_LS133.parquet')
 IndexDist_BMTF_LS133 = ak.from_parquet('IndexDist_BMTF_LS133.parquet')
 
@@ -196,7 +196,7 @@ DeltaPhi_BMTF_LS264 = ak.from_parquet('DeltaPhi_BMTF_LS264.parquet')
 DeltaEta_BMTF_LS264 = ak.from_parquet('DeltaEta_BMTF_LS264.parquet')
 
 DeltaPhi_BMTF_LS306 = ak.from_parquet('DeltaPhi_BMTF_LS306.parquet')  
-DeltaEta_BMTF_LS306 = ak.from_parquet('DeltaEta_BMTF_LS306.parquet')
+DeltaEta_BMTF_LS306 = ak.from_parquet('DeltaEta_BMTF_LS306.parquet')'''
 
 
 
