@@ -170,63 +170,8 @@ BX_BMTF_LS306 = ak.from_parquet('BX_BMTF_LS306.parquet')
 BX_GMT_LS306 = ak.from_parquet('BX_GMT_LS306.parquet')
 
 
-#-----------------------------------PRIMO METODO----------------------------------
-
-'''
-DeltaR_BMTF_LS133 = ak.from_parquet('DeltaR_BMTF_LS133.parquet')
-IndexDist_BMTF_LS133 = ak.from_parquet('IndexDist_BMTF_LS133.parquet')
-
-DeltaR_BMTF_LS263 = ak.from_parquet('DeltaR_BMTF_LS263.parquet')
-IndexDist_BMTF_LS263 = ak.from_parquet('IndexDist_BMTF_LS263.parquet')
-
-DeltaR_BMTF_LS264 = ak.from_parquet('DeltaR_BMTF_LS264.parquet')
-IndexDist_BMTF_LS264 = ak.from_parquet('IndexDist_BMTF_LS264.parquet')
-
-DeltaR_BMTF_LS306 = ak.from_parquet('DeltaR_BMTF_LS306.parquet')
-IndexDist_BMTF_LS306 = ak.from_parquet('IndexDist_BMTF_LS306.parquet')
-
-
-DeltaPhi_BMTF_LS133 = ak.from_parquet('DeltaPhi_BMTF_LS133.parquet')
-DeltaEta_BMTF_LS133 = ak.from_parquet('DeltaEta_BMTF_LS133.parquet')
-
-DeltaPhi_BMTF_LS263 = ak.from_parquet('DeltaPhi_BMTF_LS263.parquet')  
-DeltaEta_BMTF_LS263 = ak.from_parquet('DeltaEta_BMTF_LS263.parquet')
-
-DeltaPhi_BMTF_LS264 = ak.from_parquet('DeltaPhi_BMTF_LS264.parquet')  
-DeltaEta_BMTF_LS264 = ak.from_parquet('DeltaEta_BMTF_LS264.parquet')
-
-DeltaPhi_BMTF_LS306 = ak.from_parquet('DeltaPhi_BMTF_LS306.parquet')  
-DeltaEta_BMTF_LS306 = ak.from_parquet('DeltaEta_BMTF_LS306.parquet')'''
-
-
-
-#-----------------------------------SECONDO METODO------------------------------------
-
-
-'''DeltaR_GMT_LS133 = ak.from_parquet('DeltaR_GMT_LS133.parquet')
-IndexDist_GMT_LS133 = ak.from_parquet('IndexDist_GMT_LS133.parquet')
-
-DeltaR_GMT_LS263 = ak.from_parquet('DeltaR_GMT_LS263.parquet')
-IndexDist_GMT_LS263 = ak.from_parquet('IndexDist_GMT_LS263.parquet')
-
-DeltaR_GMT_LS264 = ak.from_parquet('DeltaR_GMT_LS264.parquet')
-IndexDist_GMT_LS264 = ak.from_parquet('IndexDist_GMT_LS264.parquet')
-
-DeltaR_GMT_LS306 = ak.from_parquet('DeltaR_GMT_LS306.parquet')
-IndexDist_GMT_LS306 = ak.from_parquet('IndexDist_GMT_LS306.parquet')
-
-
-DeltaPhi_GMT_LS133 = ak.from_parquet('DeltaPhi_GMT_LS133.parquet')
-DeltaEta_GMT_LS133 = ak.from_parquet('DeltaEta_GMT_LS133.parquet')
-
-DeltaPhi_GMT_LS263 = ak.from_parquet('DeltaPhi_GMT_LS263.parquet')  
-DeltaEta_GMT_LS263 = ak.from_parquet('DeltaEta_GMT_LS263.parquet')
-
-DeltaPhi_GMT_LS264 = ak.from_parquet('DeltaPhi_GMT_LS264.parquet')  
-DeltaEta_GMT_LS264 = ak.from_parquet('DeltaEta_GMT_LS264.parquet')
-
-DeltaPhi_GMT_LS306 = ak.from_parquet('DeltaPhi_GMT_LS306.parquet')  
-DeltaEta_GMT_LS306 = ak.from_parquet('DeltaEta_GMT_LS306.parquet')'''
+LowPt = ak.from_parquet('LowPt.parquet')
+HighPt = ak.from_parquet('HighPt.parquet')
 
 										
 														
