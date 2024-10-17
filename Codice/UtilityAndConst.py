@@ -172,6 +172,10 @@ BX_GMT_LS306 = ak.from_parquet('BX_GMT_LS306.parquet')
 
 LowPt = ak.from_parquet('LowPt.parquet')
 HighPt = ak.from_parquet('HighPt.parquet')
+AllPt = ak.from_parquet('AllPt.parquet')
+
+PtDup = ak.from_parquet('PtDup.parquet')
+EtaDup = ak.from_parquet('EtaDup.parquet')
 
 										
 														
