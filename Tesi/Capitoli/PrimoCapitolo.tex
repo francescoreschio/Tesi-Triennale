@@ -4,7 +4,6 @@
 \section{Large Hadron Collider}
 Formato da un anello di circonferenza pari a 27 km, il Large Hadron Collider (LHC), situato al CERN a Ginevra, Svizzera, è il più grande acceleratore di particelle mai costruito, disegnato con lo scopo di studiare collisioni tra protoni con un energia nel centro di massa $\sqrt{s} = 13.6$ TeV e una luminosità istantanea nominale $\mathcal{L} = 2 \times 10^{34}$ \si{cm^{-2} s^{-1}}, corrispondente ad un rate di interazioni tra protoni di 40MHz, ovvero una collisione ogni 25ns. L'intervallo temporale tra le collisioni è chiamato \textit{bunch crossing}, BX, ed è una unità di misura standardizzata: 1 BX = 25ns.
 
-All'interno dell'LHC pacchetti, formati da $1.1 \times 10^{11}$ protoni, circolano in due condotti differenti in direzioni opposte e collidono in quattro punti di interazione (IP) dove sono presenti i principali rivelatori dell'LHC: ATLAS (IP1), Alice (IP2), CMS (IP5) e LHCb (IP8), come mostrato in Figura \ref{fig:LHC-CMS}
 
 \begin{figure}[t]
   \centering
@@ -21,13 +20,17 @@ All'interno dell'LHC pacchetti, formati da $1.1 \times 10^{11}$ protoni, circola
   \label{fig:LHC-CMS}
 \end{figure}
 
-I protoni subiscono una serie di fasi di accelerazione prima di essere immessi nell'LHC \cite{evans2008lhc}: una prima fase di accelerazione fino a 50MeV ad opera di un acceleratore lineare Linac, poi vengono accelerati fino a 1.4GeV dal Proton Synchrotron Booster (PSB), quindi a 28GeV dal Proton Synchrotron (PS) e infine dal Super Proton Synchrotron (SPS) a 450GeV. A questo punto i protoni sono iniettati nell'LHC dove verranno accelerati fino a 7 TeV, collidendo frontalmente nei punti di interazione con una energia nel centro di massa $\sqrt{s} \approx 14$TeV.
+
+Prima di essere immessi in LHC, pacchetti formati da $1.1 \times 10^{11}$ protoni, subiscono varie fasi di accelerazione: inizialmente ad opera dell' acceleratore lineare Linac, poi dal Proton Synchrotron Booster (PSB), quindi dal Proton Synchrotron (PS) e infine dal Super Proton Synchrotron (SPS), dove vengono iniettati in LHC con una energia di 450 GeV. Circolando in due condotti differenti in direzioni opposte, i protoni vengono accelerati fino a 7 TeV collidendo frontalmente in punti di interazione con una energia nel centro di massa $\sqrt{s} \approx 14$ TeV. Come mostrato in Figura \ref{fig:LHC-CMS}, i principali punti di interazione dell'LHC sono: ATLAS (IP1), Alice (IP2), CMS (IP5) e LHCb (IP8).
+
 
 L'LHC alterna periodi di fasi di attività e di raccolta dati (Run) con fasi di arresto in cui vengono effettuate opere di upgrade e di manutenzione. Tra la Run 1, iniziata nel 2009 e finita nel 2013, e la Run 2, tra 2015 e 2018, il sistema di trigger Level-1 (L1T) del CMS ha subito importanti miglioramenti (\textit{Phase 1}) rimpiazzando e potenziando hardware, elettronica e software del trigger permettendo, durante la Run 2, un incremento dell'energia di collisione protone protone nel centro di massa da 8 a 14 TeV \cite{sirunyan2020performance}. E' in programma nel 2025 un ulteriore upgrade dell'LHC (\textit{Phase 2}) che porterà un incremento della luminosità istantanea fino a $5\times 10^{34}$ \si{cm^{-2} s^{-1}}, aumentando quindi il numero di collisioni medio per BX da 50 a 140 \cite{collaboration2021phase}. In contemporanea, al fine di sfruttare appieno l'incremento della luminosità dell'LHC della Phase 2 (noto come \textit{HL-LHC}, High Luminosity LHC), è previsto un upgrade anche del sistema di detector del CMS, ed in particolare sul sistema di trigger L1, di cui parleremo nelle prossime sezioni.
 
 \section{Compact Muon Solenoid}
 
-Il rivelatore CMS è formato da un corpo cilindrico di 15 m di diametro e 21.6 m di lunghezza, per un peso di circa 14.000 tonnellate \cite{MasterThesisNicLai}. Locato nel punto di interazione IP5 in Cessy, Francia, il programma di fisica del CMS comprende vari ambiti nella fisica delle alte energie: dopo la scoperta del bosone di Higgs, nel 2012 e delle sue validazioni sperimentali compatibili con il modello standard (SM), lo studio di particelle esotiche e supersimmetriche sono di fondamentale importanza al CMS per la ricerca di Nuova Fisica, ovvero eventi non predetti dalle attuali teorie. Al fine di identificare questi eventi è necessario un sistema di trigger molto performante \cite{sirunyan2020performance} e a questo scopo in gioco il nuovo sistema di trigger che verrà implementato nella \textit{Phase 2}, che permetterà quindi di osservare fenomeni esotici con una risoluzione migliore (assieme ad un nuovo sistema di analisi dati, \textit{Data Scounting}, di cui discuteremo maggiormente dopo aver introdotto il sistema di trigger del CMS (??))
+%Il rivelatore CMS è formato da un corpo cilindrico di 15 m di diametro e 21.6 m di lunghezza, per un peso di circa 14.000 tonnellate ed è locato nel punto di interazione IP5 in Cessy, Francia.
+
+Locato nel punto di interazione IP5 in Cessy, Francia, il CMS è formato da un corpo cilindrico di 15 m di diametro e 21.6 m di lunghezza, per un peso di circa 14.000 tonnellate \cite{cms2008cms}. Sono vari gli ambiti di ricerca del rilevatore nel campo della fisica delle alte energie: dopo la scoperta del bosone di Higgs nel 2012, misurare le sue proprietà, attualmente compatibili con il modello standard, è diventato di fondamentale importanza. Ugualmente rilevante è anche la ricerca e lo studio di particelle esotiche e supersimmetriche al fine di esplorare Nuova Fisica oltre il modello standard. (introduzione alle HSCP??)Al fine di identificare questi eventi è necessario un sistema di trigger molto performante \cite{sirunyan2020performance} e a questo scopo in gioco il nuovo sistema di trigger che verrà implementato nella \textit{Phase 2}, che permetterà quindi di osservare fenomeni esotici con una risoluzione migliore (assieme ad un nuovo sistema di analisi dati, \textit{Data Scounting}, di cui discuteremo maggiormente dopo aver introdotto il sistema di trigger del CMS (??))
 
 Di seguito una panoramica della struttura del CMS, dalle componenti più interne fino a quelle più esterne \cite{MasterThesisNicLai}(Figura \ref{fig:LHC-CMS}):
 
@@ -36,13 +39,44 @@ Di seguito una panoramica della struttura del CMS, dalle componenti più interne
   \item \textbf{Electromagnetic Calorimeter (ECAL):} Misure di energia di fotoni ed elettroni vengono eseguite grazie al tungstato di piombo (\si{PbWO_4}), materiale scintillante di cui è costituito l'ECAL.
   \item \textbf{Hadronic Calorimeter (HCAL):} Permette la misurazione delle energie degli adroni grazie al fenomeno della \textit{cascata adronica}, indotta dai materiali di cui è costituito l'HCAL e rivelata da materiali scintillatori plastici.
   \item \textbf{Solenoide superconduttore:} Formato dal superconduttore Niobio-Titanio (NbTi), produce un campo magnetico di intensità 3.8T nel nucleo. Un campo magnetico così elevato è fondamentale per permettere la curvatura di particelle cariche prodotte dalle collisioni, la cui rivelazione di tale curvatura permette di risalire a momento e carica delle stesse.
-  \item \textbf{Camere muoniche:} 
+  \item \textbf{Camere muoniche:} Suddiviso in tre regioni, \textit{barrel}, \textit{overlap} ed \textit{endcap}, il sistema delle camere muoniche copre il piano della pseudorapidità nel range $|\eta| < 2.4$, permettendo la rivelazione delle tracce di muoni usando tre diverse tecnologie: \textit{drift tubes} (DT), \textit{resistive plate chamber} (RPC) e \textit{cathode strip chamber} (CSC) \cite{TheMuonProject} (Figura \ref{fig:SectorEtaView}).
 \end{itemize}
 
 
+\subsection{Camere muoniche:}
+
+\begin{figure}[t]
+  \centering
+  \begin{minipage}[b]{0.48\textwidth}
+      \centering
+      \includegraphics[width=\textwidth]{../ImmaginiTesi/CMS slice.png} 
+  \end{minipage}
+  \hfill 
+  \begin{minipage}[b]{0.48\textwidth}
+      \centering
+      \includegraphics[width=\textwidth]{../ImmaginiTesi/CMSEtaView.png} 
+  \end{minipage}
+  \caption{Settore di CMS (sinistra), vista di CMS  nella variabile $\eta$ di CMS (destra)}
+  \label{fig:SectorEtaView}
+\end{figure}
+
+L'alto rate di eventi di background a seguito di processi di interazione ad alta luminosità in LHC cela fenomeni interessanti: in questo contesto la rivelazione di muoni è uno strumento utile per studiare tali fenomeni. Una misurazione precisa di muoni è quindi di centrale importanza a CMS \cite{cms2008cms}. Il sistema muonico di CMS ha quindi tre funzioni: identificazione di muoni, misurazione del momento e trigger di muoni.
+
+Il forte campo magnetico nella regione delle camere muoniche (figura \ref{fig:SectorEtaView}), permette una buona risoluzione del momento e capacità di trigger. (andrebbe aggiunto qualcosa)
 
 
+In particolare la regione di barrel, come mostrato in figura \ref{fig:LHC-CMS} è formata da cinque ruote (\textit{wheel}), ognuna composta da dodici settori (\textit{sector}) e a loro volta ognuna da quattro stazioni concentriche (\textit{station}) interspaziate da una struttura di ferro. Nella regione di barrel, dove gli eventi di background sono minimi, per la rivelazione di muoni vengono impiegati drift tubes (DT), ricoprendo la pseudorapidità nel range $|\eta| < 1.2$. I DTs sono celle contenenti fili di acciaio inossidabile anodico disposte in modo adiacente una all'altra, separate da barre di alluminio che fungono da catodo: anodo e catodo operano ad un voltaggio rispettivamente di +3600V e -1200V. Quando un muone attraversa un DT la distanza di esso dal filo di acciaio viene misurata a partire dal tempo di drift degli elettroni ionizzati \cite{MasterThesisNicLai}. 
+In totale il CMS contiene 250 DTs, disposti nella regione di barrel come in figura \ref{fig:SectorEtaView}. Nelle regioni di endcap di CMS, dove il rate di muoni e livello di background è elevato ed il campo magnetico non uniforme, vengono impiegate CSCs che, grazie al loro design, permettono di ricavare precise informazioni spaziali e temporali sulle tracce di muoni nel range di pseudorapidità $0.9 < |\eta| < 2.4$. Le RPCs sono invece impiegate sia nella regione di barrel che nella regione di endcap, e assicurano una migliore misurazione del momento dei muoni grazie al loro rapido tempo di risposta \cite{MasterThesisNicLai}, \cite{cms2008cms}.
 
+
+\subsection{Sistema di trigger:}
+
+Non è possibile analizzare in tempo reale la mole di informazioni generata dal tasso di collisioni pari a 40MHz, per questo CMS è dotato di un sistema di trigger implementato come primo passo nella selezione di un processo fisico. 
+
+Al fine di ridurre il volume di dati, mantenendo però gli eventi interessanti, il sistema di trigger si suddivide in due fasi: il \textit{Level 1 Trigger} (L1T) e l' \textit{High Level Trigger} (HLT) (figura \ref{fig:TriggerSystem}). 
+
+Il Level 1 Trigger è implementato via hardware nel sistema di CMS e, unendo informazioni del sistema muonico e del calorimetro, riduce il tasso di accetazione di eventi a 100KHz, mantenendo gli eventi che, in base a logiche interne, hanno qualità elevata. Il processo di selezione deve avvenire rapidamente, in un tempo limite di 25 ns, per permettere a tutti gli eventi di essere analizzati dal trigger e ridurre quindi il numero di possibili eventi mancati; per questo il sistema di trigger L1 è composto da tre processi: \textit{locale}, \textit{regionale} e \textit{globale} \cite{MasterThesisNicLai}.
+Il sistema di trigger quindi raccoglie le informazioni \textit{locali} riguardanti i calorimetri elettromagnetici e adronici (ECAL, HCAL) e le informazioni sul sistema muonico (DTs, RPCs, CSCs). Le informazioni provenienti da processi locali sono chiamate Trigger Primitive Generators (TPG). Queste vengono combinate dai \textit{trigger regionali} che effettuano una classifica degli eventi sulla base di parametri come energia, momento e qualità. Quindi il \textit{trigger globale} (GT) determinerà se mantenere l'evento o se passarlo all' HLT.
 
 
 
@@ -50,17 +84,17 @@ Di seguito una panoramica della struttura del CMS, dalle componenti più interne
 
 \begin{figure}[t]
   \centering
-  \begin{minipage}[b]{0.45\textwidth}
+  \begin{minipage}[b]{0.40\textwidth}
       \centering
-      \includegraphics[width=\textwidth]{../ImmaginiTesi/CMS slice.png} 
-  \end{minipage}
-  \hfill 
-  \begin{minipage}[b]{0.45\textwidth}
+      \includegraphics[width=\textwidth]{../ImmaginiTesi/TriggerSystem2.png} 
+    \end{minipage}
+    \hfill 
+    \begin{minipage}[b]{0.48\textwidth}
       \centering
-      \includegraphics[width=\textwidth]{../ImmaginiTesi/CMSEtaView.png} 
+      \includegraphics[width=\textwidth]{../ImmaginiTesi/TriggerSystem.png} 
   \end{minipage}
-  \caption{Settore di CMS comprendente tutte le componenti (sinistra), vista nella variabile $\eta$ di CMS}
-  \label{fig:SectorEtaView}
+  \caption{}
+  \label{fig:TriggerSystem}
 \end{figure}
 
 
