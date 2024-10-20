@@ -125,9 +125,24 @@ La tecnica di Data Scouting è stata utilizzata per la prima volta a livello del
 Come già accennato in Sezione \ref{sec:LHC}, a seguito della Run 3, nel 2025, verranno effettuati importanti aggiornamenti alle componenti di LHC, permettendo di raggiungere un picco di luminosità istantanea pari a $5 \times 10^{34}$ \Lumi. Di conseguenza il CMS, ed in particolare il sistema di Trigger, deve essere a sua volta aggiornato per poter collezionare efficientemente il nuovo volume di informazioni di HL-LHC. Verranno implementati nuovi sensori che permetteranno di estendere la regione di raccolta dati fino a $|\eta| < 3.8$ e verranno modificati i sensori esistenti per avere una risoluzione migliore. Nel sistema di Trigger, verrà aumentato il rate di output massimo di eventi del L1T fino a 750KHz e quello di HLT fino a 7.5KHz. Ciò sarà possibile grazie all'utilizzo di nuovo hardware per l'analisi e per la ricostruzione delle tracce dei muoni usando GPU \cite{collaboration2021phase}.
 
 Upgrade così importanti permetteranno di implementare la tecnica di Data Scouting nel Trigger Level 1 piuttosto che nell'HLT. Ciò offrirà una ancora più alta statistica di dati (relativamente) unbiased.\newline
-Il sistema di Data Scouting nel L1T funzionerà in modo indipendente dal sistema di Trigger descritto in Sezione \ref{sec:SistemaDiTrigger}: verranno implementate schede FPGA dedicate che riceveranno i dati direttamente dagli output ottici delle schede di Trigger.
+Il sistema di Data Scouting nel L1T funzionerà in modo indipendente dal sistema di Trigger descritto in Sezione \ref{sec:SistemaDiTrigger}: verranno implementate schede FPGA dedicate che riceveranno i dati direttamente dagli output ottici delle schede di Trigger \cite{MasterThesisNicLai}
 
 Durante la Run 3
+
+\begin{figure}[t]
+  \centering
+  \begin{minipage}[b]{0.43\textwidth}
+      \centering
+      \includegraphics[width=\textwidth]{../ImmaginiTesi/Phase2.png} 
+    \end{minipage}
+    \hfill 
+    \begin{minipage}[b]{0.48\textwidth}
+      \centering
+      \includegraphics[width=\textwidth]{../ImmaginiTesi/DataScoutingRun3.png} 
+  \end{minipage}
+  \caption{}
+  \label{fig:Scouting}
+\end{figure}
 
 
 \section{Ricerca di Nuova Fisica}
