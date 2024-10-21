@@ -32,7 +32,7 @@ E' inoltre in programma a partire dal 2025, a seguito della Run 3, un ulteriore 
 \section{Compact Muon Solenoid}  
 \label{sec:CMSDescrizione}
 
-Locato nel punto di interazione IP5 in Cessy, Francia, il CMS è formato da un corpo cilindrico di 15 m di diametro e 21.6 m di lunghezza, per un peso di circa 14.000 tonnellate \cite{cms2008cms}. Sono vari gli ambiti di ricerca del rilevatore nel campo della fisica delle alte energie: dopo la scoperta del bosone di Higgs nel 2012 misurare le sue proprietà, attualmente compatibili con il modello standard, è diventato di fondamentale importanza. Ugualmente rilevante è anche la ricerca e lo studio di particelle esotiche e supersimmetriche al fine di esplorare Nuova Fisica oltre il modello standard. Al fine di identificare questi eventi rari è necessario un sistema di trigger molto performante \cite{sirunyan2020performance} e a questo scopo assume un'importanza centrale il nuovo sistema di trigger che verrà implementato nella \textit{Phase 2}, che permetterà quindi di osservare fenomeni esotici con una risoluzione migliore (assieme ad un nuovo sistema di analisi dati, \textit{Data Scounting}, di cui discuteremo maggiormente dopo aver introdotto il sistema di trigger del CMS (??))
+Locato nel punto di interazione IP5 in Cessy, Francia, il CMS è formato da un corpo cilindrico di 15 m di diametro e 21.6 m di lunghezza, per un peso di circa 14.000 tonnellate \cite{cms2008cms}. Sono vari gli ambiti di ricerca del rilevatore nel campo della fisica delle alte energie: dopo la scoperta del bosone di Higgs nel 2012 misurare le sue proprietà, attualmente compatibili con il modello standard, è diventato di fondamentale importanza. Ugualmente rilevante è anche la ricerca e lo studio di particelle esotiche e supersimmetriche con l'intento di esplorare Nuova Fisica oltre il modello standard. Al fine di identificare questi eventi rari è necessario un sistema di trigger molto performante \cite{sirunyan2020performance} e a questo scopo assume un'importanza centrale il nuovo sistema di trigger che verrà implementato nella \textit{Phase 2}, che permetterà quindi di osservare fenomeni esotici con una risoluzione migliore.
 
 Di seguito una panoramica della struttura di CMS, dalle componenti più interne fino a quelle più esterne \cite{MasterThesisNicLai}(Figura \ref{fig:LHC-CMS}):
 
@@ -117,17 +117,12 @@ Complessi algoritmi filtrano e selezionano gli eventi per soddisfare i requisiti
 \label{sec:DataScouting}
 
 
-A seguito dell'interazione protone protone, il sistema di Trigger di CMS seleziona solamente una frazione degli eventi per una analisi più accurata, escludendone una porzione prevalente. Indubbiamente ciò introduce un pregiudizio (bias) nella porzione di eventi minoritari che non vengono eliminati (vengono eliminati??) in quanto il sistema di Trigger filtra e seleziona dati che seguono leggi della fisica attualmente conosciute, possibilmente celando fenomeni sconosciuti e non teorizzati dal Modello Standard. \newline
-In questo contesto il \textbf{ Data Scouting} (DS) è un approccio che si basa sulla analisi degli eventi direttamente nella catena di Trigger, estraendo e processando i dati online, aggirando la restrizione del bias introdotta dal Trigger: evidentemente quindi più si esegue Scouting in superficie nella catena di trigger minore è il bias introdotto. L'approccio del Data Scouting si concentra sull'acquisizione di dati con un livello di risoluzione ridotto, consentendo però di raccogliere una statistica maggiore.
+A seguito dell'interazione protone protone, il sistema di Trigger di CMS seleziona solamente una frazione degli eventi per una analisi più accurata, escludendone una porzione prevalente. Indubbiamente ciò introduce un \textit{pregiudizio} (bias) nella porzione di eventi minoritari che non vengono eliminati (vengono eliminati??) in quanto il sistema di Trigger filtra e seleziona dati che seguono leggi della fisica attualmente conosciute, possibilmente celando fenomeni sconosciuti e non teorizzati dal Modello Standard. \newline
+In questo contesto il \textbf{ Data Scouting} (DS) è un approccio che si basa sulla analisi degli eventi direttamente nella catena di Trigger, estraendo e processando i dati online, aggirando il bias introdotto dal Trigger: evidentemente quindi più si esegue Scouting in superficie nella catena di trigger minore è il bias introdotto. L'approccio del Data Scouting si concentra sull'acquisizione di dati con un livello di risoluzione ridotto, consentendo però di raccogliere una statistica maggiore.
 
 La tecnica di Data Scouting è stata utilizzata per la prima volta a livello dell High Level Trigger dove, per costruzione, solo 1 evento su 100 viene accettato. Qui è infatti possibile introdurre una nuova pipeline parallela al percorso standard dell'HLT che effettui Data Scouting su oggetti fisici che verrebbero possibilmente rigettati dal Trigger. La minore risoluzione di questi oggetti permetterebbe anche una analisi online e un immagazzinamento molto più efficace nel sistema di storage. 
 
 Come già accennato in Sezione \ref{sec:LHC}, a seguito della Run 3, nel 2025, verranno effettuati importanti aggiornamenti alle componenti di LHC, permettendo di raggiungere un picco di luminosità istantanea pari a $5 \times 10^{34}$ \Lumi. Di conseguenza il CMS, ed in particolare il sistema di Trigger, deve essere a sua volta aggiornato per poter collezionare efficientemente il nuovo volume di informazioni di HL-LHC. Verranno implementati nuovi sensori che permetteranno di estendere la regione di raccolta dati fino a $|\eta| < 3.8$ e verranno modificati i sensori esistenti per avere una risoluzione migliore. Nel sistema di Trigger, verrà aumentato il rate di output massimo di eventi del L1T fino a 750KHz e quello di HLT fino a 7.5KHz. Ciò sarà possibile grazie all'utilizzo di nuovo hardware per l'analisi e per la ricostruzione delle tracce dei muoni usando GPU \cite{collaboration2021phase}.
-
-Upgrade così importanti permetteranno di implementare la tecnica di Data Scouting nel Trigger Level 1 piuttosto che nell'HLT. Ciò offrirà una ancora più alta statistica di dati (relativamente) unbiased.\newline
-Il sistema di Data Scouting nel L1T funzionerà in modo indipendente dal sistema di Trigger descritto in Sezione \ref{sec:SistemaDiTrigger}: verranno implementate schede FPGA dedicate che riceveranno i dati direttamente dagli output ottici delle schede di Trigger \cite{MasterThesisNicLai}
-
-Durante la Run 3
 
 \begin{figure}[t]
   \centering
@@ -144,9 +139,25 @@ Durante la Run 3
   \label{fig:Scouting}
 \end{figure}
 
+Upgrade così importanti permetteranno di implementare la tecnica di Data Scouting nel Trigger Level 1 piuttosto che nell'HLT. Ciò offrirà una ancora più alta statistica di dati (relativamente) unbiased.\newline
+Il sistema di Data Scouting nel L1T funzionerà in modo indipendente dal sistema di Trigger descritto in Sezione \ref{sec:SistemaDiTrigger}: verranno implementate schede FPGA dedicate che riceveranno i dati direttamente dagli output ottici delle schede di Trigger \cite{MasterThesisNicLai}.
 
-\section{Ricerca di Nuova Fisica}
+Al fine di sperimentare l'utilizzo della tecnica di Data Scouting usando dati reali, durante la Run 3 un sistema apposito è stato implementato per raccogliere informazioni dai principali step di trigger del L1T. Più nel dettaglio il sistema raccoglie informazioni dal Barrel Muon Track Finder (BMTF), dal Calorimeter Trigger, dal Global Muon Trigger (GMT) e Global Trigger (GT) sfruttando una serie di schede FPGA diverse. In particolare, come mostrato in figura \ref{fig:Scouting} vengono impiegate due schede \textit{Xilinx KCU1500}, una scheda \textit{Micron SB852} e una \textit{Xilinx VCU128}. 
+
+
+(MANCA UNA PARTE FINALE SUL DATA SCOUTING)
+
+
+
+
+\section{Ricerca di Nuova Fisica al CMS}
 \label{sec:NewPhysics}
+
+Proposto inizialmente nel 1961 da Sheldon Glashow, e poi raffinato da Steven Weinberg e Abdus Salam nel 1968, il Modello Standard (SM) raggruppa e connette tutte le particelle fondamentali note e le loro interazioni. Il beneficio di avere un frame così completo come il Modello Standard risiede nella capacità di prevedere il comportamento di particelle subatomiche conoscendo la struttura teorica alla base. Una delle maggiori conquiste dello SM è la scoperta del bosone di Higgs, teorizzato per la prima volta da Higgs nel 1964 e rilevato al CMS nel 2012. \newline
+Nonostante molte siano le conferme sperimentali del Modello Standard negli ultimi 50 anni, ci sono fenomeni che non possono essere spiegati esaustivamente dal modello
+
+
+
 
 
 
