@@ -41,13 +41,16 @@ Di seguito una panoramica della struttura di CMS, dalle componenti più interne 
   \item \textbf{Electromagnetic Calorimeter (ECAL):} Misure di energia di fotoni ed elettroni vengono eseguite grazie al tungstato di piombo (\si{PbWO_4}), materiale scintillante di cui è costituito l'ECAL.
   \item \textbf{Hadronic Calorimeter (HCAL):} Permette la misurazione delle energie degli adroni grazie al fenomeno della \textit{cascata adronica}, indotta dai materiali di cui è costituito l'HCAL e rivelata da materiali scintillatori plastici.
   \item \textbf{Solenoide superconduttore:} Formato dal superconduttore Niobio-Titanio (NbTi), produce un campo magnetico di intensità 3.8T nel nucleo. Un campo magnetico così elevato è fondamentale per permettere la curvatura di particelle cariche prodotte dalle collisioni, la cui rivelazione di tale curvatura permette di risalire a momento e carica delle stesse.
-  \item \textbf{Camere muoniche:} Suddiviso in tre regioni, \textit{barrel}, \textit{overlap} ed \textit{endcap}, il sistema delle camere muoniche copre il piano della pseudorapidità nel range $|\eta| < 2.4$, permettendo la rivelazione delle tracce di muoni usando tre diverse tecnologie: \textit{drift tube} (DT), \textit{resistive plate chamber} (RPC) e \textit{cathode strip chamber} (CSC) \cite{TheMuonProject} (Figura \ref{fig:SectorEtaView}).
+  \item \textbf{Camere muoniche:} Essendo i muoni particelle cariche elementari poco interagenti, il sistema di rilevazione muonico occupa una significativa porzione del volume di rilevatori di CMS. Suddiviso in tre regioni, \textit{barrel}, \textit{overlap} ed \textit{endcap}, il sistema delle camere muoniche copre il piano della pseudorapidità nel range $|\eta| < 2.4$, permettendo la rivelazione delle tracce di muoni usando tre diverse tecnologie: \textit{drift tube} (DT), \textit{resistive plate chamber} (RPC) e \textit{cathode strip chamber} (CSC) \cite{TheMuonProject} (Figura \ref{fig:SectorEtaView}).
 \end{itemize}
+
+L'origine del sistema di coordinate del Compact Muon Solenoid è centrato nel punto di collisione nominale dei fasci di protoni. L' asse \textit{y} è verticale, l'asse \textit{x} punta verso il centro di LHC e l'asse \textit{z}, segue la regola della mano destra, verso le montagne del Giura. L'angolo azimutale $\phi$ è misurato nel piano \textit{x-y} e l'angolo polare $\theta$ dall'asse \textit{z}. Sono di comune utilizzo variabili Lorentz invarianti nel contesto di condizioni ultrarelativistiche: per questo motivo la pseudorapidità, definita come $\eta = -\ln\left(\theta/2\right)$, è spesso preferita alla coordinata azimutale $\phi$. Per tanto il sistema di coordinate adottato a CMS è il sistema \textit{R-$\eta$-$\phi$} \cite{SearchHSCP}
+
 
 
 \subsection{Camere muoniche:}
 
-\begin{figure}[t]
+\begin{figure}[h]
   \centering
   \begin{minipage}[b]{0.48\textwidth}
       \centering
@@ -66,12 +69,11 @@ Di seguito una panoramica della struttura di CMS, dalle componenti più interne 
 L'alto rate di eventi di background a seguito di processi di interazione ad alta luminosità in LHC cela fenomeni interessanti: in questo contesto la rivelazione di muoni al CMS è uno strumento fondamentale per studiare tali fenomeni poiché i muoni sono particelle penetranti e per tanto meno soggette a interazioni con i materiali del rilevatore \cite{cms2008cms}. Il sistema muonico di CMS ha quindi tre funzioni: identificazione di muoni, misurazione del momento e trigger di muoni. Di seguito vengono descritti i sistemi di rilevazione dei muoni.
 
 
-%Il forte campo magnetico nella regione delle camere muoniche (figura \ref{fig:SectorEtaView}), permette una buona risoluzione del momento e capacità di trigger. (andrebbe aggiunto qualcosa)
 
 
 Come mostrato in figura \ref{fig:LHC-CMS} la regione di barrel, è formata da cinque ruote (\textit{wheel}), ognuna composta da dodici settori (\textit{sector}) e a loro volta da quattro stazioni concentriche (\textit{station}) interspaziate da una struttura di ferro nella quale è presente un campo magnetico di intensità circa 2T. Nella regione di barrel, dove gli eventi di background sono minimi, per la rivelazione di muoni vengono impiegati drift tube (DT), celle contenenti fili di acciaio inossidabile anodico disposte in modo adiacente una all'altra, separate da barre di alluminio che fungono da catodo: anodo e catodo operano ad un voltaggio rispettivamente di +3600V e -1200V. Quando un muone attraversa un DT la distanza tra la sua traiettoria e il filo di acciaio viene misurata a partire dal tempo di drift degli elettroni ionizzati che vengono attratti dal campo elettrico generato dalla differenza di potenziale tra catodo e anodo \cite{MasterThesisNicLai}. \newline
 In totale il CMS contiene 250 DTs, disposti nella regione di barrel come in figura \ref{fig:SectorEtaView} ricoprendo la pseudorapidità nel range $|\eta| < 1.2$. \newline
-Nelle regioni di endcap di CMS, dove il rate di muoni e livello di background è elevato ed il campo magnetico non uniforme, vengono impiegate CSCs che, grazie al loro design, permettono di ricavare precise informazioni spaziali e temporali sulle tracce di muoni nel range di pseudorapidità $0.9 < |\eta| < 2.4$. Le RPCs sono invece impiegate sia nella regione di barrel che nella regione di endcap, e assicurano una migliore misurazione del momento dei muoni grazie al loro rapido tempo di risposta \cite{MasterThesisNicLai}, \cite{cms2008cms}.
+Nelle regioni di endcap di CMS, dove il rate di muoni e livello di background è elevato ed il campo magnetico non uniforme, vengono impiegate CSCs che, grazie al loro design, permettono di ricavare precise informazioni spaziali e temporali sulle tracce di muoni nel range di pseudorapidità $0.9 < \eta < 2.4$. Le RPCs sono invece impiegate sia nella regione di barrel che nella regione di endcap, e assicurano una migliore misurazione del momento dei muoni grazie al loro rapido tempo di risposta \cite{MasterThesisNicLai}, \cite{cms2008cms}.
 
 
 \subsection{Sistema di trigger:}
@@ -153,9 +155,16 @@ Al fine di sperimentare l'utilizzo della tecnica di Data Scouting usando dati re
 \section{Ricerca di Nuova Fisica al CMS}
 \label{sec:NewPhysics}
 
-Proposto inizialmente nel 1961 da Sheldon Glashow, e poi raffinato da Steven Weinberg e Abdus Salam nel 1968, il Modello Standard (SM) raggruppa e connette tutte le particelle fondamentali note e le loro interazioni. Il beneficio di avere un frame così completo come il Modello Standard risiede nella capacità di prevedere il comportamento di particelle subatomiche conoscendo la struttura teorica alla base. Una delle maggiori conquiste dello SM è la scoperta del bosone di Higgs, teorizzato per la prima volta da Higgs nel 1964 e rilevato al CMS nel 2012. \newline
-Nonostante molte siano le conferme sperimentali del Modello Standard negli ultimi 50 anni, ci sono fenomeni che non possono essere spiegati esaustivamente dal modello
+Proposto inizialmente nel 1961 da Sheldon Glashow, e raffinato da Steven Weinberg e Abdus Salam nel 1968, il Modello Standard (SM) descrive tre interazioni fondamentali (Forte, Debole ed Elettromagnetica) che agiscono tra le particelle fondamentali che costituiscono la materia. Il beneficio di avere un frame così completo come il Modello Standard risiede nella capacità di prevedere il comportamento di particelle subatomiche conoscendo la struttura teorica alla base. Una delle maggiori conquiste dello SM è la scoperta del bosone di Higgs, teorizzato per la prima volta da Higgs nel 1964 e rilevato al CMS nel 2012. \newline
+Nonostante negli ultimi 50 anni molte siano le conferme sperimentali del Modello Standard, ci sono fenomeni che non possono essere spiegati esaustivamente dal modello e questo suggerisce la presenza di fisica oltre il Modello Standard (Beyond Standard Model, BSM).
 
+Diversi modelli di fisica oltre il Modello Standard suggeriscono la presenza di particelle cariche \textit{longeve} con masse di svariate centinaia di $GeV/c^2$, chiamate Heavy Stable Charged Particles (HSCPs). I modelli prevedono la presenza di due principali categorie di HSCPs \cite{Quertenmont:2010ota}: di tipo \textit{leptonico} o di tipo \textit{adronico}. Generalmente questi ultimi sono chiamati adroni-R (R-hadrons). \newline
+Come gli adroni, gli adroni-R possono subire fenomeni di scattering da parte dei nuclei del materiale di cui sono formati i detector (scattering adronici). I modelli teorici suggeriscono però che la perdita di energia degli adroni-R a seguito scattering adronico sia molto ridotta e per tanto difficilmente rilevabile in calorimetri adronici; questo rende le HSPC particelle estremamente penetranti, ciò suggerisce che tali particelle si comportino come muoni e per tanto possano essere rilevate nelle camere muoniche. \newline
+Essendo inoltre particelle cariche con un elevato tempo di vita medio (maggiore di 1ns) sono in grado di attraversare il detector prima di decadere, producendo ionizzazione nei detector.
+
+Le principali firme sperimentali di HSCP sono quindi una anormale perdita di energia per unità di lunghezza $- \langle \frac{dE}{dx}\rangle$ e un maggiore tempo di volo (ToF) \cite{MasterThesisGioMoc}, riconducibili ad una velocità molto minore rispetto alla velocità della luce ($\beta < 1$). 
+
+Prima della Phase 1 al CMS era implementato un sistema di trigger specifico per la ricerca di particelle massive con un lungo tempo di volo e una velocità molto minore della velocità della luce. Ciò era possibile in quanto, con una minore luminosità, vi era mediamente una collisione ogni 50ns. Con la Phase 1 e quindi con un aumento della luminosità istantanea e quindi un minore tempo di Bunch Crossing (uno ogni 25ns) il sistema di trigger per particelle esotiche è stato rimosso. 
 
 
 
