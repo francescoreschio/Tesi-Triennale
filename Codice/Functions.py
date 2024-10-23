@@ -115,7 +115,9 @@ def WeightedBiDimHist(NumRow, NumCol, Index1, Index2, Weights):
 
 
 #--------------------------------------Funzioni per la grafica------------------------------------------------------------#
-def draw_cms_label(ax: plt.Axes, label: str = "Preliminary", rlabel: str = "L1DS", fontsize: int = 28, data: bool = True):
+a = 28
+def draw_cms_label(ax: plt.Axes, label: str = "Preliminary", rlabel: str = "L1T Scouting 2024 (13.6 TeV) $18.4nb^{-1}$", 
+                   fontsize: int = a, data: bool = True):
     
     hep.cms.label(
         ax       = ax,
@@ -125,13 +127,13 @@ def draw_cms_label(ax: plt.Axes, label: str = "Preliminary", rlabel: str = "L1DS
         fontsize = fontsize
     )
 
-def set_label_font(ax: plt.Axes, fontsize: int = 28):
+def set_label_font(ax: plt.Axes, fontsize: int = a):
     
     ax.set_xlabel(ax.get_xlabel(), fontsize = fontsize)
     ax.set_ylabel(ax.get_ylabel(), fontsize = fontsize)
     
     
-def set_tick_font(ax: plt.Axes, fontsize: int = 28):
+def set_tick_font(ax: plt.Axes, fontsize: int = a):
     
     ax.tick_params(axis = "x", labelsize = fontsize, which = "major")
     ax.tick_params(axis = "y", labelsize = fontsize, which = "major")

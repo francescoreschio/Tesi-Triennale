@@ -16,7 +16,7 @@ gmt_features  = ['nGmtMuons', 'gmtHwPt', 'gmtHwPtu', 'gmtHwPhi', 'gmtHwEta', 'gm
 
 #Costanti
 
-FONTSIZE  = 22
+FONTSIZE  = 20
 FIGSIZE   = (10, 8)
 
 CMS_PALETTE_1 = ["#5790fc", "#f89c20", "#e42536", "#964a8b", "#9c9ca1", "#7a21dd"]
