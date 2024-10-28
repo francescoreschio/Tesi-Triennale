@@ -1,8 +1,40 @@
 \chapter{Verifica della tecnica di Data Scouting:}
+\label{cap:SecondoCapitolo}
 
+Nella Sezione \ref{sec:SistemaDiTrigger} si è discusso nel dettaglio del sistema di Trigger Level 1 di CMS e di come questo giochi un ruolo fondamentale nella selezione di eventi interessanti a seguito della collisione tra protoni. In particolare è stato osservato che le informazioni provenienti dai detector locali nella regione di barrel del sistema muonico vengono combinate e processate dalle schede TwinMux, generando \textit{superprimitives}, o stubs, con una risoluzione temporale e spaziale molto elevata. Le superprimitives vengono poi utilizzate dal sistema di tracking (BMTF) per ricostruire la traccia del muone.
 
+Inoltre nella Sezione \ref{sec:DataScouting} si è introdotto il sistema di Data Scouting impiegato durante la Run 3 nel L1T, che permette di analizzare, seppur con una minore risoluzione, eventi unbiased che verrebbero potenzialmente rigettati dal sistema di Trigger. Per dimostrare la validità del sistema di Scouting nel L1T viene implementato un sistema di acquisizione dati a vari step della catena, in particolare a livello del Barrel Muon Track Finder, del Global Muon Trigger e del Global Trigger.
+
+In questo capitolo verranno studiati i dati ottenuti dal sistema di Data Scouting, validandone la conformità.
 
 \section{Validazione superprimitives}
+
+Tra la Run 1 e la Run 2, sono state introdotte nel sistema di Trigger L1 le schede TwinMux nella catena di Trigger. Queste hanno il compito di generare stubs a partire dai segnali in input derivanti da Drift Tubes e Resistive Plate Chambers. \newline
+In particolare vengono applicati algoritmi di clustering ai dati in input alle schede, convertendo i segnali spaziali delle RPC nelle coordinate dei DT. Se i segnali provenienti dai due rilevatori sono compatibili, ovvero se $\Delta \phi < 15$ \si{mrad}, allora vengono combinati. Nel dettaglio i rilevatori DT forniscono informazioni sulla posizione, direzione, qualità e Bunch Crossing (BX) ad un rate di 480Mb/s, mentre le RPC sulla posizione e sul BX con un rate di 1.6Gb/s.\newline
+È funzione del TwinMux assegnare dei \textit{parametri} a ciascuna stub generata che permettono al BMTF di ricostruire la traccia del muone a partire da queste informazioni. I parametri che vengono assegnati ad ogni stub riguardano la posizione spaziale nel CMS, l'angolo di curvatura relativo alla stazione e la qualità della stub. Questi vengono riassunti nella Tabella \ref{table:StubsParam}.
+
+Il sistema TwinMux può costruire fino a 2 superprimitives per stazione; queste vengono poi inviate al BMTF e, in base alla posizione nel piano della pseudorapidità, all' OMTF. Di seguito l'analisi di Data Scouting degli input del sistema di tracking verrà effettuato solamente per eventi in ingresso al Barrel Muon Track Finder.
+
+Questa sezione è il primo passo alla validazione del sistema di Data Scouting introdotto con la Run 3 nel L1T: vengono studiati i segnali in ingresso al BMTF
+
+
+
+\renewcommand{\arraystretch}{1.35} % Aumenta lo spazio tra le righe
+ \begin{table}[h!]
+   \centering
+   \begin{tabular}{cccl}
+   \toprule
+   \textbf{Parameter} & \textbf{Bits} & \textbf{Range} & \textbf{Description} \\ \hline
+   $\phi$            & 12  & [$-2048$, 2047]   & Relative position of a segment inside a sector \\ \hline
+   $\phi_B$          & 10  & [$-512$, 511]     & Bending angle \\ \hline
+   \textit{quality}  & 3   & [0, 7]            & Number of superlayers used to construct the stub \\ \hline
+   $\eta$ hits       & 7   & "pattern"         & \begin{tabular}[c]{@{}l@{}} Each bit corresponds to one chamber area \\ 0 : no hit (less than 3 SL hits) \\ 1 : hit (3 or 4 SL hits) \end{tabular} \\ \hline
+   $\eta$ quality    & 7   & "pattern"         & \begin{tabular}[c]{@{}l@{}} Each bit corresponds to one chamber area \\ 0 : 3 SL hits \\ 1 : 4 SL hits \end{tabular} \\ 
+   \bottomrule
+   \end{tabular}
+   \caption{Descrizione dei parametri assegnati dal TwinMux a ciascuna stub}
+   \label{table:StubsParam}
+ \end{table}
 
 
 
