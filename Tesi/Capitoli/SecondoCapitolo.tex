@@ -15,18 +15,43 @@ In particolare vengono applicati algoritmi di clustering ai dati in input alle s
 
 Il sistema TwinMux può costruire fino a 2 superprimitives per stazione; queste vengono poi inviate al BMTF e, in base alla posizione nel piano della pseudorapidità, all' OMTF. Di seguito l'analisi di Data Scouting degli input del sistema di tracking verrà effettuato solamente per eventi in ingresso al Barrel Muon Track Finder.
 
-Questa sezione è il primo passo alla validazione del sistema di Data Scouting introdotto con la Run 3 nel L1T: vengono studiati i segnali in ingresso al BMTF
+Questa sezione è il primo passo alla validazione del sistema di Data Scouting introdotto con la Run 3 nel L1T: vengono studiate le stubs, ovvero i segnali di ingresso al BMTF. In particolare verranno utilizzati 1 minuto e 32 secondi di presa dati, corrispondenti a circa $1.1 \times 10^{6}$ stubs. 
+
+Come illustrato nella Sezione \ref{sec:LHC} in LHC circolano fasci di protoni che collidono nei punti di interazione dove sono presenti i principali esperimenti. Per ottimizzare e massimizzare le collisioni nei punti di interazione i pacchetti di protoni vengono disposti in modo specifico, facendo in modo che ogni fascio può contenere al massimo 2808 pacchetti di protoni, nonostante ci siano 3564 posizioni disponibili lungo l'anello di LHC. La disposizione dei pacchetti di protoni nei fasci è chiamata \textit{filling scheme} e generalmente questa può variare in base all'esperimento. Durante la Run 3 il filling scheme utilizzato è mostrato in Figura \ref{fig:StubsBX}, formato da 39 gruppi da 72 pacchetti di protoni \cite{Bailey}. \newline
+Si nota come il rate di stubs non è mai nullo e vi sia sempre un fondo costante di eventi. Questo fenomeno è da attribuire alla presenza di eventi di background come muoni cosmici, che vengono rilevati dai detector di CMS e vengono trattati, almeno in prima analisi, come muoni generati dalla collisione di protoni.
+
+
+ \begin{figure}[t]
+   \centering
+   \begin{minipage}[b]{0.49\textwidth}
+       \centering
+       \includegraphics[width=\textwidth]{../Immagini/StubsBXnumber.pdf} 
+     \end{minipage}
+     \hfill 
+     \begin{minipage}[b]{0.49\textwidth}
+       \centering
+       \includegraphics[width=\textwidth]{../Immagini/StubsBXnumberZoom.pdf} 
+   \end{minipage}
+   \caption{Filling scheme per la Run 3: disposizione dei pacchetti di protoni nelle 3564 possibili posizioni }
+   \label{fig:StubsBX}
+ \end{figure}
 
 
 
-\renewcommand{\arraystretch}{1.35} % Aumenta lo spazio tra le righe
+
+
+
+
+
+
+ \renewcommand{\arraystretch}{1.25} % Aumenta lo spazio tra le righe
  \begin{table}[h!]
    \centering
    \begin{tabular}{cccl}
    \toprule
    \textbf{Parameter} & \textbf{Bits} & \textbf{Range} & \textbf{Description} \\ \hline
    $\phi$            & 12  & [$-2048$, 2047]   & Relative position of a segment inside a sector \\ \hline
-   $\phi_B$          & 10  & [$-512$, 511]     & Bending angle \\ \hline
+   $\phi_b$          & 10  & [$-512$, 511]     & Bending angle \\ \hline
    \textit{quality}  & 3   & [0, 7]            & Number of superlayers used to construct the stub \\ \hline
    $\eta$ hits       & 7   & "pattern"         & \begin{tabular}[c]{@{}l@{}} Each bit corresponds to one chamber area \\ 0 : no hit (less than 3 SL hits) \\ 1 : hit (3 or 4 SL hits) \end{tabular} \\ \hline
    $\eta$ quality    & 7   & "pattern"         & \begin{tabular}[c]{@{}l@{}} Each bit corresponds to one chamber area \\ 0 : 3 SL hits \\ 1 : 4 SL hits \end{tabular} \\ 
@@ -35,8 +60,6 @@ Questa sezione è il primo passo alla validazione del sistema di Data Scouting i
    \caption{Descrizione dei parametri assegnati dal TwinMux a ciascuna stub}
    \label{table:StubsParam}
  \end{table}
-
-
 
 
 \section{Validazione dell'emulatore Barrel Muon Track Finder}
