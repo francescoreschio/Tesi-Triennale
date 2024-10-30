@@ -116,7 +116,7 @@ def WeightedBiDimHist(NumRow, NumCol, Index1, Index2, Weights):
 
 #--------------------------------------Funzioni per la grafica------------------------------------------------------------#
 a = 28
-def draw_cms_label(ax: plt.Axes, label: str = "Preliminary", rlabel: str = "L1T Scouting 2024 (13.6 TeV) $18.4nb^{-1}$", 
+def draw_cms_label(ax: plt.Axes, label: str = "Preliminary", rlabel: str = "L1T Scouting 2024 ($1.8 pb^{-1}$ , 13.6 TeV)", 
                    fontsize: int = a, data: bool = True):
     
     hep.cms.label(
