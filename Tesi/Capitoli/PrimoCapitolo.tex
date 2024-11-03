@@ -37,9 +37,9 @@ Locato nel punto di interazione 5 in Cessy, Francia, CMS è formato da un corpo 
 Di seguito una panoramica della struttura di CMS, dalle componenti più interne fino a quelle più esterne \cite{MasterThesisNicLai}(Figura \ref{fig:LHC-CMS}):
 
 \begin{itemize}
-  \item \textbf{Silicon Strip Tracker (SST):} Esegue una ricostruzione delle tracce e misurazione del momento trasverso di particelle originate da processi di interazione. 
-  \item \textbf{Electromagnetic Calorimeter (ECAL):} Misure di energia di fotoni ed elettroni vengono eseguite grazie al tungstato di piombo (\si{PbWO_4}), materiale scintillante di cui è costituito l'ECAL.
-  \item \textbf{Hadronic Calorimeter (HCAL):} Permette la misurazione delle energie degli adroni grazie al fenomeno della \textit{cascata adronica}, indotta dai materiali di cui è costituito l'HCAL e rivelata da materiali scintillatori plastici.
+  \item \textbf{Silicon Strip Tracker (SST):} Esegue una ricostruzione delle tracce e misurazione del momento trasverso di particelle originate da processi di interazione, producendo un segnale elettrico ogni volta che una particella passa attraverso.
+  \item \textbf{Electromagnetic Calorimeter (ECAL):} Costruito da pannelli di tungstato di piombo (\si{PbWO_4}), materiale scintillante che facilita processi di \textit{cascata elettromagnetica}, permette di effettuare misure di energia di fotoni ed elettroni.
+  \item \textbf{Hadronic Calorimeter (HCAL):} Permette la misurazione delle energie degli adroni grazie al fenomeno della \textit{cascata adronica}, indotta da acciaio e bronzo, materiali di cui è costituito l'HCAL. Questa viene rilevata da scintillatori plastici che convertono l'energia rilasciata dagli adroni in segnali luminosi, amplificati da fotomoltiplicatori.
   \item \textbf{Solenoide superconduttore:} Formato dal superconduttore Niobio-Titanio (NbTi), produce un campo magnetico di intensità 3.8T nel nucleo. Un campo magnetico così elevato è fondamentale per permettere la curvatura di particelle cariche prodotte dalle collisioni, la cui rivelazione di tale curvatura permette di risalire a momento e carica delle stesse.
   \item \textbf{Camere muoniche:} Essendo i muoni particelle elementari cariche poco interagenti, il sistema di rilevazione muonico occupa una significativa porzione del volume di rilevatori di CMS. Suddiviso in tre regioni, \textit{barrel}, \textit{overlap} ed \textit{endcap}, il sistema delle camere muoniche copre il piano della pseudorapidità nel range $|\eta| < 2.4$, permettendo la rivelazione delle tracce di muoni usando tre diverse tecnologie: \textit{Drift Tube} (DT), \textit{Resistive Plate Chamber} (RPC) e \textit{Cathode Strip Chamber} (CSC) \cite{TheMuonProject} (Figura \ref{fig:SectorEtaView}).
 \end{itemize}
@@ -132,21 +132,19 @@ Complessi algoritmi filtrano e selezionano gli eventi per soddisfare i requisiti
 \end{figure}
 
 A seguito dell'interazione protone protone, il sistema di Trigger di CMS seleziona solamente una frazione degli eventi per una analisi più accurata, escludendone una porzione prevalente. Indubbiamente ciò introduce un \textit{pregiudizio} (bias) nella porzione di eventi minoritari che non vengono eliminati in quanto il sistema di Trigger filtra e seleziona dati che seguono leggi della fisica attualmente conosciute, possibilmente celando fenomeni sconosciuti e non teorizzati dal Modello Standard. \newline
-In questo contesto il \textbf{ Data Scouting} (DS) è un approccio che si basa sull'analisi degli eventi direttamente nella catena di Trigger, estraendo e processando i dati online, aggirando il bias introdotto dal Trigger: evidentemente quindi più si esegue Scouting in superficie nella catena di trigger minore è il bias introdotto. L'approccio del Data Scouting si concentra sull'acquisizione di dati con un livello di risoluzione ridotto, consentendo però di raccogliere una statistica maggiore.
+In questo contesto il \textbf{ Data Scouting} (DS) è un approccio che si basa sull'analisi degli eventi direttamente nella catena di Trigger, estraendo e processando i dati online, aggirando il bias introdotto dal Trigger: evidentemente quindi più si esegue Scouting in superficie nella catena di trigger minore è il bias introdotto. L'approccio del Data Scouting si basa sull'acquisizione di eventi con un livello di risoluzione ridotto permettendo però una maggiore statistica.
 
 La tecnica di Data Scouting è stata utilizzata per la prima volta a livello dell High Level Trigger dove, per costruzione, solo 1 evento su 400 viene accettato. Qui è infatti possibile introdurre una nuova pipeline parallela al percorso standard dell'HLT che effettui Data Scouting su oggetti fisici che verrebbero possibilmente rigettati dal Trigger. La minore risoluzione di questi oggetti permetterebbe anche una analisi online e un immagazzinamento molto più efficace nel sistema di storage. 
 
 Come già accennato in Sezione \ref{sec:LHC}, a seguito della Run 3, nel 2025, verranno effettuati importanti aggiornamenti alle componenti di LHC, permettendo di raggiungere un picco di luminosità istantanea pari a $5 \times 10^{34}$ \Lumi. Di conseguenza CMS, ed in particolare il sistema di Trigger, deve essere a sua volta aggiornato per poter collezionare efficientemente il nuovo volume di informazioni di HL-LHC. Verranno implementati nuovi sensori che permetteranno di estendere la regione di raccolta dati fino a $|\eta| < 3.8$ e verranno modificati i sensori esistenti per avere una risoluzione migliore. Nel sistema di Trigger, verrà aumentato il rate di output massimo di eventi del L1T fino a 750KHz e quello di HLT fino a 7.5KHz. Ciò sarà possibile grazie all'utilizzo di nuovo hardware per l'analisi e per la ricostruzione delle tracce dei muoni usando GPU \cite{collaboration2021phase}.
 
 
+Upgrade così importanti permetteranno di implementare la tecnica di Data Scouting nel Trigger Level 1 piuttosto che nell'HLT, permettendo quindi di raccogliere online la quasi totalità di eventi derivanti dalla collisione di protoni, ad un rate di 40MHz. Il nuovo sistema di DS funzionerà parallelamente e in modo indipendente dal sistema di Trigger usando le uscite ottiche supplementari delle schede di acquisizione del L1T, elaborando i dati usando sistemi computazionali esterni. Ciò permetterà di aggirare il vincolo introdotto dal sistema di Trigger, aprendo le porte ad uno studio più accurato di eventi non predetti dal Modello Standard \cite{MasterThesisNicLai}. Essendo inoltre il sistema di DS parallelo al sistema di Trigger, questo non deve soddisfare requisiti limite di latenza del sistema del L1T, ma deve comunque essere in grado di analizzare circa due milioni di muoni al secondo. Sono pertanto in sviluppo tecniche che sfruttano l'uso di Machine Learning, nello specifico \textit{reti neurali}, per migliorare l'efficienza di analisi del volume di dati raccolto.
 
-Upgrade così importanti permetteranno di implementare la tecnica di Data Scouting nel Trigger Level 1 piuttosto che nell'HLT. Ciò offrirà una ancora più alta statistica di dati (relativamente) unbiased.\newline
-Il sistema di Data Scouting nel L1T funzionerà parallelamente e in modo indipendente dal sistema di Trigger descritto in Sezione \ref{sec:SistemaDiTrigger}: verranno implementate schede FPGA dedicate che riceveranno i dati direttamente dagli output ottici delle schede di Trigger \cite{MasterThesisNicLai}.
-
-Al fine di sperimentare l'utilizzo della tecnica di Data Scouting usando dati reali, durante la Run 3 un sistema apposito è stato implementato per raccogliere informazioni dai principali step di trigger del L1T. Più nel dettaglio il sistema raccoglie informazioni dal Barrel Muon Track Finder (BMTF), dal Calorimeter Trigger, dal Global Muon Trigger (GMT) e Global Trigger (GT) sfruttando una serie di schede FPGA diverse. In particolare, come mostrato in figura \ref{fig:Scouting} sono impiegate due schede \textit{Xilinx KCU1500}, una scheda \textit{Micron SB852} e una \textit{Xilinx VCU128}. 
+Al fine di sperimentare l'utilizzo della tecnica di Data Scouting usando dati reali, durante la Run 3 un sistema apposito è stato implementato per raccogliere informazioni dai principali step di trigger del L1T. Più nel dettaglio il sistema raccoglie informazioni dal Barrel Muon Track Finder (BMTF), dal Calorimeter Trigger, dal Global Muon Trigger (GMT) e Global Trigger (GT) sfruttando una serie di schede FPGA diverse: in particolare, come mostrato in figura \ref{fig:Scouting} sono impiegate due schede \textit{Xilinx KCU1500}, una scheda \textit{Micron SB852} e una \textit{Xilinx VCU128}. \newline
+I dati dal Global Muon Trigger e dal calorimetro vengono inviate alle schede Xilinx KCU1500 che hanno lo scopo di abbattere il rate di eventi di un fattore 10, eliminando i BX dove non sono rilevate tracce di muoni. Alla scheda Micron SB852 vengono inviati dei duplicati dei muoni del GMT: questa ha lo scopo di effettuare istogrammi istantanei per verificare la conformità delle misure di luminosità. Infine la scheda Xilinx VCU128 raccoglie le superprimitives in ingresso al BMTF e gli algoritmi usati dal GT, inviandole direttamente ad un PC commerciale.
 
 
-(Parte del lavoro sul data scouting)
 
 
 
@@ -166,23 +164,3 @@ Le principali firme sperimentali di HSCPs sono quindi una anormale perdita di en
 Prima della Phase 1 al CMS era implementato un sistema di trigger specifico per la ricerca di particelle massive con un lungo tempo di volo e una velocità molto minore della velocità della luce. Ciò era possibile in quanto, con una minore luminosità, vi era mediamente una collisione ogni 50ns. Con la Phase 1 e quindi con un aumento della luminosità istantanea, ovvero un minore tempo di Bunch Crossing (uno ogni 25ns) il sistema di trigger per particelle esotiche è stato rimosso. 
 
 (Parte del lavoro sulla ricerca di particelle esotiche)
-
-
-
-\begin{comment}
-  \renewcommand{\arraystretch}{1.35} % Aumenta lo spazio tra le righe
-\begin{table}[h!]
-  \centering
-  \begin{tabular}{cccl}
-  \toprule
-  \textbf{Parameter} & \textbf{Bits} & \textbf{Range} & \textbf{Description} \\ \hline
-  $\phi$            & 12  & [$-2048$, 2047]   & Relative position of a segment inside a sector \\ \hline
-  $\phi_B$          & 10  & [$-512$, 511]     & Bending angle \\ \hline
-  \textit{quality}  & 3   & [0, 7]            & Number of superlayers used to construct the stub \\ \hline
-  $\eta$ hits       & 7   & "pattern"         & \begin{tabular}[c]{@{}l@{}} Each bit corresponds to one chamber area \\ 0 : no hit (less than 3 SL hits) \\ 1 : hit (3 or 4 SL hits) \end{tabular} \\ \hline
-  $\eta$ quality    & 7   & "pattern"         & \begin{tabular}[c]{@{}l@{}} Each bit corresponds to one chamber area \\ 0 : 3 SL hits \\ 1 : 4 SL hits \end{tabular} \\ 
-  \bottomrule
-  \end{tabular}
-  \caption{Parameter description}
-\end{table}
-\end{comment}
