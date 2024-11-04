@@ -183,14 +183,6 @@ In questa sezione verranno studiati i grafici di occupazione e di molteplicità 
   \label{fig:BMTFMuons}
 \end{figure}
 
-In Figura \ref{fig:BMTFMuons} viene mostrato il filling scheme nei 3564 Bunch Crossing. Notiamo un minor rate di eventi rispetto a quello mostrato in Figura \ref{fig:Stubs1} in quanto questo filling scheme rappresenta i \textit{candidati muoni}, costruiti a partire dalle stubs delle schede TwinMux e non tutte le stubs sono associate a muoni. Ciò è reso visibile nella Figura \ref{fig:BMTFMolteplicity} sulla sinistra: la maggior parte dei BX presenta un numero nullo di muoni. Inoltre, il numero di BX contenenti un numero non nullo di muoni sembra decrescere esponenzialmente all’aumentare della molteplicità.
-%Particolare attenzione deve essere posta anche sul numero di eventi di fondo: rispetto a quanto osservato nella sezione precedente, il rate di questi eventi è notevolmente inferiore. 
-
-Sempre in Figura \ref{fig:BMTFMolteplicity}, sulla destra è mostrata la distribuzione in scala logaritmica dei candidati muoni per orbita: notiamo che la distribuzione è sempre gaussiana, centrata a circa 30 muoni ma, rispetto a quanto mostrato nella sezione precedente, vi è una asimmetria della curva che la rende inclinata positivamente, mentre la distribuzione in Figura \ref{fig:StubsMolteplicity} è altamente simmetrica.
-
-
-
-
 \begin{figure}[b]
   \centering
   \begin{minipage}[b]{0.49\textwidth}
@@ -202,10 +194,14 @@ Sempre in Figura \ref{fig:BMTFMolteplicity}, sulla destra è mostrata la distrib
       \centering
       \includegraphics[width=\textwidth]{../Immagini/BMTF_orbit.pdf} 
     \end{minipage}
-    \caption{Distribuzione stubs nel corpo di CMS come grafico bidimensionale}
+    \caption{Molteplicità dei candidati muoni emulati dal CMSSW per BX (sinistra) e per orbita (destra)}
   \label{fig:BMTFMolteplicity}
 \end{figure}
 
+In Figura \ref{fig:BMTFMuons} viene mostrato il filling scheme nei 3564 Bunch Crossing. Notiamo un minor rate di eventi rispetto a quello mostrato in Figura \ref{fig:Stubs1} in quanto questo filling scheme rappresenta i \textit{candidati muoni}, costruiti a partire dalle stubs delle schede TwinMux e non tutte le stubs sono associate a muoni. Ciò è reso visibile nella Figura \ref{fig:BMTFMolteplicity} sulla sinistra: la maggior parte dei BX presenta un numero nullo di muoni. Inoltre, il numero di BX contenenti un numero non nullo di muoni sembra decrescere esponenzialmente all’aumentare della molteplicità.
+%Particolare attenzione deve essere posta anche sul numero di eventi di fondo: rispetto a quanto osservato nella sezione precedente, il rate di questi eventi è notevolmente inferiore. 
+
+Sempre in Figura \ref{fig:BMTFMolteplicity}, sulla destra è mostrata la distribuzione in scala logaritmica dei candidati muoni per orbita: notiamo che la distribuzione è sempre gaussiana, centrata a circa 30 muoni ma, rispetto a quanto mostrato nella sezione precedente, vi è una asimmetria della curva che la rende inclinata positivamente, mentre la distribuzione in Figura \ref{fig:StubsMolteplicity} è simmetrica.
 
 \begin{figure}[t]
   \centering
@@ -218,10 +214,11 @@ Sempre in Figura \ref{fig:BMTFMolteplicity}, sulla destra è mostrata la distrib
       \centering
       \includegraphics[width=\textwidth]{../Immagini/BMTF_PtPtu.pdf} 
     \end{minipage}
-    \caption{Distribuzione stubs nel corpo di CMS come grafico bidimensionale}
+    \caption{Distribuzione dei candidati muoni come grafico bidimensionale in $\eta$ e $\phi$ (sinistra), distribuzione del momento trasverso unconstrained e vertex-constrained}
   \label{fig:BMTFPt}
 \end{figure}
 
+Il candidato muone ricostruito usando l'algoritmo kBMTF, come anche quello emulato dal CMSSW, possiede informazioni sulla posizione spaziale nelle coordinate di CMS: viene quindi assegnato un valore $\eta$ ed un valore $\phi$ ad ogni candidato muone. In figura \ref{fig:BMTFPt}, sulla sinistra, è rappresentata la distribuzione bidimensionale di eventi nelle due coordinate per verificare la conformità dei rilevatori in $\phi$ ed $\eta$. È evidente che lungo il piano $\eta = k$, con $k$ una costante, non vi siano particolarità: come ci si aspetta essendo il sistema a simmetria cilindrica la distribuzione degli eventi è costante. Si nota però una notevole asimmetria lungo $\phi = k$: ciò è dovuto alla geometria del rilevatore CMS. Come evidenziato in Figura \ref{fig:SectorEtaView} (destra), tra le wheel vi sono degli spazi in cui non sono presenti rilevatori, pertanto vi sarà una minore densità di eventi rilevati in queste zone. Inoltre per $|\eta| > 1$ ci si trova nella regione di overlap, dove le stubs delle schede TwinMux potrebbero essere inviate ai rilevatori OMTF e quindi non contenuti nei dati a disposizione.
 
 
 
