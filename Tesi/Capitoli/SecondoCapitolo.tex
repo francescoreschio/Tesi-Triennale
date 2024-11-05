@@ -108,10 +108,10 @@ Si nota come il rate di stubs non è mai nullo e vi sia sempre un fondo costante
 \section{Validazione candidati muoni del BMTF}
 \label{sec:BMTF}
 
-Il passo successivo nella catena di identificazione di muoni viene eseguito dal sistema di tracking che ricostruisce la traccia del \textit{candidato} muone a partire dalle informazioni inoltrate dalle schede TwinMux. In questo studio verranno considerate solo le tracce di muoni nella zona di barrel, pertanto l'analisi verrà eseguita sulle informazioni nella regione di pseudorapidità $|\eta| < 1.2$: come già specificato nella Sezione \ref{sec:SistemaDiTrigger} il Barrel Muon Track Finder è il sistema che si occupa della ricostruzione delle tracce in questa regione.
+Il passo successivo nella catena di identificazione dei muoni viene eseguito dal sistema di tracking che ricostruisce la traccia del \textit{candidato} muone a partire dalle informazioni inoltrate dalle schede TwinMux. In questo studio verranno considerate solo le tracce di muoni nella zona di barrel, pertanto l'analisi verrà eseguita sulle informazioni nella regione di pseudorapidità $|\eta| < 1.2$: come già specificato nella Sezione \ref{sec:SistemaDiTrigger} il Barrel Muon Track Finder è il sistema che si occupa della ricostruzione delle tracce in questa regione.
 
-Il BMTF implementa specifici algoritmi via hardware che permettono di convertire efficacemente le stubs delle schede TwinMux in candidati muoni. Dalla Tabella \ref{table:StubsParam}, ogni stub possiede informazioni spaziali e di qualità assegnate dal sistema di TwinMux: in particolare 12 bit sono riservati alle coordinate $\phi$, 10 bit all'angolo di inclinazione $\phi_b$ e 3 bit alla qualità della stub. Inoltre sono riservati 7 bit per i segnali rilevati per regione di $\eta$ e 7 per la qualità di $\eta$. Di seguito verrà discusso del sistema di tracking che utilizzano le schede BMTF per ricostruire la traccia del candidato muone e del sistema di \textit{emulazione} di CMS via software che permette, attraverso specifici parametri, di emulare i risultati ottenuti via hardware. \newline
-Nell'ultima sezione di questo capitolo verrà invece effettuato un confronto tra i muoni ottenuti dal sistema di Scouting dal Global Muon Trigger e i candidati muoni emulati, validandone la conformità assicurandosi che questi ultimi siano concordi con quelli ricavati dagli algoritmi implementati via hardware.
+Il BMTF implementa specifici algoritmi via hardware che permettono di convertire efficacemente le stubs generate delle schede TwinMux in candidati muoni. Dalla Tabella \ref{table:StubsParam}, ogni stub possiede informazioni spaziali e di qualità assegnate dal sistema TwinMux: in particolare 12 bit sono riservati alle coordinate $\phi$, 10 bit all'angolo di inclinazione $\phi_b$ e 3 bit alla qualità della stub. Inoltre sono riservati 7 bit per i segnali rilevati per regione di $\eta$ e 7 per la qualità di $\eta$. Di seguito verrà discusso del sistema di tracking che utilizzano le schede BMTF per ricostruire la traccia del candidato muone e del sistema di \textit{emulazione} di CMS via software che permette, attraverso specifici parametri, di emulare i risultati ottenuti via hardware.
+%In questo capitolo si valideranno le proprietà dei candidati muoni emulati con il software, 
 
 
 \subsection{Ricostruzione hardware dei muoni}
@@ -218,18 +218,23 @@ Sempre in Figura \ref{fig:BMTFMolteplicity}, sulla destra è mostrata la distrib
   \label{fig:BMTFPt}
 \end{figure}
 
-Il candidato muone ricostruito usando l'algoritmo kBMTF, come anche quello emulato dal CMSSW, possiede informazioni sulla posizione spaziale nelle coordinate di CMS: viene quindi assegnato un valore $\eta$ ed un valore $\phi$ ad ogni candidato muone. In figura \ref{fig:BMTFPt}, sulla sinistra, è rappresentata la distribuzione bidimensionale di eventi nelle due coordinate per verificare la conformità dei rilevatori in $\phi$ ed $\eta$. È evidente che lungo il piano $\eta = k$, con $k$ una costante, non vi siano particolarità: come ci si aspetta essendo il sistema a simmetria cilindrica la distribuzione degli eventi è costante. Si nota però una notevole asimmetria lungo $\phi = k$: ciò è dovuto alla geometria del rilevatore CMS. Come evidenziato in Figura \ref{fig:SectorEtaView} (destra), tra le wheel vi sono degli spazi in cui non sono presenti rilevatori, pertanto vi sarà una minore densità di eventi rilevati in queste zone. Inoltre per $|\eta| > 1$ ci si trova nella regione di overlap, dove le stubs delle schede TwinMux potrebbero essere inviate ai rilevatori OMTF piuttosto che a quelli BMTF, e quindi non contenuti nei dati a disposizione.
+Il candidato muone ricostruito a partire dall'algoritmo kBMTF, come anche quello emulato dal CMSSW, possiede informazioni sulla posizione spaziale nelle coordinate di CMS: viene quindi assegnato un valore $\eta$ ed un valore $\phi$ ad ogni candidato muone. In figura \ref{fig:BMTFPt}, sulla sinistra, è rappresentata la distribuzione bidimensionale di eventi nelle due coordinate per verificare la conformità dei rilevatori in $\phi$ ed $\eta$. È evidente che lungo il piano $\eta = k$, con $k$ una costante, non vi siano particolarità: come ci si aspetta essendo il sistema a simmetria cilindrica la distribuzione degli eventi è costante. Si nota però una notevole asimmetria lungo $\phi = k$: ciò è dovuto alla geometria del rilevatore CMS. Come evidenziato in Figura \ref{fig:SectorEtaView} (destra), tra le wheel vi sono degli spazi in cui non sono presenti rilevatori, pertanto vi sarà una minore densità di eventi rilevati in queste zone. Inoltre per $|\eta| > 1$ ci si trova nella regione di overlap, dove le stubs delle schede TwinMux potrebbero essere inviate ai rilevatori OMTF piuttosto che a quelli BMTF, e quindi non contenuti nei dati a disposizione.
 
-Un'altra delle informazioni ricavate dall'algoritmo kBMTF è il momento del muone; in particolare vengono calcolati dal sistema due diversi tipi di momento trasverso: un momento trasverso \textit{unconstrained}, $p_T^u$ e uno \textit{vertex-constrained}, $p_T$. In Sezione \ref{sec:KalmannFilter} è stato detto che il Kalman filter esegue il tracking del muone a partire dalle stubs delle stazioni più esterne verso quelle interne. Supponendo di porre nell'origine la posizione di collisione del fascio di protoni, si può considerare questa coordinata come punto finale della propagazione dell'algoritmo di Kalman, introducendo quindi un grado di libertà aggiuntivo, ottenendo una maggiore precisione: in questa ipotesi il kBMTF calcola il momento \textit{vertex-constrained}. \newline
-Questa ipotesi non è però corretta, vi sono fluttuazioni (non note) sul punto di collisione del fascio di protoni e per tanto si può decidere di non considerare l'origine come un grado di libertà aggiuntivo dell'algoritmo. In tal caso il Kalman filter calcolera' il momento \textit{unconstrained}. 
+Un'altra delle informazioni ricavate dall'algoritmo kBMTF è il momento del muone; in particolare vengono calcolati dal sistema due diversi tipi di momento trasverso: un momento trasverso \textit{unconstrained}, $p_T^u$ e uno \textit{vertex-constrained}, $p_T$. In Sezione \ref{sec:KalmannFilter} è stato detto che il Kalman filter esegue il tracking del muone a partire dalle stubs delle stazioni più esterne verso quelle interne: supponendo di porre nell'origine la posizione di collisione del fascio di protoni, si può considerare questa coordinata come punto finale della propagazione dell'algoritmo di Kalman, introducendo quindi un grado di libertà aggiuntivo, ottenendo una maggiore precisione: in questa ipotesi il kBMTF calcola il momento \textit{vertex-constrained}. \newline
+Questa ipotesi non è però corretta, vi sono fluttuazioni non note sul punto di collisione del fascio di protoni e per tanto si può decidere di non considerare l'origine come un grado di libertà aggiuntivo dell'algoritmo. In tal caso il Kalman filter calcolerà il momento \textit{unconstrained}. 
 Figura \ref{fig:BMTFPt} mostra la distribuzione del momento vertex-constrained e unconstrained dei candidati muoni.
 
 
-
-
-
-
-
-
 \section{Confronto tra Global Muon Trigger e kBMTF}
+In questa sezione verrà invece effettuato un confronto tra i muoni ottenuti dal sistema di Scouting dal Global Muon Trigger e i candidati muoni emulati, validandone la conformità assicurandosi che questi ultimi siano concordi con quelli ricavati dagli algoritmi implementati via hardware. 
+
+Il criterio che utilizziamo per affermare che vi è un \textit{match} tra un candidato muone emulato e un muone del GMT del sistema di Data Scouting è studiare la distanza tra due muoni nello stesso BX nel piano $\phi - \eta$, ovvero:
+\begin{equation}
+  \label{eq:DeltaR}
+  \Delta R = \sqrt{(\Delta \phi)^2 + (\Delta \eta)^2}
+\end{equation}
+
+Dove $\Delta \phi = \phi_{BMTF} - \phi_{GMT}$ e $\Delta \eta = \eta_{BMTF} - \eta_{GMT}$. Un buon 
+
+
 
