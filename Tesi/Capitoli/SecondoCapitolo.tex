@@ -10,9 +10,9 @@ Inoltre nella Sezione \ref{sec:DataScouting} si è introdotto il sistema di Data
 \label{sec:Superprimitives}
 
 Tra la Run 1 e la Run 2, sono state introdotte nel sistema di Trigger L1 le schede TwinMux nella catena di Trigger: queste hanno il compito di generare superprimitives (da questo momento in poi \textit{stubs}) a partire dai segnali in input derivanti da Drift Tubes e Resistive Plate Chambers. \newline
-In particolare vengono applicati algoritmi di clustering ai dati in input alle schede, convertendo i segnali spaziali delle RPC nelle coordinate dei DT. Se i segnali provenienti dai due rilevatori sono compatibili, ovvero se $\Delta \phi < 15$ \si{mrad}, allora vengono combinati. Nel dettaglio i rilevatori DT forniscono informazioni sulla posizione, direzione, qualità e Bunch Crossing (BX) ad un rate di 480Mb/s, mentre le RPC sulla posizione e sul BX con un rate di 1.6Gb/s.\newline
+In particolare sono applicati algoritmi di clustering ai dati in input alle schede, convertendo i segnali spaziali delle RPC nelle coordinate dei DT. Se i segnali provenienti dai due rilevatori sono compatibili, ovvero se $\Delta \phi < 15$ \si{mrad}, allora vengono combinati. Nel dettaglio i rilevatori DT forniscono informazioni sulla posizione, direzione, qualità e Bunch Crossing (BX) ad un rate di 480Mb/s, mentre le RPC sulla posizione e sul BX con un rate di 1.6Gb/s \cite{CERNsummerSchool}.\newline
 Il sistema TwinMux può costruire fino a 2 stubs per stazione; queste vengono poi inviate al BMTF e, in base alla posizione nel piano della pseudorapidità, all' OMTF. \newline
-È inoltre funzione delle schede TwinMux assegnare dei \textit{parametri} a ciascuna stub generata: a partire da queste informazioni il BMTF ricostruisce la traccia del muone, determinando la traiettoria della particella. I parametri che vengono assegnati ad ogni stub riguardano la posizione spaziale nel CMS, l'angolo di curvatura relativo alla stazione e la qualità della stub. Questi vengono riassunti nella Tabella \ref{table:StubsParam}.
+È inoltre funzione delle schede TwinMux assegnare dei \textit{parametri} a ciascuna stub generata: questi riguardano la posizione spaziale nel CMS, l'angolo di curvatura relativo alla stazione e la qualità della stub e sono riassunti nella Tabella \ref{table:StubsParam}. A partire da queste informazioni il BMTF ricostruisce la traccia del muone, determinando la traiettoria della particella. 
 
 Questa sezione è il primo passo alla validazione del sistema di Data Scouting introdotto con la Run 3 nel L1T: vengono studiate le stubs, ovvero i segnali di ingresso al BMTF. In particolare verranno utilizzati 1 minuto e 32 secondi di presa dati, corrispondenti a circa $1.1 \times 10^{6}$ stubs. 
 
@@ -110,7 +110,7 @@ Si nota come il rate di stubs non è mai nullo e vi sia sempre un fondo costante
 
 Il passo successivo nella catena di identificazione dei muoni viene eseguito dal sistema di tracking che ricostruisce la traccia del \textit{candidato} muone a partire dalle informazioni inoltrate dalle schede TwinMux. In questo studio verranno considerate solo le tracce di muoni nella zona di barrel, pertanto l'analisi verrà eseguita sulle informazioni nella regione di pseudorapidità $|\eta| < 1.2$: come già specificato nella Sezione \ref{sec:SistemaDiTrigger} il Barrel Muon Track Finder è il sistema che si occupa della ricostruzione delle tracce in questa regione.
 
-Il BMTF implementa specifici algoritmi via hardware che permettono di convertire efficacemente le stubs generate delle schede TwinMux in candidati muoni. Dalla Tabella \ref{table:StubsParam}, ogni stub possiede informazioni spaziali e di qualità assegnate dal sistema TwinMux: in particolare 12 bit sono riservati alle coordinate $\phi$, 10 bit all'angolo di inclinazione $\phi_b$ e 3 bit alla qualità della stub. Inoltre sono riservati 7 bit per i segnali rilevati per regione di $\eta$ e 7 per la qualità di $\eta$. Di seguito verrà discusso del sistema di tracking che utilizzano le schede BMTF per ricostruire la traccia del candidato muone e del sistema di \textit{emulazione} di CMS via software che permette, attraverso specifici parametri, di emulare i risultati ottenuti via hardware.
+Il BMTF implementa specifici algoritmi via hardware che permettono di convertire efficacemente le stubs generate delle schede TwinMux in candidati muoni. Dalla Tabella \ref{table:StubsParam}, ogni stub possiede informazioni spaziali e di qualità assegnate dal sistema TwinMux: in particolare 12 bit sono riservati alle coordinate $\phi$, 10 bit all'angolo di inclinazione $\phi_b$ e 3 bit alla qualità della stub. Inoltre sono riservati 7 bit per i segnali rilevati per regione di $\eta$ e 7 per la qualità di $\eta$. Di seguito verrà discusso del sistema di tracking che utilizzano le schede BMTF per ricostruire la traccia del candidato muone e del sistema di \textit{emulazione} di CMS via software che permette, attraverso specifici parametri, di emulare i risultati ottenuti via hardware e viceversa.
 %In questo capitolo si valideranno le proprietà dei candidati muoni emulati con il software, 
 
 
@@ -228,13 +228,15 @@ Figura \ref{fig:BMTFPt} mostra la distribuzione del momento vertex-constrained e
 \section{Confronto tra Global Muon Trigger e kBMTF}
 In questa sezione verrà invece effettuato un confronto tra i muoni ottenuti dal sistema di Scouting dal Global Muon Trigger e i candidati muoni emulati, validandone la conformità assicurandosi che questi ultimi siano concordi con quelli ricavati dagli algoritmi implementati via hardware. 
 
-Il criterio che utilizziamo per affermare che vi è un \textit{match} tra un candidato muone emulato e un muone del GMT del sistema di Data Scouting è studiare la distanza tra due muoni nello stesso BX nel piano $\phi - \eta$, ovvero:
+Il criterio che utilizziamo per affermare che vi è un \textit{match} tra un candidato muone emulato e un muone del GMT del sistema di Data Scouting è studiare la distanza tra due muoni dello stesso BX nel piano $\phi - \eta$, ovvero:
 \begin{equation}
   \label{eq:DeltaR}
   \Delta R = \sqrt{(\Delta \phi)^2 + (\Delta \eta)^2}
 \end{equation}
 
-Dove $\Delta \phi = \phi_{BMTF} - \phi_{GMT}$ e $\Delta \eta = \eta_{BMTF} - \eta_{GMT}$. Un buon 
+Dove $\Delta \phi = \phi_{BMTF} - \phi_{GMT}$ e $\Delta \eta = \eta_{BMTF} - \eta_{GMT}$. Definiamo un buon criterio di match la condizione $\Delta R < 0.4$, nonostante per analisi più accurate il match sarebbe stabilito da $\Delta R < 0.1$.
+
+%Per verificare il match tra un muone del GMT e un candidato muone emulato del BMTF è stato prima di tutto isolato un muone del GMT in un determinato BX, calcolando poi la distanza nel piano nel piano $\phi - \eta$ rispetto ai candidati muoni del BMTF nello stesso BX, e quindi applicando la condizione di match. Se nel corrispettivo BX sono più muoni del BMTF viene scelto il candidato muone che minimizza il $\Delta R$. 
 
 
 
