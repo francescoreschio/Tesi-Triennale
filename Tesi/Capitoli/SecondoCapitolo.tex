@@ -1,7 +1,7 @@
-\chapter{Proprietà dei candidati muoni:}
+\chapter{Proprietà dei candidati muoni}
 \label{cap:SecondoCapitolo}
 
-Nella Sezione \ref{sec:SistemaDiTrigger} si è discusso nel dettaglio del sistema di Trigger Level 1 di CMS e di come questo giochi un ruolo fondamentale nella selezione di eventi interessanti a seguito della collisione tra protoni, riducendo il volume di dati da analizzare. In particolare le informazioni provenienti dai detector locali del sistema muonico nella regione di barrel vengono combinate e processate dalle schede \textbf{TwinMux}, generando \textit{superprimitives}, o stubs, con una risoluzione temporale e spaziale elevata. Le superprimitives vengono poi utilizzate dal sistema di tracking nella zona di barrel (BMTF) per ricostruire la traccia del candidato muone.
+Nella Sezione \ref{sec:SistemaDiTrigger} si è discusso nel dettaglio del sistema di Trigger Level 1 di CMS e di come questo giochi un ruolo fondamentale nella selezione di eventi interessanti a seguito della collisione tra protoni, riducendo il volume di dati da analizzare. In particolare è stato detto che le informazioni provenienti dai detector locali del sistema muonico nella regione di barrel e nella regione di overlap vengono combinate e processate dalle schede \textbf{TwinMux}, generando \textit{superprimitives}, o stubs, con una risoluzione temporale e spaziale elevata e che queste vengono poi utilizzate dal sistema di tracking del barrel, BMTF, o dell'overlap, OMTF, per ricostruire la traccia del candidato muone.
 
 Inoltre nella Sezione \ref{sec:DataScouting} si è introdotto il sistema di Data Scouting impiegato durante la Run 3 nel L1T che permette di analizzare, seppur con una minore risoluzione, eventi unbiased che verrebbero potenzialmente rigettati dal sistema di Trigger. In questo capitolo si procederà con lo studio e la validazione dei dati ottenuti dal sistema di Data Scouting, che raccoglie informazioni impiegando schede di acquisizione in vari step della catena di Trigger, in particolare a livello degli input del Barrel Muon Track Finder, del Global Muon Trigger e del Global Trigger.
 
@@ -10,7 +10,8 @@ Inoltre nella Sezione \ref{sec:DataScouting} si è introdotto il sistema di Data
 \label{sec:Superprimitives}
 
 Tra la Run 1 e la Run 2, sono state introdotte nel sistema di Trigger L1 le schede TwinMux nella catena di Trigger: queste hanno il compito di generare superprimitives (da questo momento in poi \textit{stubs}) a partire dai segnali in input derivanti da Drift Tubes e Resistive Plate Chambers. \newline
-In particolare sono applicati algoritmi di clustering ai dati in input alle schede, convertendo i segnali spaziali delle RPC nelle coordinate dei DT. Se i segnali provenienti dai due rilevatori sono compatibili, ovvero se $\Delta \phi < 15$ \si{mrad}, allora vengono combinati. Nel dettaglio i rilevatori DT forniscono informazioni sulla posizione, direzione, qualità e Bunch Crossing (BX) ad un rate di 480Mb/s, mentre le RPC sulla posizione e sul BX con un rate di 1.6Gb/s \cite{CERNsummerSchool}.\newline
+Nel dettaglio i DT forniscono informazioni sulla posizione, direzione, qualità e Bunch Crossing (BX) ad un rate di 480Mb/s, mentre le RPC sulla posizione e sul BX con un rate di 1.6Gb/s \cite{CERNsummerSchool}.\newline
+In particolare sono applicati algoritmi di clustering ai dati in input alle schede TwinMux, convertendo i segnali spaziali delle RPC nelle coordinate dei DT. Se i segnali provenienti dai due rilevatori sono compatibili, ovvero se $\Delta \phi < 15$ \si{mrad}, allora vengono combinati.
 Il sistema TwinMux può costruire fino a 2 stubs per stazione; queste vengono poi inviate al BMTF e, in base alla posizione nel piano della pseudorapidità, all' OMTF. \newline
 È inoltre funzione delle schede TwinMux assegnare dei \textit{parametri} a ciascuna stub generata: questi riguardano la posizione spaziale nel CMS, l'angolo di curvatura relativo alla stazione e la qualità della stub e sono riassunti nella Tabella \ref{table:StubsParam}. A partire da queste informazioni il BMTF ricostruisce la traccia del muone, determinando la traiettoria della particella. 
 
@@ -37,32 +38,27 @@ Si nota come il rate di stubs non è mai nullo e vi sia sempre un fondo costante
  \end{figure}
 
 
- Viene studiata la distribuzione di stubs per Bunch Crossing (BX) e per Orbita (orbit). Ricordando che il BX è l'unità di misura che definisce l'intervallo temporale tra le collisioni, in Figura \ref{fig:StubsMolteplicity} viene mostrato il numero di stubs raccolte in un BX, ovvero in 25ns, mentre in Figura \ref{fig:StubsPerOrbit} è rappresentato il numero di stubs raccolte in ogni orbita, ovvero un ciclo completo di LHC. Ogni orbita è formata da 3564 BX, ovvero circa 89 $\mu$s.
+Viene studiata la distribuzione di stubs per Bunch Crossing (BX) e per Orbita (orbit). Ricordando che il BX è l'unità di misura che definisce l'intervallo temporale tra le collisioni, in Figura \ref{fig:StubsMolteplicity} a sinistra viene mostrato il numero di stubs raccolte in un BX, ovvero in 25ns. È importante sottolineare che la maggior parte dei BX non contiene nessuna stubs, anche se questa informazione non è mostrata nell'immagine. Inoltre vi sono eventi che presentano un numero di stub raccolte per BX maggiore di 13, ma la frequenza di questi eventi è minore di 0.1 al secondo e per tanto non sono mostrati.\newline
+Sempre in Figura \ref{fig:StubsMolteplicity} a destra, è rappresentato il numero di stubs raccolte in ogni orbita, ovvero un ciclo completo di LHC. Ogni orbita è formata da 3564 BX, ovvero circa 89 $\mu$s. Rappresentato su scala logaritmica, la distribuzione di stubs per orbita segue una distribuzione gaussiana simmetrica, centrata su 230 stubs. 
 
  \begin{figure}[b]
   \centering
   \begin{minipage}[b]{0.49\textwidth}
       \centering
       \includegraphics[width=\textwidth]{../Immagini/StubsMolteplicity.pdf} 
-      \caption{Stubs multiplicity per BX}
-      \label{fig:StubsMolteplicity}
     \end{minipage}
     \hfill 
     \begin{minipage}[b]{0.49\textwidth}
       \centering
       \includegraphics[width=\textwidth]{../Immagini/StubsPerOrbit.pdf} 
-      \caption{Stubs multiplicity per orbit}
-      \label{fig:StubsPerOrbit}
   \end{minipage}
+  \caption{Stubs multiplicity per BX (sinistra), Stubs multiplicity per orbit (destra)}
+  \label{fig:StubsMolteplicity}
 \end{figure}
 
 
- È importante sottolineare che la maggior parte dei BX non contiene nessuna stubs, anche se questa informazione non è mostrata nell'immagine. Inoltre vi sono eventi che presentano un numero di stub raccolte per BX maggiore di 13, ma la frequenza di questi eventi è minore di 0.1 al secondo e per tanto non sono mostrati. \newline
- Rappresentato su scala logaritmica, la distribuzione di stubs per orbita segue una distribuzione gaussiana centrata su 230 stubs. 
 
-
-
-  Infine viene rappresentata la distribuzione spaziale di stubs nel corpo di CMS in Figura \ref{fig:StubsInCMS} per verificare se vi sono anormalità nel sistema di acquisizione dati. Come specificato in Sezione \ref{sec:CMSDescrizione} e Figura \ref{fig:SectorEtaView}, CMS è formato da cinque ruote (\textit{wheel}), ognuna suddivisa in dodici settori (\textit{sector}) a loro volta contenenti quattro stazioni (\textit{station}). Convenzionalmente le wheel sono nominate da -2 a 2, dove 0 rappresenta la ruota in corrispondenza al punto di collisione dei protoni (origine degli assi), i sector sono nominati da 0 a 11 e le stazioni da 1 a 4. La Figura \ref{fig:StubsInCMS} mostra quindi la distribuzione spaziale delle stubs: nel grafico di sinistra notiamo una più alta densità di stubs nelle wheel $\pm$ 1, mentre una minore porzione di eventi vengono raccolti nelle wheel $\pm$ 2. Questo è dovuto al fatto che in corrispondenza di queste wheel ci troviamo nella regione ad alta pseudorapidità e per tanto vicini alla regione di \textit{overlap}: gli eventi in questa regione è probabile che vengano raccolti dal OMTF e dunque parzialmente schermati al BMTF. Nella figura di destra invece notiamo una maggiore densità in corrispondenza della prima stazione per le wheel $\pm$ 1, mentre vi è una completa assenza di eventi nella stessa stazione per le wheel $\pm$ 2. Questo difetto è attualmente noto e si verifica poiché stubs in questa stazione vengono raccolte solamente dal sistema di tracking dell'overlap, non venendo lette dal BMTF.
+Infine viene rappresentata la distribuzione spaziale di stubs nel corpo di CMS in Figura \ref{fig:StubsInCMS} per verificare se vi sono anormalità nel sistema di acquisizione dati. Come specificato in Sezione \ref{sec:CMSDescrizione} e Figura \ref{fig:SectorEtaView}, CMS è formato da cinque ruote (\textit{wheel}), ognuna suddivisa in dodici settori (\textit{sector}) a loro volta contenenti quattro stazioni (\textit{station}). Convenzionalmente le wheel sono nominate da -2 a 2, dove 0 rappresenta la ruota in corrispondenza al punto di collisione dei protoni (origine degli assi), i sector sono nominati da 0 a 11 e le stazioni da 1 a 4. La Figura \ref{fig:StubsInCMS} mostra quindi la distribuzione spaziale delle stubs: nel grafico di sinistra notiamo una più alta densità di stubs nelle wheel $\pm$ 1, mentre una minore porzione di eventi vengono raccolti nelle wheel $\pm$ 2. Questo è dovuto al fatto che in corrispondenza di queste wheel ci troviamo nella regione ad alta pseudorapidità e per tanto vicini alla regione di \textit{overlap}: gli eventi in questa regione è probabile che vengano raccolti dal OMTF e dunque parzialmente schermati al BMTF. Nella figura di destra invece notiamo una maggiore densità in corrispondenza della prima stazione per le wheel $\pm$ 1, mentre vi è una completa assenza di eventi nella stessa stazione per le wheel $\pm$ 2. Questo difetto è attualmente noto e si verifica poiché stubs in questa stazione vengono raccolte solamente dal sistema di tracking dell'overlap, non venendo lette dal BMTF.
 
 
 
@@ -111,13 +107,17 @@ Si nota come il rate di stubs non è mai nullo e vi sia sempre un fondo costante
 Il passo successivo nella catena di identificazione dei muoni viene eseguito dal sistema di tracking che ricostruisce la traccia del \textit{candidato} muone a partire dalle informazioni inoltrate dalle schede TwinMux. In questo studio verranno considerate solo le tracce di muoni nella zona di barrel, pertanto l'analisi verrà eseguita sulle informazioni nella regione di pseudorapidità $|\eta| < 1.2$: come già specificato nella Sezione \ref{sec:SistemaDiTrigger} il Barrel Muon Track Finder è il sistema che si occupa della ricostruzione delle tracce in questa regione.
 
 Il BMTF implementa specifici algoritmi via hardware che permettono di convertire efficacemente le stubs generate delle schede TwinMux in candidati muoni. Dalla Tabella \ref{table:StubsParam}, ogni stub possiede informazioni spaziali e di qualità assegnate dal sistema TwinMux: in particolare 12 bit sono riservati alle coordinate $\phi$, 10 bit all'angolo di inclinazione $\phi_b$ e 3 bit alla qualità della stub. Inoltre sono riservati 7 bit per i segnali rilevati per regione di $\eta$ e 7 per la qualità di $\eta$. Di seguito verrà discusso del sistema di tracking che utilizzano le schede BMTF per ricostruire la traccia del candidato muone e del sistema di \textit{emulazione} di CMS via software che permette, attraverso specifici parametri, di emulare i risultati ottenuti via hardware e viceversa.
-%In questo capitolo si valideranno le proprietà dei candidati muoni emulati con il software, 
-
 
 \subsection{Ricostruzione hardware dei muoni}
 \label{sec:KalmannFilter}
 
-La ricostruzione delle tracce di muoni via hardware a CMS si sviluppa principalmente in tre step: propagazione dei parametri delle tracce ricevute dal sistema di TwinMux, ricerca di segnali vicini compatibili con la traccia e aggiornamento dei parametri di ricostruzione utilizzando \textit{Kalman filter} \cite{Summers:2728522}. \newline
+La ricostruzione delle tracce di muoni via hardware a CMS si sviluppa principalmente in tre step: 
+\begin{itemize}
+  \item Propagazione dei parametri delle tracce ricevute dal sistema di TwinMux;
+  \item Ricerca di segnali vicini compatibili con la traccia;
+  \item Aggiornamento dei parametri di ricostruzione utilizzando \textit{Kalman filter} \cite{Summers:2728522}
+\end{itemize}
+
 Questo algoritmo, inventato da R.E. Kalman nel 1960, consente di descrivere ricorsivamente lo stato di un sistema dinamico, minimizzando il rumore e l'incertezza delle misurazioni: questo lo rende un'ottima scelta negli algoritmi di ricostruzione, in particolare a CMS \cite{welch1995introduction}. L'algoritmo di ricostruzione che usa Kalman filter è in funzione in CMS dal 2018 ed è stato rinominato kBMTF. 
 
 Nel dettaglio, il vettore di stato $x_n = (k, \phi, \phi_b)$ rappresenta i parametri della traccia ad ogni stazione; definiamo $k = q/p_T$, dove $q$ è la carica del muone in esame e $p_T$ il momento trasverso. Il sistema di tracking utilizzato con il Kalman filter considera inizialmente le stubs nelle stazioni più esterne, propagando la traccia verso l'interno del CMS usando la seguente equazione:
@@ -162,7 +162,7 @@ Se nello stesso BX ci sono più tracce di muoni il Kalman filter considera solam
 
 \subsection{Ricostruzione software dei muoni}
 
-Il Kalman filter è quindi un algoritmo che viene applicato per la ricostruzione di muoni nella catena di Trigger e per tanto deve soddisfare i requisiti di latenza richiesti dal Trigger, oltre che i limiti di banda di archiviazione. Questo non permette il passaggio di dati a risoluzione massima di alcune quantità forzando il sistema a troncare, o approssimare, le informazioni. Il sistema di emulazione del kBMTF permette quindi una analisi più fine rispetto alla analisi online, evitando quindi le limitazioni introdotte dal sistema di Trigger. Il software utilizzato per l'emulazione del Kalman filter è chiamato CMS Software (CMSSW) e permette ri ricavare informazioni circa il momento trasverso $p_T$, angolo azimutale $\phi$ e pseudorapidità $\eta$, oltre che altri dati.
+Il Kalman filter è quindi un algoritmo che viene applicato per la ricostruzione di muoni nella catena di Trigger e per tanto deve soddisfare i requisiti di latenza richiesti dal Trigger, oltre che i limiti di banda di archiviazione. Questo non permette il passaggio di dati a risoluzione massima di alcune quantità forzando il sistema a troncare, o approssimare, le informazioni dei candidati muoni. Il sistema di emulazione del kBMTF permette quindi una analisi più fine rispetto alla analisi online, evitando le limitazioni introdotte dal sistema di Trigger. Il software utilizzato per l'emulazione del Kalman filter è chiamato CMS Software (CMSSW) e permette ricavare informazioni circa il momento trasverso $p_T$, angolo azimutale $\phi$ e pseudorapidità $\eta$, e qualità, oltre che altri parametri.
 
 In questa sezione verranno studiati i grafici di occupazione e di molteplicità dei candidati muoni emulati dal software di CMS, verificando quindi le differenze rispetto ai grafici della Sezione \ref{sec:Superprimitives}.
 
@@ -198,7 +198,7 @@ In questa sezione verranno studiati i grafici di occupazione e di molteplicità 
   \label{fig:BMTFMolteplicity}
 \end{figure}
 
-In Figura \ref{fig:BMTFMuons} viene mostrato il filling scheme nei 3564 Bunch Crossing. Notiamo un minor rate di eventi rispetto a quello mostrato in Figura \ref{fig:Stubs1} in quanto questo filling scheme rappresenta i \textit{candidati muoni}, costruiti a partire dalle stubs delle schede TwinMux e non tutte le stubs sono associate a muoni. Ciò è reso visibile nella Figura \ref{fig:BMTFMolteplicity} sulla sinistra: la maggior parte dei BX presenta un numero nullo di muoni. Inoltre, il numero di BX contenenti un numero non nullo di muoni sembra decrescere esponenzialmente all’aumentare della molteplicità.
+In Figura \ref{fig:BMTFMuons} viene mostrato il filling scheme nei 3564 Bunch Crossing. Notiamo un minor rate di eventi rispetto a quello mostrato in Figura \ref{fig:Stubs1} in quanto questo filling scheme rappresenta i \textit{candidati muoni}, costruiti a partire dalle stubs delle schede TwinMux e non tutte le stubs sono associate a muoni. Ciò è reso visibile nella Figura \ref{fig:BMTFMolteplicity} sulla sinistra: la maggior parte dei BX presenta un numero nullo di muoni. Inoltre, il numero di BX contenenti un numero non nullo di muoni sembra decrescere esponenzialmente all’aumentare della molteplicità, come d'altronde succedeva per le stubs in figura \ref{fig:StubsMolteplicity}
 %Particolare attenzione deve essere posta anche sul numero di eventi di fondo: rispetto a quanto osservato nella sezione precedente, il rate di questi eventi è notevolmente inferiore. 
 
 Sempre in Figura \ref{fig:BMTFMolteplicity}, sulla destra è mostrata la distribuzione in scala logaritmica dei candidati muoni per orbita: notiamo che la distribuzione è sempre gaussiana, centrata a circa 30 muoni ma, rispetto a quanto mostrato nella sezione precedente, vi è una asimmetria della curva che la rende inclinata positivamente, mentre la distribuzione in Figura \ref{fig:StubsMolteplicity} è simmetrica.
@@ -220,41 +220,85 @@ Sempre in Figura \ref{fig:BMTFMolteplicity}, sulla destra è mostrata la distrib
 
 Il candidato muone ricostruito a partire dall'algoritmo kBMTF, come anche quello emulato dal CMSSW, possiede informazioni sulla posizione spaziale nelle coordinate di CMS: viene quindi assegnato un valore $\eta$ ed un valore $\phi$ ad ogni candidato muone. In figura \ref{fig:BMTFPt}, sulla sinistra, è rappresentata la distribuzione bidimensionale di eventi nelle due coordinate per verificare la conformità dei rilevatori in $\phi$ ed $\eta$. È evidente che lungo il piano $\eta = k$, con $k$ una costante, non vi siano particolarità: come ci si aspetta essendo il sistema a simmetria cilindrica la distribuzione degli eventi è costante. Si nota però una notevole asimmetria lungo $\phi = k$: ciò è dovuto alla geometria del rilevatore CMS. Come evidenziato in Figura \ref{fig:SectorEtaView} (destra), tra le wheel vi sono degli spazi in cui non sono presenti rilevatori, pertanto vi sarà una minore densità di eventi rilevati in queste zone. Inoltre per $|\eta| > 1$ ci si trova nella regione di overlap, dove le stubs delle schede TwinMux potrebbero essere inviate ai rilevatori OMTF piuttosto che a quelli BMTF, e quindi non contenuti nei dati a disposizione.
 
-Un'altra delle informazioni ricavate dall'algoritmo kBMTF è il momento del muone; in particolare vengono calcolati dal sistema due diversi tipi di momento trasverso: un momento trasverso \textit{unconstrained}, $p_T^u$ e uno \textit{vertex-constrained}, $p_T$. In Sezione \ref{sec:KalmannFilter} è stato detto che il Kalman filter esegue il tracking del muone a partire dalle stubs delle stazioni più esterne verso quelle interne: supponendo di porre nell'origine la posizione di collisione del fascio di protoni, si può considerare questa coordinata come punto finale della propagazione dell'algoritmo di Kalman, introducendo quindi un grado di libertà aggiuntivo, ottenendo una maggiore precisione: in questa ipotesi il kBMTF calcola il momento \textit{vertex-constrained}. \newline
+Un'altra delle informazioni ricavate dall'algoritmo kBMTF è il momento del muone. In particolare vengono calcolati dal sistema due diversi tipi di momento trasverso: un momento trasverso \textit{unconstrained}, $p_T^u$ e uno \textit{vertex-constrained}, $p_T$. In Sezione \ref{sec:KalmannFilter} è stato detto che il Kalman filter esegue il tracking del muone a partire dalle stubs delle stazioni più esterne verso quelle interne: supponendo di porre nell'origine la posizione di collisione del fascio di protoni, si può considerare questa coordinata come punto finale della propagazione dell'algoritmo di Kalman, introducendo quindi un grado di libertà aggiuntivo, ottenendo una maggiore precisione: in questa ipotesi il kBMTF calcola il momento \textit{vertex-constrained}. \newline
 Questa ipotesi non è però corretta, vi sono fluttuazioni non note sul punto di collisione del fascio di protoni e per tanto si può decidere di non considerare l'origine come un grado di libertà aggiuntivo dell'algoritmo. In tal caso il Kalman filter calcolerà il momento \textit{unconstrained}. 
-Figura \ref{fig:BMTFPt} mostra la distribuzione del momento vertex-constrained e unconstrained dei candidati muoni.
+Figura \ref{fig:BMTFPt} mostra la distribuzione del momento vertex-constrained e unconstrained dei candidati muoni. 
 
 
 \section{Confronto tra Global Muon Trigger e kBMTF}
-In questa sezione verrà invece effettuato un confronto tra i muoni ottenuti dal sistema di Scouting dal Global Muon Trigger e i candidati muoni emulati, validandone la conformità assicurandosi che questi ultimi siano concordi con quelli ricavati dagli algoritmi implementati via hardware. 
+\label{sec:Confronto}
+In questa sezione verrà effettuato un confronto tra i muoni ottenuti dal sistema di Scouting dal Global Muon Trigger e i candidati muoni emulati, validandone la conformità. L'obiettivo è quindi quello di studiare il match tra un candidato muone \textit{emulato}, ovvero risoluzione elevata, con un muone derivante dal sistema di Data Scouting, pertanto dalla catena di Trigger.
 
-Il criterio che utilizziamo per affermare che vi è un \textit{match} tra un candidato muone emulato e un muone del GMT del sistema di Data Scouting è studiare la distanza tra due muoni dello stesso BX nel piano $\phi - \eta$, ovvero:
+Il criterio utilizzato per verificare il \textit{match} tra un candidato muone emulato e un muone del GMT è studiare la distanza dei due muoni nel piano $\phi - \eta$, ovvero:
+
 \begin{equation}
   \label{eq:DeltaR}
   \Delta R = \sqrt{(\Delta \phi)^2 + (\Delta \eta)^2}
 \end{equation}
 
-Dove $\Delta \phi = \phi_{BMTF} - \phi_{GMT}$ e $\Delta \eta = \eta_{BMTF} - \eta_{GMT}$. Definiamo un buon criterio di match la condizione $\Delta R < 0.4$, nonostante per analisi più accurate il match sarebbe stabilito da $\Delta R < 0.1$.
+Dove $\Delta \phi = \phi_{\mathrm{BMTF}} - \phi_{\mathrm{GMT}}$ e $\Delta \eta = \eta_{\mathrm{BMTF}} - \eta_{\mathrm{GMT}}$. Un buon criterio di match è definito dalla condizione $\Delta R < 0.4$, nonostante per analisi più accurate il match sarebbe stabilito da $\Delta R < 0.1$.
 
-Per verificare il match tra un muone del GMT e un candidato muone emulato del BMTF è stato prima di tutto isolato un muone del GMT in un determinato BX, calcolando poi la distanza nel piano nel piano $\phi - \eta$ rispetto ai candidati muoni del BMTF nello stesso BX, e quindi applicando la condizione di match. Se nel corrispettivo BX vi sono più muoni del BMTF viene scelto il candidato muone che minimizza il $\Delta R$.
+In particolare è possibile applicare la condizione di match in due modi diversi. Il primo metodo consiste nel fissare un candidato muone del BMTF in un determinato BX, calcolando la distanza $\Delta R$ tra esso e tutti i muoni del GMT nel corrispondente BX, applicando la condizione di match e scegliendo la coppia che minimizza la distanza. \newline
+Il secondo metodo invece verifica il match isolando un muone del GMT e calcolando la distanza dai corrispondenti candidati muoni emulati del BMTF, applicando la condizione di match in modo che la distanza della coppia venga minimizzata.
+
+
+%dire della duplicazione????????
 
 
 \begin{figure}[t]
   \centering
-  \begin{minipage}[b]{0.51\textwidth}
+  \begin{minipage}[b]{0.45\textwidth}
     \centering
-    \includegraphics[width=\textwidth]{../Immagini/DeltaR.pdf} 
+    \includegraphics[width=\textwidth]{../Immagini/Percentile.pdf} 
     \end{minipage}
     \hfill 
-    \begin{minipage}[b]{0.48\textwidth}
+    \begin{minipage}[b]{0.49\textwidth}
       \centering
-      \includegraphics[width=\textwidth]{../Immagini/BMTF_PtPtu.pdf} 
+      \includegraphics[width=\textwidth]{../Immagini/DeltaR.pdf} 
     \end{minipage}
-    \caption{Distribuzione della distanza $\Delta R$ degli eventi con match (destra)}
+    \caption{Percentuale di eventi con e senza match per primo e secondo metodo (sinistra), distribuzione della distanza nel piano $\Delta \phi - \Delta \eta$ degli eventi del secondo metodo con match (destra)}
   \label{fig:DeltaR}
 \end{figure}
 
-In Figura \ref{fig:DeltaR} viene mostrata la distribuzione delle distanze nel piano $\phi - \eta$. Come ci si aspetta la maggioranza degli eventi presenta una distanza $\Delta R = 0$
+%TUTTA DA RIFORMULARE!!!------------------------------------------------------------------------------------
+
+Applicando entrambi i metodi, come mostrato in Figura \ref{fig:DeltaR}, la percentuale di eventi senza match per il primo metodo è 5.58\%, molto più elevata rispetto al secondo metodo che è 0.23\%. Ricordando che, per costruzione dei dati in questo studio, vengono considerate solamente le informazioni provenienti dalla regione di barrel, la spiegazione è che nel primo caso solamente 108 candidati muoni sono inviati al GMT dal sistema di Trigger, come sottolineato nella Sezione \ref{sec:SistemaDiTrigger}, per tanto non tutti i candidati muoni del BMTF sono letti dal GMT. Per tanto in un determinato BX il sistema GMT potrebbe aver non aver letto candidati muoni del BMTF, generando un evento senza match. \newline
+Allo stesso modo nel secondo caso, tutti i muoni del GMT provengono dal BMTF per costruzione, dunque ci si aspetta una percentuale di eventi senza match molto bassa.
+
+%-----------------------------------------------------------------------------------------------------------
+In Figura \ref{fig:DeltaR} viene mostrata la distribuzione bidimensionale delle distanze nel piano $\Delta \phi - \Delta \eta$ confrontando il match dei candidati muoni del BMTF con i muoni del GMT (secondo metodo). Notiamo che la distribuzione di questi eventi presenta un picco nell'origine del piano: ciò suggerisce un buon accordo tra i muoni del GMT e i candidati muoni emulati del BMTF.
+
+Confrontando quanto ottenuto in questo studio con i dati del 2023 \cite{CERNsummerSchool} notiamo un netto miglioramento nella distribuzione degli eventi, con un maggiore densità nell'origine del piano, oltre che una distribuzione globale più ristretta verso l'origine. Inoltre si nota come non sia più presente la maggiore densità di eventi in $\Delta \phi = 0$.
+
+
+\begin{figure}[t]
+  \centering
+  \begin{minipage}[b]{0.49\textwidth}
+    \centering
+    \includegraphics[width=\textwidth]{../Immagini/PtMatchingEfficiency.pdf} 
+    \end{minipage}
+    \hfill 
+    \begin{minipage}[b]{0.46\textwidth}
+      \centering
+      \includegraphics[width=\textwidth]{../Immagini/QualLowHighPt.pdf} 
+    \end{minipage}
+    \caption{Matching efficiency in funzione del vertex constrained $p_T$ per il primo e il secondo metodo (sinistra), distribuzione della qualità per candidati muoni del BMTF nell'intervallo $p_T \in [0, 5.5]$ GeV/c e $p_T \in [100, 255]$ GeV/c.}
+  \label{fig:MatchingEfficiecyPt}
+\end{figure}
+
+\subsection{Studio della matching efficiency}
+\label{sec:MatchingEfficiency}
+
+È possibile estendere il confronto tra i due metodi verificando la \textit{matching efficiency} dei candidati muoni del BMTF e del GMT in funzione del momento vertex-constrained. Estraendo quindi l'informazione sul momento di ogni muone con match per entrambi i metodi è possibile ottenere il grafico in Figura \ref{fig:MatchingEfficiecyPt} a sinistra, che mostra l'efficienza di match in funzione del momento vertex-constrained. 
+L'efficienza di match per entrambi i metodi, che corrisponde al rapporto tra muoni con match e muoni totali, dove i muoni con match sono un sottoinsieme dei muoni totali, è un processo binomiale: per calcolare intervalli di confidenza di distribuzioni di questo tipo in fisica delle particelle viene spesso utilizzato il metodo di \textit{Clopper-Pearson} in quanto per dati discreti e campioni piccoli è più accurato. La larghezza dell’intervallo di confidenza fornita dal metodo Clopper-Pearson può essere vista come un’indicazione dell’incertezza totale sulla stima di match.
+
+Come ci si aspetta la matching efficiency per muoni del GMT (secondo metodo) risulta essere quasi costante e vicina ad 1, in quanto quasi tutti i muoni del GMT hanno un match con un candidato muone del BMTF, come illustrato nella Sezione \ref{sec:Confronto}. \newline
+Al contrario la matching efficiency dei candidati muoni del BMTF (primo metodo) presenta una decrescita esponenziale a momenti $p_T$ molto bassi, seguiti da una crescita logaritmica per momenti maggiori. 
+
+Volendo caratterizzare la matching efficiency dei candidati muoni del BMTF negli intervalli di momento $p_T \in [0, 5.5]$ GeV/c e $p_T \in [100, 255]$ GeV/c, è possibile studiare la distribuzione della \textit{qualità} dei muoni in questi due intervalli. La Figura \ref{fig:MatchingEfficiecyPt} a destra rappresenta quindi le distribuzioni di probabilità della qualità degli eventi nei sopracitati intervalli di momento. In particolare, definendo il rapporto tra la distribuzione di qualità a momenti alti e bassi $\left(p_T^h / p_T^l\right)$, e possibile notare che a qualità alte questo rapporto vale circa 10, ovvero se un muone ha qualità alta è 10 volte più probabile che abbia momento elevato. 
+In questo caso l'incertezza è stata calcolata per propagazione degli errori del rapporto di probabilità derivanti da una distribuzione binomiale.
+
+
 
 
 
