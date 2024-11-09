@@ -227,7 +227,8 @@ Figura \ref{fig:BMTFPt} mostra la distribuzione del momento vertex-constrained e
 
 \section{Confronto tra Global Muon Trigger e kBMTF}
 \label{sec:Confronto}
-In questa sezione verrà effettuato un confronto tra i muoni ottenuti dal sistema di Scouting dal Global Muon Trigger e i candidati muoni emulati, validandone la conformità. L'obiettivo è quindi quello di studiare il match tra un candidato muone \textit{emulato}, ovvero risoluzione elevata, con un muone derivante dal sistema di Data Scouting, pertanto dalla catena di Trigger.
+
+In questa sezione verrà effettuato il confronto tra i candidati muoni emulati del BMTF, che presentano quindi una risoluzione elevata, e i muoni ottenuti dalla catena di Trigger dal sistema di Data Scouting del GMT, validando la corrispondenza tra essi a partire dalle loro caratteristiche spaziali e verificando che queste rientrino in determinati criteri di match. 
 
 Il criterio utilizzato per verificare il \textit{match} tra un candidato muone emulato e un muone del GMT è studiare la distanza dei due muoni nel piano $\phi - \eta$, ovvero:
 
@@ -260,15 +261,13 @@ Il secondo metodo invece verifica il match isolando un muone del GMT e calcoland
   \label{fig:DeltaR}
 \end{figure}
 
-%TUTTA DA RIFORMULARE!!!------------------------------------------------------------------------------------
 
-Applicando entrambi i metodi, come mostrato in Figura \ref{fig:DeltaR}, la percentuale di eventi senza match per il primo metodo è 5.58\%, molto più elevata rispetto al secondo metodo che è 0.23\%. Ricordando che, per costruzione dei dati in questo studio, vengono considerate solamente le informazioni provenienti dalla regione di barrel, la spiegazione è che nel primo caso solamente 108 candidati muoni sono inviati al GMT dal sistema di Trigger, come sottolineato nella Sezione \ref{sec:SistemaDiTrigger}, per tanto non tutti i candidati muoni del BMTF sono letti dal GMT. Per tanto in un determinato BX il sistema GMT potrebbe aver non aver letto candidati muoni del BMTF, generando un evento senza match. \newline
-Allo stesso modo nel secondo caso, tutti i muoni del GMT provengono dal BMTF per costruzione, dunque ci si aspetta una percentuale di eventi senza match molto bassa.
+Applicando entrambi i metodi, come mostrato in Figura \ref{fig:DeltaR}, la percentuale di eventi senza match per il primo metodo è 5.58\%, molto più elevata rispetto al secondo metodo che corrisponde allo 0.23\%. La spiegazione della discrepanza tra i due metodi è che, ricordando che per costruzione dei dati in questo studio vengono considerate solamente le informazioni provenienti dalla regione di barrel, nel primo caso solamente 108 candidati muoni vengono inviati al GMT, come sottolineato nella Sezione \ref{sec:SistemaDiTrigger}, per tanto non tutti i candidati muoni del BMTF sono passati dal GMT. Ovvero in un determinato BX il sistema di Trigger potrebbe aver scartato i candidati muoni del BMTF preferendo quelli del OMTF o EMTF, generando un evento senza match. \newline
+Al contrario nel secondo caso, tutti i muoni del GMT provengono dal BMTF per costruzione, dunque ci si aspetta una percentuale di eventi senza match molto bassa, come effettivamente è verificato.
 
-%-----------------------------------------------------------------------------------------------------------
-In Figura \ref{fig:DeltaR} viene mostrata la distribuzione bidimensionale delle distanze nel piano $\Delta \phi - \Delta \eta$ confrontando il match dei candidati muoni del BMTF con i muoni del GMT (secondo metodo). Notiamo che la distribuzione di questi eventi presenta un picco nell'origine del piano: ciò suggerisce un buon accordo tra i muoni del GMT e i candidati muoni emulati del BMTF.
+In Figura \ref{fig:DeltaR} a destra viene mostrata la distribuzione bidimensionale delle distanze nel piano $\Delta \phi - \Delta \eta$ confrontando il match dei candidati muoni del BMTF con i muoni del GMT (secondo metodo). Notiamo che la distribuzione di questi eventi presenta un picco nell'origine del piano: ciò suggerisce un buon accordo tra i muoni del GMT e i candidati muoni emulati del BMTF.
 
-Confrontando quanto ottenuto in questo studio con i dati del 2023 \cite{CERNsummerSchool} notiamo un netto miglioramento nella distribuzione degli eventi, con un maggiore densità nell'origine del piano, oltre che una distribuzione globale più ristretta verso l'origine. Inoltre si nota come non sia più presente la maggiore densità di eventi in $\Delta \phi = 0$.
+%Confrontando quanto ottenuto in questo studio con i dati del 2023 \cite{CERNsummerSchool} notiamo un netto miglioramento nella distribuzione degli eventi, con un maggiore densità nell'origine del piano, oltre che una distribuzione globale più ristretta verso l'origine. Inoltre si nota come non sia più presente la maggiore densità di eventi in $\Delta \phi = 0$.
 
 
 \begin{figure}[t]
@@ -282,24 +281,51 @@ Confrontando quanto ottenuto in questo studio con i dati del 2023 \cite{CERNsumm
       \centering
       \includegraphics[width=\textwidth]{../Immagini/QualLowHighPt.pdf} 
     \end{minipage}
-    \caption{Matching efficiency in funzione del vertex constrained $p_T$ per il primo e il secondo metodo (sinistra), distribuzione della qualità per candidati muoni del BMTF nell'intervallo $p_T \in [0, 5.5]$ GeV/c e $p_T \in [100, 255]$ GeV/c.}
-  \label{fig:MatchingEfficiecyPt}
+    \caption{Matching efficiency in funzione del vertex constrained $p_T$ per il primo e il secondo metodo (sinistra), distribuzione della qualità per candidati muoni del BMTF nell'intervallo $p_T \in [0, 5.5]$ GeV/c e $p_T \in [100, 255]$ GeV/c (destra)}
+  \label{fig:MatchingEfficiecyLowPt}
 \end{figure}
+
+\begin{figure}[b]
+  \centering
+  \includegraphics[scale=0.3]{../Immagini/EtaLowHighPt.pdf} 
+  \caption{Descrizione dell'immagine}
+  \label{fig:EtaLowHighPt}
+\end{figure}
+
+
 
 \subsection{Studio della matching efficiency}
 \label{sec:MatchingEfficiency}
 
-È possibile estendere il confronto tra i due metodi verificando la \textit{matching efficiency} dei candidati muoni del BMTF e del GMT in funzione del momento vertex-constrained. Estraendo quindi l'informazione sul momento di ogni muone con match per entrambi i metodi è possibile ottenere il grafico in Figura \ref{fig:MatchingEfficiecyPt} a sinistra, che mostra l'efficienza di match in funzione del momento vertex-constrained. 
-L'efficienza di match per entrambi i metodi, che corrisponde al rapporto tra muoni con match e muoni totali, dove i muoni con match sono un sottoinsieme dei muoni totali, è un processo binomiale: per calcolare intervalli di confidenza di distribuzioni di questo tipo in fisica delle particelle viene spesso utilizzato il metodo di \textit{Clopper-Pearson} in quanto per dati discreti e campioni piccoli è più accurato. La larghezza dell’intervallo di confidenza fornita dal metodo Clopper-Pearson può essere vista come un’indicazione dell’incertezza totale sulla stima di match.
+È possibile estendere il confronto tra i due metodi verificando la \textit{matching efficiency} dei candidati muoni del BMTF e del GMT in funzione del momento vertex-constrained. Estraendo quindi l'informazione sul momento di ogni muone con match per entrambi i metodi è possibile ottenere il grafico in Figura \ref{fig:MatchingEfficiecyLowPt} a sinistra, che mostra la matching efficiency in funzione del momento vertex-constrained. 
+Questa corrisponde, per entrambi i metodi, al rapporto tra muoni con match e muoni totali, dove i muoni con match sono un sottoinsieme dei muoni totali, e pertanto è un processo binomiale: per calcolare intervalli di confidenza di distribuzioni di questo tipo in fisica delle particelle viene spesso utilizzato il metodo di \textit{Clopper-Pearson} in quanto per dati discreti e campioni piccoli è più accurato. La larghezza dell’intervallo di confidenza fornita dal metodo Clopper-Pearson può essere vista come un’indicazione dell’incertezza totale sulla stima di match.
 
 Come ci si aspetta la matching efficiency per muoni del GMT (secondo metodo) risulta essere quasi costante e vicina ad 1, in quanto quasi tutti i muoni del GMT hanno un match con un candidato muone del BMTF, come illustrato nella Sezione \ref{sec:Confronto}. \newline
-Al contrario la matching efficiency dei candidati muoni del BMTF (primo metodo) presenta una decrescita esponenziale a momenti $p_T$ molto bassi, seguiti da una crescita logaritmica per momenti maggiori. 
+Al contrario la matching efficiency dei candidati muoni del BMTF (primo metodo) presenta una decrescita esponenziale a momenti $p_T$ molto bassi, seguiti da una crescita logaritmica per momenti maggiori. È possibile caratterizzare ulteriormente la distribuzione della matching efficiency del momento, studiando la qualità dei muoni in determinati intervalli di momento.
 
-Volendo caratterizzare la matching efficiency dei candidati muoni del BMTF negli intervalli di momento $p_T \in [0, 5.5]$ GeV/c e $p_T \in [100, 255]$ GeV/c, è possibile studiare la distribuzione della \textit{qualità} dei muoni in questi due intervalli. La Figura \ref{fig:MatchingEfficiecyPt} a destra rappresenta quindi le distribuzioni di probabilità della qualità degli eventi nei sopracitati intervalli di momento. In particolare, definendo il rapporto tra la distribuzione di qualità a momenti alti e bassi $\left(p_T^h / p_T^l\right)$, e possibile notare che a qualità alte questo rapporto vale circa 10, ovvero se un muone ha qualità alta è 10 volte più probabile che abbia momento elevato. 
+
+Verifichiamo come si distribuisce la \textit{qualità} dei candidati muoni del BMTF negli intervalli di momento $p_T \in [0, 5.5]$ GeV/c e $p_T \in [100, 255]$ GeV/c, è possibile studiare la distribuzione della qualità dei muoni in questi due intervalli. La Figura \ref{fig:MatchingEfficiecyLowPt} a destra rappresenta quindi le distribuzioni di probabilità della qualità degli eventi nei sopracitati intervalli di momento. In particolare, definendo il rapporto tra la distribuzione di qualità a momenti alti e bassi $\left(p_T^h / p_T^l\right)$, e possibile notare che a qualità alte questo rapporto vale circa 10, ovvero se un muone ha qualità alta è 10 volte più probabile che abbia momento elevato. 
 In questo caso l'incertezza è stata calcolata per propagazione degli errori del rapporto di probabilità derivanti da una distribuzione binomiale.
 
 
 
+
+
+
+\begin{figure}[t]
+  \centering
+  \begin{minipage}[b]{0.47\textwidth}
+    \centering
+    \includegraphics[width=\textwidth]{../Immagini/EtaHighPt.pdf} 
+    \end{minipage}
+    \hfill 
+    \begin{minipage}[b]{0.51\textwidth}
+      \centering
+      \includegraphics[width=\textwidth]{../Immagini/2DEtaHighPt.pdf}
+    \end{minipage}
+    \caption{Distribuzione dei muoni del GMT (primo metodo) in $\eta$  nell'intervallo $p_T \in [0, 255]$ GeV/c e $p_T \in [100, 255]$ GeV/c (sinistra), distribuzione bidimensionale dei muoni del GMT in $\eta$ e $p_T$ (destra)}
+  \label{fig:MatchingEfficiecyPt2}
+\end{figure}
 
 
 
