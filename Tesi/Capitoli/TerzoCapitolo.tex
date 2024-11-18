@@ -1,32 +1,179 @@
 \chapter{Nuova Fisica a CMS}
 \label{cap:TerzoCapitolo}
 
-\section{Ricerca di HEavy Stable Charged Particles}
+Proposto inizialmente nel 1961 da Sheldon Glashow, e raffinato da Steven Weinberg e Abdus Salam nel 1968, il Modello Standard (SM) rappresenta ad oggi una delle teorie più consolidate nella fisica moderna. Esso descrive le tre interazioni che agiscono tra le particelle fondamentali che costituiscono la materia: l'interazione Forte, responsabile del legame tra nucleoni nei nuclei atomici, l'interazione Debole, responsabile di processi come decadimento $\beta$ e l'interazione Elettromagnetica che governa le forze tra particelle cariche. La Gravità, pur essendo una forze fondamentale, non rientra nella struttura del Modello Standard. \newline
+Il beneficio di avere un frame completo come il Modello Standard risiede nella capacità di prevedere il comportamento di particelle subatomiche conoscendo la struttura teorica alla base: in questo contesto una delle maggiori conquiste dello SM è la scoperta del bosone di Higgs, teorizzato per la prima volta da Higgs nel 1964 e rilevato a CMS nel 2012.
+
+Nel Modello Standard esistono particelle instabili che possono essere considerate \textit{Long Lived} (LLPs) a causa della loro vita media relativamente elevata rispetto alle scale temporali tipiche di processi subatomici. Al Large Hadron Collider, LLPs possono essere prodotte dalla collisione protone protone, venendo rilevate nei detector nel momento del decadimento: ciò infatti porta alla produzione di tracce di particelle visibili che non sono state originate nel punto di interazione nominale della collisione.\newline
+Dato un numero iniziale di particelle prodotte $N_0$ e il tempo di decadimento proprio delle stesse $\tau$, ovvero il tempo di decadimento calcolato nel sistema di riferimento a riposo della particella, il numero di particelle restanti dopo un tempo $t$ segue la legge esponenziale nel sistema di riferimento a riposo: 
+
+\begin{equation}
+  \label{eq:ExponentialDecay}
+  N(t) = N_0 e^{-t/\tau}
+\end{equation}
+
+Lo spostamento $L$ corrispondente al tempo di decadimento $\tau$ nel sistema del laboratorio è moltiplicato dal fattore di Lorentz $\gamma = 1/\sqrt{1-\beta^2}$, essendo i prodotti di decadimento ad una velocità comparabile alla velocità della luce $c$:
+
+\begin{equation}
+  \label{eq:LorentzBoost}
+  L = \gamma \beta c \tau
+\end{equation}
+
+
+Affinché una particella abbia un tempo di vita medio elevato il decadimento deve essere soppresso e questo può avvenire secondo due meccanismi differenti \cite{Genest:2022}: un accoppiamento debole dei mediatori di decadimento, oppure da uno spazio delle fasi ristretto. \newline
+Questi meccanismi giocano un ruolo importante nel Modello Standard: in esso infatti sono presenti LLPs come pioni carichi ($\tau_{\pi^\pm} = 26\si{ns}$), muoni ($\tau_{\mu} = 2.2 \si{\mu s}$) e neutroni ($\tau_{n} = 880\si{s}$).
+
+\section{Ricerca di Heavy Stable Charged Particles a CMS}
 \label{sec:NewPhysics}
 
-Proposto inizialmente nel 1961 da Sheldon Glashow, e raffinato da Steven Weinberg e Abdus Salam nel 1968, il Modello Standard (SM) descrive le tre interazioni (Forte, Debole ed Elettromagnetica) che agiscono tra le particelle fondamentali che costituiscono la materia. Il beneficio di avere un frame completo come il Modello Standard risiede nella capacità di prevedere il comportamento di particelle subatomiche conoscendo la struttura teorica alla base. Una delle maggiori conquiste dello SM è la scoperta del bosone di Higgs, teorizzato per la prima volta da Higgs nel 1964 e rilevato a CMS nel 2012. \newline
-Nonostante negli ultimi 50 anni molte siano le conferme sperimentali del Modello Standard, ci sono fenomeni che non possono essere spiegati esaustivamente dallo stesso e questo suggerisce la presenza di fisica oltre il Modello Standard (BSM).
-
-Diversi modelli di Fisica oltre il Modello Standard suggeriscono la presenza di particelle cariche longeve (\textit{Long-Lived}) con masse di svariate centinaia di \si{GeV/c^2}, chiamate Heavy Stable Charged Particles (HSCPs). Se il tempo di decadimento di queste particelle è abbastanza elevato, esse potrebbero attraversare completamente il detector prima ancora di decadere: la ricerca di particelle longeve, e in particolare di HSCP, nei moderni rilevatori di particelle richiedono strategie diverse rispetto a quelle impiegate per la ricerca di altre particelle appartenenti a modelli BSM. \newline 
-Un'importante firma sperimentale di HSCP è l'elevata perdita di energia per unità di lunghezza $\langle \frac{dE}{dx}\rangle$ nei materiali del detector, dipendente dalla velocità e dalla carica delle particelle incidenti, in particolare dalla relazione di Bethe-Bloch, minore è la velocità delle particelle che attraversano un materiale, maggiore è l'energia persa per unità di lunghezza sotto forma di ionizzazione: ciò porta a supporre che le HSCP siano particelle con una velocità molto minore rispetto alla velocità della luce ($\beta < 1$). 
+Nonostante negli ultimi 50 anni molte siano le conferme sperimentali del Modello Standard, ci sono fenomeni che non possono essere spiegati esaustivamente dallo stesso e questo suggerisce la presenza di fisica Oltre il Modello Standard (BSM).\newline
+In particolare diversi modelli BSM predicono la presenza di LLPs con masse di svariate centinaia di \si{GeV/c^2}, chiamate Heavy Stable Charged Particles (HSCPs). La ricerca di LLP, in particolare di HSCP, nei moderni rilevatori di particelle richiede strategie diverse rispetto a quelle impiegate per la ricerca di altre particelle teorizzate da modelli BSM: se il tempo di decadimento di queste è abbastanza elevato infatti, esse potrebbero attraversare completamente i detector prima ancora di decadere, e ciò le rende difficili da rivelare sperimentalmente. \newline 
+Un'importante firma sperimentale di HSCP è l'elevata perdita di energia per unità di lunghezza $\langle \frac{dE}{dx}\rangle$ nei materiali del detector, dipendente dalla velocità e dalla carica delle particelle incidenti: in particolare dalla relazione di Bethe-Bloch, minore è la velocità delle particelle che attraversano un materiale, maggiore è l'energia persa per unità di lunghezza sotto forma di ionizzazione. Ciò porta a supporre che le HSCP siano particelle con una velocità molto minore rispetto alla velocità della luce ($\beta < 1$). Inoltre, essendo particelle Long Lived con un elevato tempo di volo (ToF), la ionizzazione causata dalla dalla perdita di energia nel detector puo' essere rilevata nelle camere muoniche: è possibile quindi cercare di rilevare HSCP a partire anche dai segnali derivanti da questi detector, oltre che dal sistema di tracking adronico.
 
 
+È stato discusso in Sezione \ref{sec:SistemaDiTrigger} e nel Capitolo \ref{cap:SecondoCapitolo} come il sistema di Trigger di CMS sia necessario per ridurre il volume di informazioni derivanti dalle collisioni di eventi e di come il L1T applichi un primo filtro per la selezione di eventi interessanti tra i numerosi eventi di background. È stato anche trattato come il sistema di Trigger possa celare eventi compatibili con i diversi modelli di Nuova Fisica: nonostante il Trigger permetta la ricerca di fenomeni interessanti Oltre il Modello Standard, questi processi potrebbero essere talmente rari che sarebbero necessari sistemi di ricerca specializzati. \newline
+Come discusso in Sezione \ref{sec:Phase2} il CMS subirà però con la Phase 2 importanti miglioramenti al sistema di Trigger e di tracciamento che permetteranno di ricavare informazioni unbiased direttamente dalla catena di Trigger a con massima risoluzione. In particolare quindi il sistema di Data Scouting al L1T fornirà sarà un grosso passo avanti nella ricerca di Nuova Fisica, specialmente nel contesto nella ricerca di HSCP. 
 
-È stato discusso in Sezione \ref{sec:SistemaDiTrigger} e nel Capitolo \ref{cap:SecondoCapitolo} come il sistema di Trigger di CMS sia necessario per ridurre il volume di informazioni derivanti dalle collisioni di eventi e di come il L1T applichi un primo filtro per la selezione di eventi interessanti tra i numerosi eventi di background. È stato anche trattato come il sistema di Trigger possa celare eventi compatibili con i diversi modelli di Nuova Fisica: nonostante nel sistema di Trigger permetta la ricerca di fenomeni interessanti Oltre il Modello Standard, questi processi potrebbero essere talmente rari che sarebbero necessari sistemi di ricerca specializzati.\newline
-Prima della Phase 1 di CMS era implementato un sistema di trigger specifico per la ricerca di particelle massive con un lungo tempo di volo e una velocità molto minore della velocità della luce. Ciò era possibile in quanto, con una minore luminosità, vi era mediamente una collisione ogni 50ns. Con la Phase 1 e quindi con un aumento della luminosità istantanea, ovvero un minore tempo di Bunch Crossing (uno ogni 25ns) il sistema di trigger per particelle esotiche è stato rimosso \cite{MasterThesisGioMoc}.\newline
-Come discusso in \ref{sec:Phase2} il CMS subirà però con la Phase 2 importanti miglioramenti al sistema di Trigger e di tracciamento che permetteranno di ricavare informazioni unbiased direttamente dalla catena di Trigger a con massima risoluzione. In particolare quindi il sistema di Data Scouting al L1T fornirà sarà un grosso passo avanti nella ricerca di Nuova Fisica, nel contesto nella ricerca di HSCP. \newline
+Prima della Phase 1 di CMS era implementato un sistema di trigger specifico per la ricerca di particelle massive con un lungo tempo di volo e una velocità molto minore della velocità della luce. Ciò era possibile in quanto, con una minore luminosità, vi era mediamente una collisione ogni 50ns. Con la Phase 1 e quindi con un aumento della luminosità istantanea, ovvero un minore tempo di Bunch Crossing (uno ogni 25ns) il sistema di trigger per particelle esotiche è stato rimosso \cite{MasterThesisGioMoc}.
+
+Attualmente a CMS la ricerca di candidati HSCP si basa sulla analisi di particelle con elevata perdita di energia per unità di lunghezza, calcolata nella regione interna di CMS in corrispondenza del tracker adronico, e un tempo di volo elevato misurato nel sistema muonico. Entrambe le firme sperimentali sono associate ad una velocità ridotta e ad un momento relativamente basso.
+
+\begin{figure}[t]
+   \centering
+     \centering
+     \includegraphics[width=\textwidth]{../ImmaginiTesi/HSCPsearch.png} 
+     \caption{Possibili analisi per la ricerca di HSCP: solo sistema di tracking, sistema di tracking e sistema muonico, solo sistema muonico}
+   \label{fig:HSCPSearch}
+ \end{figure}
+
+In particolare è possibile eseguire tre tipi diverse di analisi in base alla natura dei candidati HSCP, come mostrato in Figura \ref{fig:HSCPSearch} \cite{MasterThesisGioMoc}: 
+\begin{itemize}
+   \item Analisi solo sul sistema di Tracking adronico, per la ricerca di LLP cariche di tipo adronico che, interagendo con il detector, perdono la carica prima di arrivare al sistema muonico;
+   \item Analisi su sistema di Tracking e sistema muonico, per la ricerca di LLP cariche di tipo adronico o muonico;
+   \item Analisi solo sul sistema muonico, per la ricerca di particelle neutre che, interagendo con il detector, acquistano carica dopo il sistema di tracking.
+\end{itemize}
+
+La rilevazione di queste particelle è però ostacolata dal sistema di Trigger: la collisione di protoni nel punto di origine a CMS avviene con una energia nel centro di massa $\sqrt{s} \approx 14 \si{GeV}$ dunque i prodotti dell'interazione sono particelle con una velocità $\beta \approx 1$ e il Trigger è calibrato per la rilevazione di eventi di questo tipo. Ciò è un problema in quanto, come mostrato in \cite{MasterThesisGioMoc}, l'efficienza di Trigger per particelle con $\beta < 0.6$ decresce molto rapidamente e per tanto la rilevazione di candidati HSCP non è efficiente: la spiegazione è che per velocità ridotte le tracce rilasciate per ionizzazione nel sistema muonico impiegano più di 25ns per attraversare le stazioni di CMS e per tanto il sistema di Trigger muonico riconosce queste tracce come originate da più muoni nel BX corrente e in quello immediatamente successivo. \newline
+In questo contesto il sistema di Data Scouting introdotto con la Run 3 nel L1T, che verrà implementato definitivamente a CMS con la \textit{Phase 2}, permetterà l'analisi di tutti gli eventi, evitando che vengano filtrati dal Trigger.
+
+In questo Capitolo verrà discussa l'implementazione dell'algoritmo utilizzato per la ricerca di eventi compatibili con i modelli di particelle lente. Verranno inoltre mostrati i principali risultati ottenuti, a partire da una analisi a livello delle Stubs del sistema di Data Scouting, spostandosi poi sui corrispondenti candidati muoni emulati del BMTF.
+
+\subsection{L'algoritmo}
+
+Tutti i rilevatori DT e RPC della regione di barrel sono sincronizzati per la ricerca di muoni originati nel punto di interazione della collisione dei protoni, ovvero nell'origine del sistema di riferimento di CMS, che si muovono a velocità prossime alla velocità della luce. Il muone interagisce con i rilevatori, attraversando le quattro stazioni della regione di barrel in un tempo relativo $t_0 = 0 \si{ns}$ e la ampiezza della distribuzione di $t_0$ corrisponde alla risoluzione del tempo di volo \cite{MasterThesisGioMoc}. Particelle lente però potrebbero attraversare le stazioni in un intervallo temporale maggiore, occupando più bunch crossing, fornendo segnali temporali non compatibili con la calibrazione dei rilevatori DT e RPC. Questi eventi possono essere scartati dal sistema di Trigger, oppure potrebbero essere interpretati come più muoni in BX consecutivi.
+
+
+\begin{figure}[t]
+  \centering
+  \centering
+  \scalebox{0.75}{\includegraphics[width=\textwidth]{../ImmaginiTesi/AllCMS.png} }
+  \caption{}
+  \label{fig:CMSLayout}
+\end{figure}
+
+
+L'algoritmo implementato cerca le stubs nel bunch crossing successivo (BX+1) che siano \textit{compatibili} con le stubs del bunch crossing corrente (BX). Affinché le stubs possano essere considerate compatibili, devono essere soddisfatte le seguenti condizioni:
+
+\begin{itemize}
+  \item La stubs nel BX+1 deve essere nella stazione successiva a quella della stub nel BX;
+  \item La stubs nel BX+1 deve trovarsi nello stesso sector e wheel della stubs nel BX, o in quelli immediatamente adiacenti.
+\end{itemize}
+
+Dalle stubs che rispettano i criteri di compatibilità vengono estratte, nel BX e in BX + 1, informazioni quali numero di BX, station, sector e wheel di appartenenza.
+
+Come nel Capitolo \ref{cap:SecondoCapitolo} verranno studiati segnali provenienti dalle stubs generate dalle schede TwinMux della regione di barrel per la ricerca di particelle lente.
+
+
+\begin{figure}[t]
+  \centering
+  \begin{minipage}[b]{0.48\textwidth}
+    \centering
+    \includegraphics[width=\textwidth]{../Immagini/PhiCosmicMuons.pdf} 
+    \end{minipage}
+    \hfill 
+    \begin{minipage}[b]{0.48\textwidth}
+      \centering
+      \includegraphics[width=\textwidth]{../Immagini/MatchedStubs.pdf} 
+    \end{minipage}
+    \caption{Distribuzione delle stubs compatibili nei settori da 7 a 11 in un sottoinsieme dei possibili bunch crossing (sinistra), distribuzione del numero di stubs compatibili tra BX e BX+1 (destra)}
+  \label{fig:MatchedStubsRate}
+\end{figure}
+
+In Figura \ref{fig:MatchedStubsRate} sulla sinistra viene mostrata la distribuzione dei Bunch Crossing in cui sono state rilevate stubs compatibili nella parte inferiore del rilevatore CMS, ovvero nei settori dal 7 all'11. \dots %PARLA DEL FONDO COSMICO 
+Sulla destra, in Figura \ref{fig:MatchedStubsRate} viene mostrata la distribuzione del numero totale di stubs compatibili tra BX e BX + 1. La maggior parte degli eventi presenta due stubs totali compatibili assegnati in BX adiacenti. In una minoranza dei casi sono presenti piú di due stubs compatibili tra BX e BX + 1.
+
+Vengono studiate inoltre le distribuzioni delle stubs compatibili nei settori e nelle wheel di CMS: in Figura \ref{fig:SectorWheelBXBX1} sulla sinistra
+
+
+
+
+\begin{figure}[b]
+  \centering
+  \begin{minipage}[b]{0.48\textwidth}
+    \centering
+    \includegraphics[width=\textwidth]{../Immagini/StubsSectorBXBX+1.pdf} 
+    \end{minipage}
+    \hfill 
+    \begin{minipage}[b]{0.48\textwidth}
+      \centering
+      \includegraphics[width=\textwidth]{../Immagini/StubsWheelBXBX+1.pdf} 
+    \end{minipage}
+    \caption{Distribuzione delle stubs compatibili per BX e BX+1 nei sector (sinistra) e nelle wheel (destra)}
+  \label{fig:SectorWheelBXBX1}
+\end{figure}
+
+È inoltre possibile studiare le proprietà dei candidati muoni emulati del BMTF generati dalle stubs compatibili con le richieste dell'algoritmo. Come esposto nel Capitolo \ref{cap:SecondoCapitolo}, il sistema di tracking della regione di barrel ricostruisce i muoni a partire dalle stubs generate dalle schede TwinMux, fornendo informazioni circa il momento trasverso del muone, la qualità, oltre che informazioni spaziali come $\phi$ ed $\eta$. 
+
+
+L'algoritmo permette di studiare le proprietà di candidati muoni generati con 
 
 
 
 
 
+\begin{figure}[t]
+  \centering
+  \begin{minipage}[b]{0.48\textwidth}
+    \centering
+    \includegraphics[width=\textwidth]{../Immagini/Pt3And3More.pdf} 
+    \end{minipage}
+    \hfill 
+    \begin{minipage}[b]{0.48\textwidth}
+      \centering
+      \includegraphics[width=\textwidth]{../Immagini/Qual3And3More.pdf} 
+    \end{minipage}
+    \caption{Distribuzione del momento trasverso e qualità dei candidati muoni generati da meno di 3 o più di 3 stubs compatibili}
+  \label{fig:PtQual3And3More}
+\end{figure}
+
+\begin{figure}[b]
+  \centering
+  \begin{minipage}[b]{0.48\textwidth}
+    \centering
+    \includegraphics[width=\textwidth]{../Immagini/Phi3And3More.pdf} 
+    \end{minipage}
+    \hfill 
+    \begin{minipage}[b]{0.48\textwidth}
+      \centering
+      \includegraphics[width=\textwidth]{../Immagini/Eta3And3More.pdf} 
+    \end{minipage}
+    \caption{Distribuzione dell'angolo $\phi$ e della coordinata $\eta$ dei candidati muoni generati da meno di 3 o più di 3 stubs compatibili}
+  \label{fig:PhiEta3And3More}
+\end{figure}
 
 
-%Nel contesto della ricerca di Heavy Stable Charged Particles a CMS sfrutta questi due importanti proprietà delle particelle: una velocità molto ridotta e, conseguente al maggior tempo di vita medio, un maggiore tempo di volo (ToF) rispetto a particelle standard. Pertanto vi sono due strategie per la ricerca di HSCP: la prima sfrutta le informazioni e l'analisi dei segnali del sistema di tracciamento, concentrandosi sulla elevata perdita di energia delle particelle (tracker), mentre la seconda strategia si basa sulla analisi combinata nelle camere muoniche dei segnali ad elevata ionizzazione e sull'elevato tempo di volo (tracker + ToF) \cite{Lenz:2214515}
 
-%I modelli prevedono la presenza di due principali categorie di HSCPs: di tipo \textit{leptonico} o di tipo \textit{adronico}. Generalmente questi ultimi sono chiamati adroni-R (R-hadrons) \cite{Quertenmont:2010ota}. \newline
-%Come gli adroni, gli adroni-R possono subire fenomeni di scattering da parte dei nuclei del materiale di cui sono formati i detector (scattering adronici). I modelli teorici suggeriscono le principali firme sperimentali delle HSCPs sono una anormale perdita di energia per unità di lunghezza $- \langle \frac{dE}{dx}\rangle$ e un maggiore tempo di volo (ToF) rispetto a particelle standard \cite{MasterThesisGioMoc}, riconducibili ad una velocità minore rispetto alla velocità della luce ($\beta < 1$). Inoltre le HSCPs sono particelle estremamente penetranti, ciò indica che queste si comportino come muoni e per tanto possano essere rilevate nelle camere muoniche. \newline
-%Essendo inoltre particelle cariche con un elevato tempo di vita medio (maggiore di 1ns) sono in grado di attraversare i rilevatori prima di decadere, producendo una traccia di ionizzazione nei detector.
-
-
-
+\begin{figure}[t]
+  \centering
+  \begin{minipage}[b]{0.49\textwidth}
+    \centering
+    \includegraphics[width=\textwidth]{../Immagini/2DPhiEtaLess3.pdf} 
+    \end{minipage}
+    \hfill 
+    \begin{minipage}[b]{0.49\textwidth}
+      \centering
+      \includegraphics[width=\textwidth]{../Immagini/2DPhiEtaMore3.pdf} 
+    \end{minipage}
+    \caption{Distribuzione bidimensionale in $\phi$ e $\eta$ dei candidati muoni formati da meno di 3 stubs compatibili (sinistra) e da più di 3 stubs compatibili (destra)}
+  \label{fig:2DPhiEtaLess3AndMore3} 
+\end{figure}
