@@ -127,6 +127,17 @@ def draw_cms_label(ax: plt.Axes, label: str = "Preliminary", rlabel: str = "L1T 
         fontsize = fontsize
     )
 
+def MOREdraw_cms_label(ax: plt.Axes, label: str = "Preliminary", rlabel: str = "L1T Scouting 2024 (6.38 $pb^{-1}$ , 13.6 TeV)", 
+                  fontsize: int = a, data: bool = True):
+  
+  hep.cms.label(
+      ax       = ax,
+      data     = data,
+      label    = label,
+      rlabel   = rlabel,
+      fontsize = fontsize
+  )
+
 def set_label_font(ax: plt.Axes, fontsize: int = a):
     
     ax.set_xlabel(ax.get_xlabel(), fontsize = fontsize)
