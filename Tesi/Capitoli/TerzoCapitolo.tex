@@ -72,14 +72,14 @@ Tutti i rilevatori DT e RPC della regione di barrel sono sincronizzati per la ri
 \end{figure}
 
 
-L'algoritmo implementato cerca le stubs nel bunch crossing successivo (BX+1) che siano \textit{compatibili} con le stubs del bunch crossing corrente (BX). Affinché le stubs possano essere considerate compatibili, devono essere soddisfatte le seguenti condizioni:
+L'algoritmo implementato ricerca le stubs nel bunch crossing successivo (BX+1) che siano \textit{compatibili} con le stubs del bunch crossing corrente (BX). Affinché le stubs possano essere considerate compatibili, devono essere soddisfatte le seguenti condizioni:
 
 \begin{itemize}
   \item La stubs nel BX+1 deve essere nella stazione successiva a quella della stub nel BX;
   \item La stubs nel BX+1 deve trovarsi nello stesso sector e wheel della stubs nel BX, o in quelli immediatamente adiacenti.
 \end{itemize}
 
-Dalle stubs che rispettano i criteri di compatibilità vengono estratte, nel BX e in BX + 1, informazioni quali numero di BX, station, sector e wheel di appartenenza.
+Dalle stubs che rispettano i criteri di compatibilità vengono estratte, nel BX e nel BX + 1, informazioni quali numero di BX, station, sector e wheel di appartenenza.
 
 Come nel Capitolo \ref{cap:SecondoCapitolo} verranno studiati segnali provenienti dalle stubs generate dalle schede TwinMux della regione di barrel per la ricerca di particelle lente.
 
@@ -88,44 +88,41 @@ Come nel Capitolo \ref{cap:SecondoCapitolo} verranno studiati segnali provenient
   \centering
   \begin{minipage}[b]{0.48\textwidth}
     \centering
-    \includegraphics[width=\textwidth]{../Immagini/PhiCosmicMuons.pdf} 
+    \includegraphics[width=\textwidth]{../Immagini/NearCompatibleStubs.pdf} 
     \end{minipage}
     \hfill 
     \begin{minipage}[b]{0.48\textwidth}
       \centering
-      \includegraphics[width=\textwidth]{../Immagini/MatchedStubs.pdf} 
+      \includegraphics[width=\textwidth]{../Immagini/PhiCosmicMuons.pdf} 
     \end{minipage}
     \caption{Distribuzione delle stubs compatibili nei settori da 7 a 11 in un sottoinsieme dei possibili bunch crossing (sinistra), distribuzione del numero di stubs compatibili tra BX e BX+1 (destra)}
   \label{fig:MatchedStubsRate}
 \end{figure}
 
-In Figura \ref{fig:MatchedStubsRate} sulla sinistra viene mostrata la distribuzione dei Bunch Crossing in cui sono state rilevate stubs compatibili nella parte inferiore del rilevatore CMS, ovvero nei settori dal 7 all'11. \dots %PARLA DEL FONDO COSMICO 
-Sulla destra, in Figura \ref{fig:MatchedStubsRate} viene mostrata la distribuzione del numero totale di stubs compatibili tra BX e BX + 1. La maggior parte degli eventi presenta due stubs totali compatibili assegnati in BX adiacenti. In una minoranza dei casi sono presenti piú di due stubs compatibili tra BX e BX + 1.
-
-Vengono studiate inoltre le distribuzioni delle stubs compatibili nei settori e nelle wheel di CMS: in Figura \ref{fig:SectorWheelBXBX1} sulla sinistra
-
-
-
-
-\begin{figure}[b]
+\begin{figure}[t]
   \centering
-  \begin{minipage}[b]{0.48\textwidth}
+  \begin{minipage}[b]{0.49\textwidth}
     \centering
-    \includegraphics[width=\textwidth]{../Immagini/StubsSectorBXBX+1.pdf} 
+    \includegraphics[width=\textwidth]{../Immagini/MatchedStubs.pdf} 
     \end{minipage}
     \hfill 
-    \begin{minipage}[b]{0.48\textwidth}
+    \begin{minipage}[b]{0.49\textwidth}
       \centering
-      \includegraphics[width=\textwidth]{../Immagini/StubsWheelBXBX+1.pdf} 
+      \includegraphics[width=\textwidth]{../Immagini/MatchedStubsCombination.pdf} 
     \end{minipage}
-    \caption{Distribuzione delle stubs compatibili per BX e BX+1 nei sector (sinistra) e nelle wheel (destra)}
-  \label{fig:SectorWheelBXBX1}
+    \caption{Distribuzione del numero totale di stubs compatibili tra BX e BX+1 (sinistra), distribuzione delle combinazioni di stubs compatibili tra BX e BX+1 nei casi in cui ci siano 3 o 4 stubs totali}
+  \label{fig:MatchedStubsCombination}
 \end{figure}
 
-È inoltre possibile studiare le proprietà dei candidati muoni emulati del BMTF generati dalle stubs compatibili con le richieste dell'algoritmo. Come esposto nel Capitolo \ref{cap:SecondoCapitolo}, il sistema di tracking della regione di barrel ricostruisce i muoni a partire dalle stubs generate dalle schede TwinMux, fornendo informazioni circa il momento trasverso del muone, la qualità, oltre che informazioni spaziali come $\phi$ ed $\eta$. 
+In Figura \ref{fig:MatchedStubsRate} sulla sinistra viene mostrata la distribuzione di stubs nei bunch crossing successivi compatibili con le stubs del BX. La maggior parte degli eventi presenta compatibilità nel BX immediatamente successivo: nel seguito della analisi verranno presi in considerazione solamente questi eventi. \newline
+In Figura \ref{fig:MatchedStubsRate} sulla destra viene mostrata la distribuzione dei Bunch Crossing in cui sono state rilevate stubs compatibili nella parte inferiore del rilevatore CMS, ovvero nei settori dal 7 all'11: in questa regione vi sono eventi compatibili con fenomeni di collisione, rappresentati dai soliti segnali del filling scheme di LHC, ma sono presenti anche molti eventi compatibili con un fondo cosmico. In particolare confrontando Figura \ref{fig:MatchedStubsRate} con Figura \ref{fig:Stubs1} si osserva come il rate fondo cosmico sia in rapporto maggiore al rate di eventi da collisione: la spiegazione è che i muoni cosmici attraversano costantemente i rilevatori delle camere muoniche e non solo in determinati BX e per tanto sono spesso considerati compatibili dall'algoritmo.
+
+In Figura \ref{fig:MatchedStubsCombination} viene mostrata la distribuzione delle stubs totali compatibili tra BX e BX+1: la maggior parte degli eventi presentano una compatibilità tra solamente due stubs in bunch crossing differenti, ovvero 1 stub in BX è compatibile con 1 stub nel BX+1. Più interessanti sono però le distribuzioni quando le stubs sono tre o quattro: sulla destra viene mostrato che, quando vi sono tre stubs compatibili, la probabilità che vi siano 2 stubs nel primo BX e 1 in BX+1 è la medesima del viceversa. Quando invece ci sono quattro stubs, la probabilità che 2 stubs ricadano nel primo BX e 2 nel BX+1 è nettamente inferiore rispetto alle altre permutazioni. 
+
+È inoltre interessante ricercare e studiare le proprietà dei muoni del BMTF generati a partire dalle stubs compatibili con le richieste dell'algoritmo, ricordando che queste stubs sono eventi particolari, in quanto possono rappresentare particelle che si muovono in bunch crossing adiacenti, che quindi potrebbero essere considerate \textit{lente}.\newline
+Quindi, a partire dalle informazioni sulle stubs compatibili, possibile ricondursi ai muoni generati dal BMTF: come esposto nel Capitolo \ref{cap:SecondoCapitolo} infatti, il sistema di tracking della regione di barrel ricostruisce i muoni a partire dalle stubs generate dalle schede TwinMux, fornendo informazioni circa il momento trasverso del muone, la qualità, oltre che informazioni spaziali come $\phi$ ed $\eta$. 
 
 
-L'algoritmo permette di studiare le proprietà di candidati muoni generati con 
 
 
 
@@ -144,36 +141,4 @@ L'algoritmo permette di studiare le proprietà di candidati muoni generati con
     \end{minipage}
     \caption{Distribuzione del momento trasverso e qualità dei candidati muoni generati da meno di 3 o più di 3 stubs compatibili}
   \label{fig:PtQual3And3More}
-\end{figure}
-
-\begin{figure}[b]
-  \centering
-  \begin{minipage}[b]{0.48\textwidth}
-    \centering
-    \includegraphics[width=\textwidth]{../Immagini/Phi3And3More.pdf} 
-    \end{minipage}
-    \hfill 
-    \begin{minipage}[b]{0.48\textwidth}
-      \centering
-      \includegraphics[width=\textwidth]{../Immagini/Eta3And3More.pdf} 
-    \end{minipage}
-    \caption{Distribuzione dell'angolo $\phi$ e della coordinata $\eta$ dei candidati muoni generati da meno di 3 o più di 3 stubs compatibili}
-  \label{fig:PhiEta3And3More}
-\end{figure}
-
-
-
-\begin{figure}[t]
-  \centering
-  \begin{minipage}[b]{0.49\textwidth}
-    \centering
-    \includegraphics[width=\textwidth]{../Immagini/2DPhiEtaLess3.pdf} 
-    \end{minipage}
-    \hfill 
-    \begin{minipage}[b]{0.49\textwidth}
-      \centering
-      \includegraphics[width=\textwidth]{../Immagini/2DPhiEtaMore3.pdf} 
-    \end{minipage}
-    \caption{Distribuzione bidimensionale in $\phi$ e $\eta$ dei candidati muoni formati da meno di 3 stubs compatibili (sinistra) e da più di 3 stubs compatibili (destra)}
-  \label{fig:2DPhiEtaLess3AndMore3} 
 \end{figure}
