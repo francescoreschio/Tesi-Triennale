@@ -1,5 +1,6 @@
 \chapter{Nuova Fisica a CMS}
 \label{cap:TerzoCapitolo}
+\let\cleardoublepage\clearpage
 
 Proposto inizialmente nel 1961 da Sheldon Glashow, e raffinato da Steven Weinberg e Abdus Salam nel 1968, il Modello Standard (SM) rappresenta ad oggi una delle teorie più consolidate nella fisica moderna. Esso descrive le tre interazioni che agiscono tra le particelle fondamentali che costituiscono la materia: l'interazione Forte, responsabile del legame tra nucleoni nei nuclei atomici, l'interazione Debole, responsabile di processi come decadimento $\beta$ e l'interazione Elettromagnetica che governa le forze tra particelle cariche. La Gravità, pur essendo una forze fondamentale, non rientra nella struttura del Modello Standard. \newline
 Il beneficio di avere un frame completo come il Modello Standard risiede nella capacità di prevedere il comportamento di particelle subatomiche conoscendo la struttura teorica alla base: in questo contesto una delle maggiori conquiste dello SM è la scoperta del bosone di Higgs, teorizzato per la prima volta da Higgs nel 1964 e rilevato a CMS nel 2012.
@@ -53,14 +54,13 @@ In particolare è possibile eseguire tre tipi diverse di analisi in base alla na
    \item Analisi solo sul sistema muonico, per la ricerca di particelle neutre che, interagendo con il detector, acquistano carica dopo il sistema di tracking.
 \end{itemize}
 
-La rilevazione di queste particelle è però ostacolata dal sistema di Trigger: la collisione di protoni nel punto di origine a CMS avviene con una energia nel centro di massa $\sqrt{s} \approx 14 \si{GeV}$ dunque i prodotti dell'interazione sono particelle con una velocità $\beta \approx 1$ e il Trigger è calibrato per la rilevazione di eventi di questo tipo. Ciò è un problema in quanto, come mostrato in \cite{MasterThesisGioMoc}, l'efficienza di Trigger per particelle con $\beta < 0.6$ decresce molto rapidamente e per tanto la rilevazione di candidati HSCP non è efficiente: la spiegazione è che per velocità ridotte le tracce rilasciate per ionizzazione nel sistema muonico impiegano più di 25ns per attraversare le stazioni di CMS e per tanto il sistema di Trigger muonico riconosce queste tracce come originate da più muoni nel BX corrente e in quello immediatamente successivo. \newline
-In questo contesto il sistema di Data Scouting introdotto con la Run 3 nel L1T, che verrà implementato definitivamente a CMS con la \textit{Phase 2}, permetterà l'analisi di tutti gli eventi, evitando che vengano filtrati dal Trigger.
+La rilevazione di queste particelle è però ostacolata dal sistema di Trigger: la collisione di protoni nel punto di origine a CMS avviene con una energia nel centro di massa $\sqrt{s} \approx 14 \si{GeV}$ dunque i prodotti dell'interazione sono particelle con una velocità $\beta \approx 1$ e il Trigger è calibrato per la rilevazione di eventi di questo tipo. Ciò è un problema in quanto, come mostrato in \cite{MasterThesisGioMoc}, l'efficienza di Trigger per particelle con $\beta < 0.6$ decresce molto rapidamente e per tanto la rilevazione di candidati HSCP non è efficiente: la spiegazione è che per velocità ridotte le tracce rilasciate per ionizzazione nel sistema muonico impiegano più di 25ns per attraversare le stazioni di CMS e per tanto il sistema di Trigger muonico riconosce queste tracce come originate da più muoni nel BX corrente e in quello immediatamente successivo.
 
 In questo Capitolo verrà discussa l'implementazione dell'algoritmo utilizzato per la ricerca di eventi compatibili con i modelli di particelle lente. Verranno inoltre mostrati i principali risultati ottenuti, a partire da una analisi a livello delle Stubs del sistema di Data Scouting, spostandosi poi sui corrispondenti candidati muoni emulati del BMTF.
 
-\subsection{L'algoritmo}
+\subsection{Proprietà delle particelle lente}
 
-Tutti i rilevatori DT e RPC della regione di barrel sono sincronizzati per la ricerca di muoni originati nel punto di interazione della collisione dei protoni, ovvero nell'origine del sistema di riferimento di CMS, che si muovono a velocità prossime alla velocità della luce. Il muone interagisce con i rilevatori, attraversando le quattro stazioni della regione di barrel in un tempo relativo $t_0 = 0 \si{ns}$ e la ampiezza della distribuzione di $t_0$ corrisponde alla risoluzione del tempo di volo \cite{MasterThesisGioMoc}. Particelle lente però potrebbero attraversare le stazioni in un intervallo temporale maggiore, occupando più bunch crossing, fornendo segnali temporali non compatibili con la calibrazione dei rilevatori DT e RPC. Questi eventi possono essere scartati dal sistema di Trigger, oppure potrebbero essere interpretati come più muoni in BX consecutivi.
+Tutti i rilevatori DT e RPC della regione di barrel sono sincronizzati per la ricerca di muoni originati nel punto di interazione della collisione dei protoni, ovvero nell'origine del sistema di riferimento di CMS, che si muovono a velocità prossime alla velocità della luce. Un muone da collisione interagisce con i rilevatori, attraversando le quattro stazioni della regione di barrel, in un tempo relativo $t_0 = 0 \si{ns}$ con ampiezza della distribuzione di $t_0$ corrispondente alla risoluzione del tempo di volo \cite{MasterThesisGioMoc}. Particelle lente  potrebbero però attraversare il rilevatore, e quindi le stazioni, in un intervallo temporale maggiore, occupando più bunch crossing, fornendo segnali temporali non compatibili con la calibrazione dei rilevatori DT e RPC. Questi eventi possono essere scartati dal sistema di Trigger, oppure potrebbero essere interpretati come più muoni in BX consecutivi.
 
 
 \begin{figure}[t]
@@ -75,11 +75,11 @@ Tutti i rilevatori DT e RPC della regione di barrel sono sincronizzati per la ri
 L'algoritmo implementato ricerca le stubs nel bunch crossing successivo (BX+1) che siano \textit{compatibili} con le stubs del bunch crossing corrente (BX). Affinché le stubs possano essere considerate compatibili, devono essere soddisfatte le seguenti condizioni:
 
 \begin{itemize}
-  \item La stubs nel BX+1 deve essere nella stazione successiva a quella della stub nel BX;
-  \item La stubs nel BX+1 deve trovarsi nello stesso sector e wheel della stubs nel BX, o in quelli immediatamente adiacenti.
+  \item La stub nel BX+1 deve essere nella stazione successiva alla stub nel BX;
+  \item La stub nel BX+1 deve trovarsi nello stesso sector e wheel della stub nel BX, o in quelli immediatamente adiacenti.
 \end{itemize}
 
-Dalle stubs che rispettano i criteri di compatibilità vengono estratte, nel BX e nel BX + 1, informazioni quali numero di BX, station, sector e wheel di appartenenza.
+%Dalle stubs che rispettano i criteri di compatibilità vengono estratte, nel BX e nel BX + 1, informazioni quali numero di BX, station, sector e wheel di appartenenza.
 
 Come nel Capitolo \ref{cap:SecondoCapitolo} verranno studiati segnali provenienti dalle stubs generate dalle schede TwinMux della regione di barrel per la ricerca di particelle lente.
 
@@ -114,17 +114,10 @@ Come nel Capitolo \ref{cap:SecondoCapitolo} verranno studiati segnali provenient
   \label{fig:MatchedStubsCombination}
 \end{figure}
 
-In Figura \ref{fig:MatchedStubsRate} sulla sinistra viene mostrata la distribuzione di stubs nei bunch crossing successivi compatibili con le stubs del BX. La maggior parte degli eventi presenta compatibilità nel BX immediatamente successivo: nel seguito della analisi verranno presi in considerazione solamente questi eventi. \newline
-In Figura \ref{fig:MatchedStubsRate} sulla destra viene mostrata la distribuzione dei Bunch Crossing in cui sono state rilevate stubs compatibili nella parte inferiore del rilevatore CMS, ovvero nei settori dal 7 all'11: in questa regione vi sono eventi compatibili con fenomeni di collisione, rappresentati dai soliti segnali del filling scheme di LHC, ma sono presenti anche molti eventi compatibili con un fondo cosmico. In particolare confrontando Figura \ref{fig:MatchedStubsRate} con Figura \ref{fig:Stubs1} si osserva come il rate fondo cosmico sia in rapporto maggiore al rate di eventi da collisione: la spiegazione è che i muoni cosmici attraversano costantemente i rilevatori delle camere muoniche e non solo in determinati BX e per tanto sono spesso considerati compatibili dall'algoritmo.
+In Figura \ref{fig:MatchedStubsRate} sulla sinistra viene mostrata la distribuzione di stubs nei bunch crossing successivi compatibili con le stubs del BX. La maggior parte degli eventi presenta compatibilità nel BX immediatamente successivo (BX+1), ma vi sono eventi che presentano compatibilità a distanze temporali maggiori: nel seguito della analisi verranno presi in considerazione solamente i primi eventi in quanto è improbabile che particelle lente impieghino più di due BX per attraversare il rilevatore. \newline
+In Figura \ref{fig:MatchedStubsRate} sulla destra viene mostrata la distribuzione dei bunch crossing in cui sono state rilevate stubs compatibili nella parte inferiore del rilevatore CMS, ovvero nei settori dal 7 all'11: in questa regione vi sono sia eventi compatibili con fenomeni di collisione, rappresentati dai soliti segnali del filling scheme di LHC, ma anche molti eventi compatibili con segnali derivanti da fondo cosmico. In particolare confrontando Figura \ref{fig:MatchedStubsRate} con Figura \ref{fig:Stubs1} si osserva come il rate di fondo cosmico sia in rapporto maggiore al rate di eventi da collisione: la spiegazione è che i muoni cosmici attraversano costantemente i rilevatori delle camere muoniche e non solo nei BX di collisione e per tanto sono spesso considerati compatibili dall'algoritmo.
 
-In Figura \ref{fig:MatchedStubsCombination} viene mostrata la distribuzione delle stubs totali compatibili tra BX e BX+1: la maggior parte degli eventi presentano una compatibilità tra solamente due stubs in bunch crossing differenti, ovvero 1 stub in BX è compatibile con 1 stub nel BX+1. Più interessanti sono però le distribuzioni quando le stubs sono tre o quattro: sulla destra viene mostrato che, quando vi sono tre stubs compatibili, la probabilità che vi siano 2 stubs nel primo BX e 1 in BX+1 è la medesima del viceversa. Quando invece ci sono quattro stubs, la probabilità che 2 stubs ricadano nel primo BX e 2 nel BX+1 è nettamente inferiore rispetto alle altre permutazioni. 
-
-È inoltre interessante ricercare e studiare le proprietà dei muoni del BMTF generati a partire dalle stubs compatibili con le richieste dell'algoritmo, ricordando che queste stubs sono eventi particolari, in quanto possono rappresentare particelle che si muovono in bunch crossing adiacenti, che quindi potrebbero essere considerate \textit{lente}.\newline
-Quindi, a partire dalle informazioni sulle stubs compatibili, possibile ricondursi ai muoni generati dal BMTF: come esposto nel Capitolo \ref{cap:SecondoCapitolo} infatti, il sistema di tracking della regione di barrel ricostruisce i muoni a partire dalle stubs generate dalle schede TwinMux, fornendo informazioni circa il momento trasverso del muone, la qualità, oltre che informazioni spaziali come $\phi$ ed $\eta$. 
-
-
-
-
+In Figura \ref{fig:MatchedStubsCombination} sulla sinistra viene mostrata la distribuzione delle stubs \textit{totali} compatibili tra BX e BX+1: la maggior parte degli eventi presentano compatibilità solamente tra due stubs in bunch crossing differenti, ovvero 1 stub in BX è compatibile con 1 stub nel BX+1. Più interessanti sono però le distribuzioni quando le stubs totali sono tre o quattro: in Figura \ref{fig:MatchedStubsCombination} sulla destra viene mostrato che, quando vi sono tre stubs compatibili, la probabilità che vi siano 2 stubs nel primo BX e 1 in BX+1 è la medesima del viceversa. Quando invece ci sono quattro stubs, la probabilità che 2 stubs ricadano nel primo BX e 2 nel BX+1 è nettamente inferiore rispetto alle altre permutazioni. 
 
 
 
@@ -142,3 +135,63 @@ Quindi, a partire dalle informazioni sulle stubs compatibili, possibile ricondur
     \caption{Distribuzione del momento trasverso e qualità dei candidati muoni generati da meno di 3 o più di 3 stubs compatibili}
   \label{fig:PtQual3And3More}
 \end{figure}
+
+
+
+
+È inoltre interessante ricercare e studiare le proprietà dei muoni del BMTF generati a partire dalle stubs compatibili con le richieste dell'algoritmo, ricordando che questi muoni sono eventi particolari in quanto rappresentano particelle generate da segnali compatibili in bunch crossing adiacenti. 
+Di seguito verrà quindi eseguita una analisi più approfondita di questi eventi, in quanto potrebbero rappresentare particelle che impiegano mediamente più tempo per attraversare le stazioni del rilevatore, ovvero potrebbero essere considerate \textit{lente}.\newline
+Quindi, a partire dalle informazioni sulle stubs, è possibile ricondursi ai muoni generati dal Barrel Muons Track Finder: come esposto nel Capitolo \ref{cap:SecondoCapitolo} infatti, il sistema di tracking della regione di barrel ricostruisce i muoni a partire da almeno due stubs generate dalle schede TwinMux, fornendo informazioni circa il momento trasverso del muone, la qualità, oltre che informazioni spaziali come $\phi$ ed $\eta$. 
+
+Vengono inizialmente studiati i muoni generati da 3 e da 4 stubs, verificandone le differenze. Verifichiamo prima di tutto che il numero totale di muoni nei due casi è molto diverso: vi sono ... muoni generati da 3 stubs e ... da 4 stubs su un totale di 5.22 minuti di presa dati. In Figura \ref{fig:PtQual3And3More} sulla sinistra viene mostrata la distribuzione del momento trasverso di questi muoni: si nota che non vi è una particolare differenza tra le due distribuzioni a basso momento mentre, probabilmente a causa della bassa statistica di eventi di questo tipo, la distribuzione ad elevato momento risolta poco popolata in entrambi i casi. Sulla destra di Figura \ref{fig:PtQual3And3More} invece è rappresentata la qualità associata ai muoni generati dalle stubs: il sistema di Tracking assegna la qualità ad un muone in base al numero di stubs da cui è formato, pertanto come ci si aspetta, muoni formati da 3 stubs hanno generalmente una qualità inferiore a quelli formati da 4 stubs.
+
+\begin{figure}[t]
+  \centering
+  \begin{minipage}[b]{0.48\textwidth}
+    \centering
+    \includegraphics[width=\textwidth]{../Immagini/BXDiff.pdf} 
+    \end{minipage}
+    \hfill 
+    \begin{minipage}[b]{0.48\textwidth}
+      \centering
+      \includegraphics[width=\textwidth]{../Immagini/DeltaPt.pdf} 
+    \end{minipage}
+    \caption{Differenza tra BX dei muoni formati da 2 stubs in BX e BX+1 e BX da collisione (sinistra), distribuzione della differenza del momento tra i due muoni in BX e BX+1 (destra)  }
+  \label{fig:BXDiffAndPt}
+\end{figure}
+
+\begin{figure}[t]
+  \centering
+  \begin{minipage}[b]{0.48\textwidth}
+    \centering
+    \includegraphics[width=\textwidth]{../Immagini/DeltaPhi.pdf} 
+    \end{minipage}
+    \hfill 
+    \begin{minipage}[b]{0.48\textwidth}
+      \centering
+      \includegraphics[width=\textwidth]{../Immagini/DeltaEta.pdf} 
+    \end{minipage}
+    \caption{ distribuzione della differenza dell'angolo $\phi$ tra i due muoni in BX e BX+1 (sinistra), distribuzione della differenza $\eta$ tra i due muoni in BX e BX+1 (destra)}
+  \label{fig:DeltaETaDeltaPhi}
+\end{figure}
+
+Dalla Figura \ref{fig:MatchedStubsCombination} si nota come solamente una minoranza degli eventi presenti due stubs nel BX compatibili con due stubs nel BX+1. Sapendo che dal sistema di Tracking sono necessarie almeno due stubs per generare un candidato muone, è possibile ricercare tra questi eventi quelli che presentano un muone nel BX e uno nel BX+1, generati dalle stubs di cui prima. \newline
+Queste coppie di muoni sono eventi particolari: sono muoni in BX adiacenti generati da due stubs ognuno, le quali sono \textit{compatibili}, ovvero per la definizione di compatibilità fornita ad inizio della sezione, stubs che percorrono tutte e quattro le stazioni della regione di barrel, rimanendo sempre negli stessi sector e wheel, o in quelli adiacenti. In genere ci si aspetta che non siano presenti eventi di questo tipo, in quanto rappresenterebbero evidentemente lo stesso muone, percepiti però dal sistema di Trigger come due muoni in due BX separati.
+
+In realtà si scopre che in 5 minuti e 22 secondi di presa dati sono presenti all'incirca 200 eventi di questo genere. Come prima cosa è possibile verificare che questi eventi siano generati dalla collisione di protoni e che non siano quindi associabili ad un fondo cosmico: per farlo è possibile studiare in che bunch crossing questi eventi sono stati rilevati, confrontandolo con il filling scheme mostrato in Figura \ref{fig:BMTFMuons}. In Figura \ref{fig:BXDiffAndPt} sulla sinistra viene mostrata la distribuzione della differenza tra i BX degli eventi in esame con i BX di collisione: la maggior parte degli eventi ricadono proprio nei BX da collisione, o in quelli immediatamente adiacenti, siamo dunque portati ad affermare che gli eventi in esame siano tutti derivanti da fenomeni di collisione. In caso contrario infatti ci aspetteremmo che la distribuzione fosse popolata in modo più omogeneo anche nei BX dove non sono presenti interazioni tra protoni.
+
+È possibile quindi studiare la distribuzione della differenza di momento e di posizione spaziale tra questi eventi per verificare che le due particelle nei due BX adiacenti siano \textit{simili}, ovvero che possano rappresentare la stessa particella. In Figura \ref{fig:BXDiffAndPt} sulla destra e in Figura \ref{fig:DeltaETaDeltaPhi} viene mostrata la differenza di momento trasverso $p_T$, pseudorapidità $\eta$ e  angolo $\phi$: tutte queste distribuzioni sono centrate sullo zero.
+
+
+
+%----------------POSSIBILE CONCLUSIONE----------------
+
+Nonostante questi segnali siano promettenti e provino la possibile esistenza di particelle lente generate dalla collisione di protoni ad elevata energia, le informazioni a disposizione non sono complete: il tempo di volo delle particelle è un discriminante fondamentale per il riconoscimento di particelle che si muovono a velocità molto minori della velocità della luce. Sia i rilevatori Drift Tubes che i Cathode Strip Chambers permettono misurazioni temporali precise, ma sono calibrate per la ricerca di particelle in moto ultrarelativistico: per HSCP lente i segnali derivanti dai DT sarebbero ricostruiti in modo non accurato a causa della velocità non compatibile con quella della luce, generando un pattern a zigzag nella ricostruzione temporale traslato di un offset proporzionale al ritardo $\delta_t$ del segnale nel DT. Conoscendo il ritardo si determina la velocità della particella \cite{CMS-PAS-EXO-16-036}:
+
+\begin{equation}
+  \label{eq:Velocity}
+  \beta^{-1} = 1 + \frac{c\delta_t}{L}
+\end{equation}
+
+Dove $L$ è la distanza percorsa nel tempo di volo, definita in Equazione \ref{eq:LorentzBoost}.
+

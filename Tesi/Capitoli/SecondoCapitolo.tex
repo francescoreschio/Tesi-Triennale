@@ -1,5 +1,6 @@
 \chapter{Proprietà dei candidati muoni}
 \label{cap:SecondoCapitolo}
+\let\cleardoublepage\clearpage
 
 Nella Sezione \ref{sec:SistemaDiTrigger} si è discusso nel dettaglio del sistema di Trigger Level 1 di CMS e di come questo giochi un ruolo fondamentale nella selezione di eventi interessanti a seguito della collisione tra protoni, riducendo il volume di dati da gestire. In particolare è stato detto che le informazioni provenienti dai detector locali del sistema muonico nella regione di barrel e nella regione di overlap vengono combinate e processate dalle schede \textbf{TwinMux}, generando \textit{superprimitives}, o stubs, con una risoluzione temporale e spaziale elevata e che queste vengono poi utilizzate dal sistema di tracking del barrel (BMTF) o, a seconda della regione $\eta$ in cui i segnali vengono rilevati, dell'overlap (OMTF) per ricostruire la traccia del candidato muone.
 
@@ -162,7 +163,7 @@ Se nello stesso BX ci sono più tracce di muoni il Kalman filter considera solam
 
 \subsection{Ricostruzione software dei muoni}
 
-Il Kalman filter è quindi un algoritmo che viene applicato per la ricostruzione di muoni nella catena di Trigger e per tanto deve soddisfare i requisiti di latenza richiesti dal Trigger stesso, oltre che i limiti di banda di archiviazione. Questo non permette il passaggio di dati a risoluzione massima di alcune quantità forzando il sistema a troncare, o approssimare, le informazioni relative ai candidati muoni. Il sistema di emulazione del kBMTF permette quindi una analisi più fine rispetto alla analisi online, evitando le limitazioni introdotte dal sistema di Trigger. Il software utilizzato per l'emulazione del Kalman filter è chiamato CMS Software (CMSSW) e permette di ricavare informazioni circa il momento trasverso $p_T$, angolo azimutale $\phi$ e pseudorapidità $\eta$, e qualità, oltre che altri parametri.
+Il Kalman filter è quindi un algoritmo che viene applicato per la ricostruzione di muoni nella catena di Trigger e per tanto deve soddisfare i requisiti di latenza richiesti dal Trigger stesso, oltre che i limiti di banda di archiviazione. Questo non permette il passaggio di dati a risoluzione massima di alcune quantità forzando il sistema a troncare, o approssimare, le informazioni relative ai candidati muoni. Il sistema di emulazione del kBMTF permette quindi una analisi più fine rispetto alla analisi online, evitando le limitazioni introdotte dal sistema di Trigger. Il software utilizzato per l'emulazione del Kalman filter permette di ricavare informazioni circa il momento trasverso $p_T$, angolo azimutale $\phi$ e pseudorapidità $\eta$, e qualità, oltre che altri parametri.
 
 In questa sezione verranno studiati i grafici di occupazione e di molteplicità dei candidati muoni emulati dal software di CMS, verificando quindi le differenze rispetto ai grafici della Sezione \ref{sec:Superprimitives}.
 
@@ -179,7 +180,7 @@ In questa sezione verranno studiati i grafici di occupazione e di molteplicità 
       \centering
       \includegraphics[width=\textwidth]{../Immagini/BMTF_zoom.pdf} 
     \end{minipage}
-    \caption{Filling Scheme dei candidati muoni emulati dal CMSSW}
+    \caption{Filling Scheme dei candidati muoni emulati in software }
   \label{fig:BMTFMuons}
 \end{figure}
 
@@ -194,7 +195,7 @@ In questa sezione verranno studiati i grafici di occupazione e di molteplicità 
       \centering
       \includegraphics[width=\textwidth]{../Immagini/BMTF_orbit.pdf} 
     \end{minipage}
-    \caption{Molteplicità dei candidati muoni emulati dal CMSSW per BX (sinistra) e per orbita (destra)}
+    \caption{Molteplicità dei candidati muoni emulati in software per BX (sinistra) e per orbita (destra)}
   \label{fig:BMTFMolteplicity}
 \end{figure}
 
@@ -218,7 +219,7 @@ Sempre in Figura \ref{fig:BMTFMolteplicity}, sulla destra è mostrata la distrib
   \label{fig:BMTFPt}
 \end{figure}
 
-Il candidato muone ricostruito a partire dall'algoritmo kBMTF, come anche quello emulato dal CMSSW, possiede informazioni sulla posizione spaziale nelle coordinate di CMS: viene quindi assegnato un valore $\eta$ ed un valore $\phi$ ad ogni candidato muone. In Figura \ref{fig:BMTFPt}, sulla sinistra, è rappresentata la distribuzione bidimensionale di eventi nelle due coordinate: a partire da queste informazioni è possibile verificare la conformità dei rilevatori in $\phi$ ed $\eta$. È evidente che lungo il piano $\eta = k$, con $k$ una costante, non vi siano particolarità: come ci si aspetta essendo il sistema a simmetria cilindrica la distribuzione degli eventi è costante. Si nota però una notevole asimmetria lungo $\phi = k$: ciò è dovuto alla geometria del rilevatore CMS: come evidenziato in Figura \ref{fig:SectorEtaView} (destra), tra le wheel vi sono degli spazi in cui non sono presenti rilevatori, pertanto vi sarà una minore densità di eventi rilevati in queste zone. Inoltre per $|\eta| > 1$ ci si trova nella regione di overlap, dove le stubs delle schede TwinMux potrebbero essere inviate ai rilevatori OMTF piuttosto che a quelli BMTF, e quindi non contenuti nei dati a disposizione.
+Il candidato muone ricostruito a partire dall'algoritmo kBMTF, come anche quello emulato in software, possiede informazioni sulla posizione spaziale nelle coordinate di CMS: viene quindi assegnato un valore $\eta$ ed un valore $\phi$ ad ogni candidato muone. In Figura \ref{fig:BMTFPt}, sulla sinistra, è rappresentata la distribuzione bidimensionale di eventi nelle due coordinate: a partire da queste informazioni è possibile verificare la conformità dei rilevatori in $\phi$ ed $\eta$. È evidente che lungo il piano $\eta = k$, con $k$ una costante, non vi siano particolarità: come ci si aspetta essendo il sistema a simmetria cilindrica la distribuzione degli eventi è costante. Si nota però una notevole asimmetria lungo $\phi = k$: ciò è dovuto alla geometria del rilevatore CMS: come evidenziato in Figura \ref{fig:SectorEtaView} (destra), tra le wheel vi sono degli spazi in cui non sono presenti rilevatori, pertanto vi sarà una minore densità di eventi rilevati in queste zone. Inoltre per $|\eta| > 1$ ci si trova nella regione di overlap, dove le stubs delle schede TwinMux potrebbero essere inviate ai rilevatori OMTF piuttosto che a quelli BMTF, e quindi non contenuti nei dati a disposizione.
 
 Un'altra delle informazioni ricavate dall'algoritmo kBMTF è il momento del muone. In particolare vengono calcolati dal Kalman filter due diversi tipi di momento trasverso: un momento trasverso \textit{unconstrained}, $p_T^u$ e uno \textit{vertex-constrained}, $p_T$. In Sezione \ref{sec:KalmannFilter} è stato detto che il Kalman filter esegue il tracking del muone a partire dalle stubs delle stazioni più esterne verso quelle interne: supponendo di porre nell'origine la posizione di collisione del fascio di protoni, si può considerare questa coordinata come punto finale della propagazione dell'algoritmo di Kalman, introducendo quindi un grado di libertà aggiuntivo, ottenendo una maggiore precisione di ricostruzione: in questa ipotesi il kBMTF calcola il momento \textit{vertex-constrained}. \newline
 Questa ipotesi non è però corretta, vi sono fluttuazioni non note sul punto di collisione del fascio di protoni e per tanto si può decidere di non considerare l'origine come un grado di libertà aggiuntivo dell'algoritmo. In tal caso il Kalman filter calcolerà il momento \textit{unconstrained}. 
