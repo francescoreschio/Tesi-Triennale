@@ -1,6 +1,6 @@
 \chapter{Proprietà dei candidati muoni}
 \label{cap:SecondoCapitolo}
-\let\cleardoublepage\clearpage
+%\let\cleardoublepage\clearpage
 
 Nella Sezione \ref{sec:SistemaDiTrigger} si è discusso nel dettaglio del sistema di Trigger Level 1 di CMS e di come questo giochi un ruolo fondamentale nella selezione di eventi interessanti a seguito della collisione tra protoni, riducendo il volume di dati da gestire. In particolare è stato detto che le informazioni provenienti dai detector locali del sistema muonico nella regione di barrel e nella regione di overlap vengono combinate e processate dalle schede \textbf{TwinMux}, generando \textit{superprimitives}, o stubs, con una risoluzione temporale e spaziale elevata e che queste vengono poi utilizzate dal sistema di tracking del barrel (BMTF) o, a seconda della regione $\eta$ in cui i segnali vengono rilevati, dell'overlap (OMTF) per ricostruire la traccia del candidato muone.
 
@@ -11,7 +11,7 @@ Inoltre nella Sezione \ref{sec:DataScouting} si è introdotto il sistema di Data
 \label{sec:Superprimitives}
 
 Tra la Run 1 e la Run 2, sono state introdotte in CMS le schede TwinMux nella catena di Trigger: queste hanno il compito di generare superprimitives (da questo momento in poi \textit{stubs}) a partire dai segnali derivanti dai rilevatori Drift Tubes e Resistive Plate Chambers. \newline
-Nel dettaglio i DT forniscono informazioni sulla posizione, direzione, qualità e Bunch Crossing (BX) ad un rate di 480Mb/s, mentre le RPC sulla posizione e sul BX con un rate di 1.6Gb/s \cite{CERNsummerSchool}.\newline
+Nel dettaglio i DT forniscono informazioni sulla posizione, direzione, qualità e bunch crossing ad un rate di 480Mb/s, mentre le RPC sulla posizione e sul BX con un rate di 1.6Gb/s \cite{CERNsummerSchool}.\newline
 In particolare sono applicati algoritmi di clustering ai dati in input alle schede TwinMux, convertendo i segnali spaziali delle RPC nelle coordinate dei DT. Se i segnali provenienti dai due rilevatori sono compatibili, ovvero se $\Delta \phi < 15$ \si{mrad} tra i segmenti generati dai DT e i cluster delle RPC, allora vengono combinati.
 Il sistema TwinMux può costruire fino a 2 stubs per stazione, che vengono poi inviate al BMTF e, in base alla posizione nel piano della pseudorapidità, all' OMTF. \newline
 È inoltre funzione delle schede TwinMux assegnare dei \textit{parametri} a ciascuna stub generata: questi riguardano la posizione spaziale dei segnali in CMS, l'angolo di curvatura relativo alla stazione e la qualità della stub. I parametri sono riassunti nella Tabella \ref{table:StubsParam}. A partire da queste informazioni il BMTF ricostruisce la traccia del muone, determinando la traiettoria della particella. 
@@ -39,7 +39,7 @@ Si nota in Figura \ref{fig:Stubs1} come il rate di stubs non è mai nullo e vi s
  \end{figure}
 
 
-Viene studiata la distribuzione di stubs per Bunch Crossing (BX) e per Orbita (orbit). Ricordando che il BX è l'unità di misura che definisce l'intervallo temporale tra le collisioni, in Figura \ref{fig:StubsMolteplicity} a sinistra viene mostrato il numero di stubs raccolte per BX, ovvero in 25ns. È importante sottolineare che la maggior parte dei BX non contiene nessuna stubs, anche se questa informazione non è mostrata nell'immagine. Inoltre vi sono eventi che presentano un numero di stub raccolte per BX maggiore di 13, ma la frequenza di questi eventi è minore di 0.1 al secondo e per tanto non sono mostrati.\newline
+Viene studiata la distribuzione di stubs per bunch crossing (BX) e per Orbita (orbit). Ricordando che il BX è l'unità di misura che definisce l'intervallo temporale tra le collisioni, in Figura \ref{fig:StubsMolteplicity} a sinistra viene mostrato il numero di stubs raccolte per BX, ovvero in 25ns. È importante sottolineare che la maggior parte dei BX non contiene nessuna stubs, anche se questa informazione non è mostrata nell'immagine. Inoltre vi sono eventi che presentano un numero di stub raccolte per BX maggiore di 13, ma la frequenza di questi eventi è minore di 0.1 al secondo e per tanto non sono mostrati.\newline
 Sempre in Figura \ref{fig:StubsMolteplicity} a destra, è rappresentato il numero di stubs raccolte in ogni orbita, ovvero un ciclo completo di LHC. Ogni orbita è formata da 3564 BX, ovvero circa 89 $\mu$s. Rappresentato su scala logaritmica, la distribuzione di stubs per orbita segue una distribuzione gaussiana simmetrica, centrata su 230 stubs. 
 
  \begin{figure}[t]
@@ -94,9 +94,6 @@ Infine viene rappresentata la distribuzione spaziale di stubs nel corpo di CMS i
       \caption{Distribuzione stubs nel corpo di CMS come grafico bidimensionale}
     \label{fig:StubsInCMS}
   \end{figure}
-
-
-
 
 
 
@@ -162,6 +159,7 @@ Dove $G$ è la matrice di Gain (Kalman Gain Matrix) e dipende dalle incertezze d
 Se nello stesso BX ci sono più tracce di muoni il Kalman filter considera solamente la traccia con $\chi^2$ minore, minimizzando quindi l'errore quadratico medio \cite{Summers:2728522}
 
 \subsection{Ricostruzione software dei muoni}
+\label{sec:KalmanFilterSoftware}
 
 Il Kalman filter è quindi un algoritmo che viene applicato per la ricostruzione di muoni nella catena di Trigger e per tanto deve soddisfare i requisiti di latenza richiesti dal Trigger stesso, oltre che i limiti di banda di archiviazione. Questo non permette il passaggio di dati a risoluzione massima di alcune quantità forzando il sistema a troncare, o approssimare, le informazioni relative ai candidati muoni. Il sistema di emulazione del kBMTF permette quindi una analisi più fine rispetto alla analisi online, evitando le limitazioni introdotte dal sistema di Trigger. Il software utilizzato per l'emulazione del Kalman filter permette di ricavare informazioni circa il momento trasverso $p_T$, angolo azimutale $\phi$ e pseudorapidità $\eta$, e qualità, oltre che altri parametri.
 
@@ -199,7 +197,7 @@ In questa sezione verranno studiati i grafici di occupazione e di molteplicità 
   \label{fig:BMTFMolteplicity}
 \end{figure}
 
-In Figura \ref{fig:BMTFMuons} viene mostrato il filling scheme nei 3564 Bunch Crossing. Notiamo un minor rate di eventi rispetto a quello mostrato in Figura \ref{fig:Stubs1} in quanto questo filling scheme rappresenta i \textit{candidati muoni}, costruiti a partire dalle stubs delle schede TwinMux e non tutte le stubs sono associate a muoni dal sistema di Tracking. Ciò è reso visibile nella Figura \ref{fig:BMTFMolteplicity} sulla sinistra: la maggior parte dei BX presenta un numero nullo di candidati muoni. Inoltre, il numero di BX contenenti un numero non nullo di muoni sembra decrescere esponenzialmente all’aumentare della molteplicità, come d'altronde succedeva per le stubs in figura \ref{fig:StubsMolteplicity}.
+In Figura \ref{fig:BMTFMuons} viene mostrato il filling scheme nei 3564 Bunch Crossing. Notiamo un minor rate di eventi rispetto a quello mostrato in Figura \ref{fig:Stubs1} in quanto questo filling scheme rappresenta i \textit{candidati muoni}, costruiti a partire dalle stubs delle schede TwinMux e non tutte le stubs sono associate a muoni dal sistema di Tracking. Ciò è reso visibile nella Figura \ref{fig:BMTFMolteplicity} sulla sinistra: la maggior parte dei BX presenta un numero nullo di candidati muoni. Inoltre, il numero di BX contenenti un numero non nullo di muoni sembra decrescere esponenzialmente all’aumentare della molteplicità, come d'altronde succedeva per le stubs in Figura \ref{fig:StubsMolteplicity}.
 %Particolare attenzione deve essere posta anche sul numero di eventi di fondo: rispetto a quanto osservato nella sezione precedente, il rate di questi eventi è notevolmente inferiore. 
 
 Sempre in Figura \ref{fig:BMTFMolteplicity}, sulla destra è mostrata la distribuzione in scala logaritmica dei candidati muoni per orbita: notiamo che la distribuzione è sempre gaussiana, centrata a circa 30 muoni ma, rispetto a quanto mostrato nella sezione precedente, vi è una asimmetria della curva che la rende inclinata positivamente, mentre la distribuzione in Figura \ref{fig:StubsMolteplicity} è simmetrica.
@@ -312,23 +310,8 @@ Notiamo che la matching efficiency dei candidati muoni del BMTF (primo metodo) p
 e quindi un momento elevato implica un raggio di curvatura elevato che è difficilmente ricostruibile dal sistema di tracking. È quindi possibile che muoni con un momento molto elevato non vengano inviati al GMT, producendo un evento senza match.  
 Allo stesso modo eventi con un momento ridotto sono ricostruiti molto bene a partire dall'Equazione \ref{eq:Lamor}, ma sono generalmente indice di fenomeni poco interessanti. Il comportamento della matching efficiency in queste regioni di momento è presumibilmente indice che il sistema di Trigger favorisce i muoni derivanti dal sistema di tracking della regione dell'Overlap o dell'Endcap piuttosto che quelli del Barrel.
 
-Al contrario, come ci si aspetta, la matching efficiency per muoni del GMT (secondo metodo) risulta essere quasi costante e vicina ad 1, in quanto quasi tutti i muoni del GMT hanno un match con un candidato muone del BMTF, come illustrato nella Sezione \ref{sec:Confronto}. 
+Al contrario, come ci si aspetta, la matching efficiency per muoni del GMT (secondo metodo) risulta essere quasi costante e vicina ad 1, in quanto quasi tutti i muoni del GMT hanno un match con un candidato muone del BMTF, come illustrato in Sezione \ref{sec:Confronto}. 
 
-
-\begin{figure}[t]
-  \centering
-  \begin{minipage}[b]{0.45\textwidth}
-    \centering
-    \includegraphics[width=\textwidth]{../Immagini/EtaLowHighPt.pdf} 
-    \end{minipage}
-    \hfill 
-    \begin{minipage}[b]{0.45\textwidth}
-      \centering
-      \includegraphics[width=\textwidth]{../Immagini/GMTQualLowHighPt.pdf} 
-    \end{minipage}
-    \caption{Distribuzione della qualità per candidati muoni del BMTF nell'intervallo $p_T \in [0, 5.5]$ GeV/c e $p_T \in [100, 255]$ GeV/c (destra), distribuzione di qualità per muoni del GMT negli stessi intervalli}
-  \label{fig:QualEtaLowHighPt}
-\end{figure}
 
 È possibile caratterizzare ulteriormente la matching efficiency in funzione del momento, studiando la distribuzione di qualità e di $\eta$ dei muoni in determinati intervalli di momento. Figura \ref{fig:MatchingEfficiecyLowPt} a sinistra rappresenta le distribuzioni di qualità degli eventi negli intervalli di momento $p_T^l \in [0, 5.5]$ GeV/c e $p_T^h \in [100, 255]$ GeV/c. Si nota come le due distribuzioni non corrispondano e che $p_T^h$ presenti una maggiore probabilità di eventi a qualità elevate. In particolare, definendo il rapporto delle due distribuzioni di qualità, si nota come questo valga 9.5 $\pm$ 2.7 a qualità 15. Ciò significa che se un muone ha qualità alta è mediamente quasi 10 volte più probabile che abbia momento elevato. L'incertezza del rapporto è stata calcolata propagando gli errori delle due distribuzioni binomiali.
 
@@ -350,6 +333,13 @@ Al contrario, come ci si aspetta, la matching efficiency per muoni del GMT (seco
 Rimanendo sempre nello stesso intervallo di momento è possibile studiare anche la distribuzione in $\eta$ dei muoni del BMTF, come illustrato in Figura \ref{fig:MatchingEfficiecyLowPt} in centro. Anche in questo caso le distribuzioni nei due intervalli non coincidono ed in particolare, studiando nuovamente il rapporto si nota una maggiore densità di probabilità di eventi a basso momento ad nella regione ad elevato $\eta$ e viceversa una maggiore densità di eventi ad elevato momento nella regione a basso $\eta$. \newline
 Questo implica che un muone con $p_T$ ridotto ha maggiori probabilità di trovarsi in una regione a elevato valore di $\eta$, mentre un muone con $p_T$ elevato è più probabile che si trovi in una regione a basso valore di $\eta$.
 
+
+
+
+Fino ad ora sono stati caratterizzati i muoni del BMTF relativi alla matching efficiency in Figura \ref{fig:DeltaR}. Notiamo però sempre in Figura \ref{fig:DeltaR} a sinistra che la matching efficiency dei muoni del GMT non è veramente costante in funzione del momento ed in particolare la maggior parte degli eventi senza match risiede nella regione a $p_T$ elevato. È quindi possibile cercare di caratterizzare questo fenomeno verificando, come fatto per i muoni del BMTF, la distribuzione della qualità e di $\eta$ negli stessi $p_T^h$ e $p_T^l$. Questo viene illustrato in Figura \ref{fig:MatchingEfficiecyLowPt} sulla destra dove si nota, come succedeva per i muoni del BMTF, una maggiore densità di eventi ad elevato momento alla qualità 15; in questo caso il rapporto tra le due distribuzioni a qualità elevata risulta essere 25 $\pm$ 6, ovvero un muone con qualità elevata è mediamente 25 volte più probabile avere un momento molto elevato. \newline
+Per indagare ulteriormente la diminuzione della matching efficiency relativa ai muoni del GMT si studia la densità di probabilità in $\eta$ dei muoni negli intervalli $p_T^h \in [100, 255]$ GeV/c e $p_t^a \in [0, 255]$ GeV/c. Questo viene illustrato in Figura \ref{fig:MatchingEfficiecyPt2} sulla sinistra dove si nota un comportamento simile a quanto visto per i muoni del BMTF con una maggiore densità di eventi a momento ridotto nelle regioni ad elevato valore di $\eta$. Si notano inoltre regioni con una maggiore densità di eventi a momento elevato, oltre che una densità nulla di questi muoni nella regione $|\eta| > 0.9$. La spiegazione di quest'ultimo fenomeno è intuibile in Figura \ref{fig:MatchingEfficiecyPt2} sulla destra, dove viene studiata la distribuzione di muoni con momento nell'intervallo $p_T^h$ in tutto il piano $\eta$. Qui si nota come nella regione $|\eta| > 0.9$ ci siano sempre meno eventi all'aumentare del momento: questo suggerisce che generalmente vi siano pochi muoni in questa regione in quanto possibilmente vengono favoriti dal sistema di Trigger gli eventi provenienti dai sistemi OMTF e EMTF. 
+Ciò spiega almeno in parte la diminuzione della matching efficiency a momenti elevati per muoni del GMT.
+
 \begin{figure}[t]
   \centering
   \begin{minipage}[b]{0.49\textwidth}
@@ -364,13 +354,6 @@ Questo implica che un muone con $p_T$ ridotto ha maggiori probabilità di trovar
     \caption{Matching efficiency dei muoni del BMTF e del GMT in funzione di $\eta$ (sinistra) e della qualità (destra)}
   \label{fig:MatchingEfficiecyPt3}
 \end{figure}
-
-
-Fino ad ora sono stati caratterizzati i muoni del BMTF relativi alla matching efficiency in Figura \ref{fig:DeltaR}. Notiamo però sempre in Figura \ref{fig:DeltaR} a sinistra che la matching efficiency dei muoni del GMT non è veramente costante in funzione del momento e in particolare la maggior parte degli eventi senza match risiede nella regione a $p_T$ elevato. È quindi possibile cercare di caratterizzare questo fenomeno verificando, come fatto per i muoni del BMTF, la distribuzione della qualità e di $\eta$ negli stessi $p_T^h$ e $p_T^l$. Questo viene illustrato in Figura \ref{fig:MatchingEfficiecyLowPt} sulla destra dove si nota, come succedeva per i muoni del BMTF, una maggiore densità di eventi ad elevato momento alla qualità 15; in questo caso il rapporto tra le due distribuzioni a qualità elevata risulta essere 25 $\pm$ 6, ovvero un muone con qualità elevata è mediamente 25 volte più probabile avere un momento molto elevato. \newline
-Per indagare ulteriormente la diminuzione della matching efficiency relativa ai muoni del GMT si studia la densità di probabilità in $\eta$ dei muoni negli intervalli $p_T^h \in [100, 255]$ GeV/c e $p_t^a \in [0, 255]$ GeV/c. Questo viene illustrato in Figura \ref{fig:MatchingEfficiecyPt2} sulla sinistra dove si nota un comportamento simile a quanto visto per i muoni del BMTF con una maggiore densità di eventi a momento ridotto nelle regioni ad elevato valore di $\eta$. Si notano inoltre regioni con una maggiore densità di eventi a momento elevato, oltre che una densità nulla di questi muoni nella regione $|\eta| > 0.9$. La spiegazione di quest'ultimo fenomeno è intuibile in Figura \ref{fig:MatchingEfficiecyPt2} sulla destra, dove viene studiata la distribuzione di muoni con momento nell'intervallo $p_T^h$ in tutto il piano $\eta$. Qui si nota come nella regione $|\eta| > 0.9$ ci siano sempre meno eventi all'aumentare del momento: questo suggerisce che generalmente vi siano pochi muoni in questa regione in quanto possibilmente vengono favoriti dal sistema di Trigger gli eventi provenienti dai sistemi OMTF e EMTF. 
-Ciò spiega almeno in parte la diminuzione della matching efficiency a momenti elevati per muoni del GMT.
-
-
 
 
 Viene infine studiata la matching efficiency dei candidati muoni del BMTF e del GMT in funzione di $\eta$ e della qualità, come illustrato in Figura \ref{fig:MatchingEfficiecyPt3}. Sulla sinistra in arancione è mostrata la matching efficiency in funzione di $\eta$ dei muoni del GMT con match nei muoni del BMTF: notiamo una distribuzione costante per regioni di $\eta$ positive, e una leggera diminuzione per regioni di $\eta$ negative. In blu è invece mostrata la matching efficiency di muoni del BMTF con match in muoni del GMT: notiamo qui una maggiore matching efficiency nelle regioni con $|\eta| > 0.9$ e una generalmente più bassa altrove. \newline
