@@ -1,0 +1,49 @@
+---------Prima parte---------------
+
+Il Large Hadron Collider, in Svizzera, è il più grande acceleratore di particelle mai costrutito ed ha lo scopo di studiare i prodotti delle collisioni tra protoni e ioni pensanti.
+In particolare fasci formati da pacchetti discreti di protoni sono immessi in LHC e accelerati fino a 7TeV grazie ad un sistema di acceleratori di particelle, collidendo frontalmente nei punti di interazione con una energia nel centro di massa sqrt{s} = 14 TeV. L'intervallo temporale tra le collisioni è una unità di misura standardizzata chiamata bunch crossing e corrisponde a 25ns ovvero un rate di interazione pari a 40 milioni di collisioni al secondo. Ogni fascio è formato al massimo da 3564 pacchetti discreti, ma non tutti gli spazi vengono occupati e quindi vi sono istanti temporali in cui non vi sono interazioni. Il modo in cui vengono occupati i pacchetti nel fascio è chiamato filling scheme.
+
+
+
+
+---------Seconda parte---------------
+Locato nel punto di interazione 5 di LHC il CMS è un esperimento multifunzionale che permette di rilevare particelle, principalmente muoni, generati dalla collisione di protoni. 
+
+
+
+CMS è formato da:
+- Silicon Strip Chambers (Ricostruzione delle tracce e misurazione del momento trasverso delle particelle generate dai processi di interazione)
+-Calorimetro elettromagnatico: permette di effettuare misure di energia di fotoni ed elettroni attraverso il fenomeno della cascata elettromagnetica, indotta da materiali scintillanti quali tungstato di piombo
+
+-Calorimetro Adronico: permette di effetturare misure di energia di adroni grazie al fenomeno della cascata adronica (indotta dai materiali di cui è composto il calorimetro, acciaio e bronzo)
+-sloenoide superconduttore: elettromagnete che genera un campo magnetico di intensità 4T permettendo la rilevazione di carica e momento a partire dalla curvatura delle particelle cariche
+-Camere muoniche: Essendo i muoni particelle elementari cariche poco interagenti, il sistema di rilevazione muonico occupa una significativa porzione del volume di rilevatori di CMS. Copre il piano della pseudorapidità |\eta| < 2.4 nelle tre regioni di barrel, overlap e endcap 
+
+
+
+Sistema di Trigger: 
+È impossibile gestire online il flusso di informazioni derivanti dalla collisione di protoni nei punti di interazione per questo CMS è dotato di un sistema di trigger implementato nella selezione di eventi fisici. Il Trigger ha lo scopo di ridurre il volume di dati, mantenendo per`o quelli interessanti.
+-Level 1 Trigger
+-High Level Trigger
+
+
+
+
+
+
+
+
+---------Terza parte---------------
+
+Dopo l'introduzione del sistema di Data Scouting introdotto con la Run 3 è possibile studiare le proprietà dei candidati muoni. Innanzitutto vengono validate le Trigger Superprimitives, ovvero le informazioni che vengono raccolte dalla regione di barrel di CMS.
+
+Trigger Superprimitives:
+Nella regione di barrel dove gli eventi di background sono minimi vengono usati Drift Tubes per la rilevazione di muoni. Questi permettono la rilevazione di un segnale a partire dalla traccia di  ionizzazione rilasciata dalla particella attraversando il rilevatore. Vengono utilizzate anche Resistive Plate Chamers e permettono una assegnazione definitiva del BX di appartenenza della particella rilevata grazie al loro rapido tempo di risposta.
+Nella regionei di endcap, dove il rate di eventi di background è elevato, sono impiegate Chatode Strip Chambers. Queste permettono di ricavare precise informazioni spaziali e temporali sulle tracce dei muoni nel range della pseudorapidità 1.2 < eta < 2.4
+
+
+
+
+
+
+---------Quarta parte---------------
