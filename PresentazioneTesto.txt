@@ -19,41 +19,30 @@ Vengono studiati i segnali derivanti dalla regione di barrel di CMS, dove gli ev
 
 
 --Filling Scheme:
-È possibile innanzitutto determinare come sono disposte temporalmente queste stubs. Ogni fascio di protoni in LHC è formato al massimo da 3564 pacchetti discreti distanti 25ns l'uno dall'altro. Ma non tutti gli spazi vengono occupati per massimizzare le collisioni tra protoni, e quindi vi sono istanti temporali in cui non vi sono interazioni ovvero non vi sono stubs. Il modo in cui vengono occupati i pacchetti nel fascio è chiamato filling scheme. La distanza temporale tra pacchetti è chiamata Bunch Crossing. (discussione sui muoni cosmici)
-
-
-
-
-
-
--Molteplicity:
-È possibile studiare la distribuzione della molteplicità di stubs per BX e per orbita. Sapendo che una scheda TwinMux può generare fino a 2 stubs per stazione notiamo che vi sono eventi che presentano 13 stubs in un singolo BX. Inoltre sulla destra viene mostrata la distribuzione delle stubs per orbita, ovver in 3564 BX. La distribuzione è simmetrica e centrata su 230 stubs per orbita.
-
+È possibile innanzitutto determinare come sono disposte temporalmente queste stubs. Ogni fascio in LHC è formato al massimo da 3564 pacchetti discreti di protoni distanti 25ns l'uno dall'altro. Al fine di massimizzare le interazioni tra protoni, non tutti gli spazi vengono occupati e quindi vi sono istanti temporali in cui non vi sono interazioni ovvero non vi sono stubs. Il modo in cui vengono occupati i pacchetti nel fascio è chiamato filling scheme. La distanza temporale tra pacchetti è chiamata Bunch Crossing. (discussione sui muoni cosmici)
+In figura è rappresentato il filling scheme utilizzato, in cui sono visibili i bunch crossing da collisione e quelli vuoti. È sempre presente un fondo costante di muoni cosmici
 
 -Occupancy:
-Infine è possibile studiare l'occupazione spaziale delle stubs nel corpo di CMS per verificare se ci sono regioni in cui vi è una maggiore densità di stubs. Notiamo che le Wheel +- 1 sono le più popolate in tutti i settori e nelle prime stazioni. (il motivo è puramente geometrico: l'interazione tra protoni avviene nell'origine del SDR di CMS in corrispondenza della wheel 0 in tutti i settori a causa della simmetria cilindrica)
-
+Sapendo che CMS è formato da 5 wheel, ognuna suddiva in 12 settori a loro volta contenenti 4 stazioni, è possibile studiare l'occupazione spaziale delle stubs nel corpo di CMS per verificare se ci sono regioni in cui vi è una maggiore densità di stubs. Notiamo che le Wheel +- 1 sono le più popolate in tutti i settori e nelle prime stazioni, mentre le wheel più esterne presentano una minore densità di stubs. Inoltre le stazioni più esterne sono a loro volta poco popolate (il motivo è puramente geometrico: l'interazione tra protoni avviene nell'origine del SDR di CMS in corrispondenza della wheel 0 in tutti i settori a causa della simmetria cilindrica)
 
 
 
 
 VALIDAZIONE CANDIDATI MUONI:
 
-Avendo esplorato le proprietà delle stubs è possibile ora studiare le informazioni del sistema di tracking della zona di barrel (BMTF), che ha la funzione di ricostrutire i candidati muoni a partire dalle informazioni sulle stubs.
+Avendo esplorato le proprietà delle stubs è possibile ora studiare le informazioni del sistema di tracking della zona di barrel (BMTF), che ha la funzione di ricostrutire le tracce dei candidati muoni a partire dai segnali compatibili dell stubs utilizzando algoritmo di Kalman filter. La ricostruzione può avvenire sia in hardware che in software. 
 
-
--Candidati Muoni
-La ricostruzione del muone avviene in hardware o in software. In particolare le stubs generate dalle schede Twinmux vengono usate dal sistema di Tracking che ricerca i segnali compatibili, ovvero le stubs vicine, e utilizzando l'algoritmo di Kalman filter ricostruisce le tracce dei muoni. 
-
-La ricostruzione via software è generalmente più conveniente in quanto il sistema implementato in hardware deve sottostare ai requisiti di latenza e di banda del di Trigger di CMS. Generalmente quindi leproprietà dei candidati muoni emulati hanno una risoluzione maggiore.
+La ricostruzione via software è generalmente più conveniente in quanto il sistema implementato in hardware deve sottostare ai requisiti di latenza e di banda del di Trigger di CMS. Generalmente quindi le proprietà dei candidati muoni emulati hanno una risoluzione maggiore.
 
 
 -BMTF Molteplicity
-Viene quindi mostrata la distribuzione della molteplicità dei candidati muoni emulati per BX e per orbita. Si nota che la maggior parte dei BX non possiede nessun muone, infatti non tutte le stubs sono associate a muoni. La distribuzione per orbita è ora centrata all'incirca a 30 muoni per orbita.
+Viene quindi mostrata la distribuzione della molteplicità dei candidati muoni emulati per BX e per orbita. Si nota che la maggior parte dei BX non possiede nessun muone, infatti non tutte le stubs sono associate a muoni ed è compito del BMTF ricostruire i muoni a partire dalle stubs. La distribuzione per orbita è ora centrata all'incirca a 30 muoni per orbita.
 
 
 
 CONFRONTO MUONI DEL BMTF CON MUONI DEL GMT
+
+Infine è possibile effettuare un confronto tra i muoni emulati e i muoni selezionati dal sistema di Trigger nello step successivo della catena.
 
 Il GMT ha il compito di selezionare i migliori 108 candidati muoni dai 3 sistemi di tracking in base alla in base alla qualità, momento e regione di provenienza. Muoni con momento o qualità elevato sono indice di fenomeni interessanti, inoltre muoni provenienti dalla regione di barrel sono relativamente più probabili essere selezionati dal triggr.
 
@@ -67,13 +56,59 @@ E' interessante verificare le differenze tra muoni del GMT, raccolti dal sistema
 
 La compatibilità è definita dal parametro deltaR che è una distanza nel piano phi-eta dei muoni che stiamo considerando. In figura è rappresentata la distribuzione di questa distanza. La maggiorparte degli eventi sono centrati nell'origine del piano, quindi la maggiorparte degli eventi presenta un match.
 
-Quantitativaente la percentuale di eventi con match nel primo caso è del 94% mentre nel secondo è più del 99%. Il motivo è da ricercare nel come è costruito il dataset: tutti i muoni del GMT derivano dalla regione di barrel e quindi ci si aspetta un match quasi perfetto, ma nonn tutti i muoni del BMTF sono selezionati dal GMT. Questo spiega la discrepanza. 
+Quantitativamente la percentuale di eventi con match nel primo caso è del 94% mentre nel secondo è più del 99%. Il motivo è da ricercare nel come è costruito il dataset: tutti i muoni del GMT derivano dalla regione di barrel e quindi ci si aspetta un match quasi perfetto, ma nonn tutti i muoni del BMTF sono selezionati dal GMT. Questo spiega la discrepanza. 
 
 
+Si possono estendere questi risultati studiando la matching efficiency, ovvero il rapporto tra muoni con match e muoni totali per entrambi i metodi, in funzione del momento trasverso delle particelle.
+Notiamo che per il primo metodo, rappresentato in blu, si ha una decrescita esponenziale della matching efficiency a momenti bassi ed una crescita logaritmica a momenti maggiori. La spiegazione della decrescita non è del tutto chiara, possiamo però affermare che muoni con un elevato momento, che rappresentano il picco di matching efficiency, rappresentano eventi interessanti e quindi sono più probabilmente selezionati dal Trigger, trovando un match nel GMT.
+D'altro canto per il secondo metodo notiamo per momenti bassi una matching efficiency costante ad 1 e per momenti elevati una leggera decrescita: questi sono eventi del GMT che non presentanon match con eventi del BMTF, la spiegazione è che probabilmente il sistema di trigger ha selezionato eventi derivanti dagli altri sistemi di tracking.
 
-
-
+Nel lavoro di tesi è stata anche approfondita la analisi in determinate regioni di momento per dare una spiegazione più dettagliata di questi comportamenti.
 
 
 
 ---------Quarta parte---------------
+
+La tecnica di data scouting permette di acquisire e analizzare oneline dati unbiased a 40MHz, ciò apre le porte alla ricerca di particelle non predette dal modello standard. 
+Una classe di queste particelle sono le HSCP, particelle con un elevato tempo di vita medio e con masse di svariate centiania di GeV/c^2. Queste particelle sono difficilmente rilevabili, e le principali firme sperimentali sono:
+velocità ridotta e un elevato tempo di volo dovuto ad un tempo di vita medio elevato. Di conseguenza un elevata perdita di energia per unità di lunghezza.
+
+La ricerca di particelle lente si basa sulla analisi di segnali di particelle (stubs) che impiegano un elevato tempo ad attraversare CMS, ovvero più di 1 BX. In particolare si cercano:
+-stubs nel BX+1 nella staizone successiva rispetto alle stubs nel BX
+-Stubs nel BX+1 nello stesso sector o wheel, o in quelle immediatamente adiacenti.
+
+
+
+Vengono quidni mostrate le distribuzioni delle stubs totali compatibili tra BX e BX+1. La maggior parte degli eventi presenta solamente due stubs compatibili, ma vi sono degli eventi che ne presentano 3 o 4. Sulla destra è mostrata la distribuzione delle combinazioni di come sono disposte le stubs. Si nota una equiprobabilità che vi sia 1 stubs compatibili con 2 stubs nel BX+1 e viceversa. Anche nel caso di 4 stubs si ha una quasi equiprobabilità che 1 stubs sia compatibile con 3 stubs nel BX+1  viceversa, ma una piccola percentuale di eventi che presentano 2 stubs compatibili con 2 stubs. Ciò è molto particolare.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+-Molteplicity:
+È possibile studiare la distribuzione della molteplicità di stubs per BX e per orbita. Sapendo che una scheda TwinMux può generare fino a 2 stubs per stazione notiamo che vi sono eventi che presentano 13 stubs in un singolo BX. Inoltre sulla destra viene mostrata la distribuzione delle stubs per orbita, ovver in 3564 BX. La distribuzione è simmetrica e centrata su 230 stubs per orbita.
