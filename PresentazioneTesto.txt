@@ -1,45 +1,75 @@
----------Prima parte---------------
+----------Prima parte--------------
 
-Il Large Hadron Collider, in Svizzera, è il più grande acceleratore di particelle mai costrutito ed ha lo scopo di studiare i prodotti delle collisioni tra protoni e ioni pensanti.
-In particolare fasci formati da pacchetti discreti di protoni sono immessi in LHC e accelerati fino a 7TeV grazie ad un sistema di acceleratori di particelle, collidendo frontalmente nei punti di interazione con una energia nel centro di massa sqrt{s} = 14 TeV. L'intervallo temporale tra le collisioni è una unità di misura standardizzata chiamata bunch crossing e corrisponde a 25ns ovvero un rate di interazione pari a 40 milioni di collisioni al secondo. Ogni fascio è formato al massimo da 3564 pacchetti discreti, ma non tutti gli spazi vengono occupati e quindi vi sono istanti temporali in cui non vi sono interazioni. Il modo in cui vengono occupati i pacchetti nel fascio è chiamato filling scheme.
-
-
-
-
----------Seconda parte---------------
-Locato nel punto di interazione 5 di LHC il CMS è un esperimento multifunzionale che permette di rilevare particelle, principalmente muoni, generati dalla collisione di protoni. 
+Situato a Ginevra, Svizzera, il Large Hadron Collider è il più grande acceleratore di particelle mai costrutito, disegnato con lo scopo di studiare i prodotti delle collisioni tra protoni o ioni pesanti con una energia nel centro di massa sqrt(s) = 14TeV. Nella configurazione attuale, durante i periodi di presa dati, avvengono collisioni ogni 25ns, corrispondenti ad un rate di interazioni pari a 40MHz.
+Il Compact Muons Solenoid, locato nel punto di interazione 5 di LHC, è un esperimento multifunzionale che ha lo scopo di raccogliere informazioni derivanti dalle collisioni tra protoni, studiando i prodotti delle interazioni quali particelle fondamentali come muoni, oggetto del presente studio. Inoltre l'obiettivo di CMS è anche basato sulla ricerca di eventi rari ed esotici per l'esplorazione di fisica oltre il modello standard.
+Non è però possibile effettuare immagazzinare ed effettuare l'analisi sulle informazioni di 40 milioni di interazioni al secondo, per tanto CMS è disposto di un sistema di Trigger su due livelli che ha lo scopo di effettuare una selezione dei prodotti di collisione, mantenendo i fenomeni interessanti. 
 
 
+Il sistema di Trigger scarta la quasi totalità degli eventi, introducendo di conseguenza un bias nei dati che non vengono eliminati. Essendo la selezione dei dati basata sulle teorie del mnodello standard, ciò causa un possibile occultamento di nuova fisica.
+In questo contesto il sistema di Data scouting, introdotto con la Run 3 e che verrà implementato in modo definitivo con la phase 2, consiste nella analisi degli eventi direttamente nella catena di triggr, estrendo e processando online la totalità dei dati con una minore risoluzione. Si effettua quindi un trade off tra risoluzione e statistica. Ciò ha ovviamnete il beneficio di poter studiare dati completamente unbiased, non essendo stati selezionati dal Trigger.
+Durante la Run 3 il sistema di Data Scouting è stato implementato in modo temporaneo nei principali step della catena di trigger L1.
 
-CMS è formato da:
-- Silicon Strip Chambers (Ricostruzione delle tracce e misurazione del momento trasverso delle particelle generate dai processi di interazione)
--Calorimetro elettromagnatico: permette di effettuare misure di energia di fotoni ed elettroni attraverso il fenomeno della cascata elettromagnetica, indotta da materiali scintillanti quali tungstato di piombo
-
--Calorimetro Adronico: permette di effetturare misure di energia di adroni grazie al fenomeno della cascata adronica (indotta dai materiali di cui è composto il calorimetro, acciaio e bronzo)
--sloenoide superconduttore: elettromagnete che genera un campo magnetico di intensità 4T permettendo la rilevazione di carica e momento a partire dalla curvatura delle particelle cariche
--Camere muoniche: Essendo i muoni particelle elementari cariche poco interagenti, il sistema di rilevazione muonico occupa una significativa porzione del volume di rilevatori di CMS. Copre il piano della pseudorapidità |\eta| < 2.4 nelle tre regioni di barrel, overlap e endcap 
+Lo scopo dello studio è quello di studiare le proprietà dei segnali e dei candidati muoni derivanti dalla catena di Trigger.
 
 
 
-Sistema di Trigger: 
-È impossibile gestire online il flusso di informazioni derivanti dalla collisione di protoni nei punti di interazione per questo CMS è dotato di un sistema di trigger implementato nella selezione di eventi fisici. Il Trigger ha lo scopo di ridurre il volume di dati, mantenendo per`o quelli interessanti.
--Level 1 Trigger
--High Level Trigger
+----------Seconda parte--------------
+
+Vengono studiati i segnali derivanti dalla regione di barrel di CMS, dove gli eventi di background sono minimi e vengono impiegati Drift Tubes e Resistive Plates Chambers. Questi hanno lo scopo di ottenere informazioni spaziali e temporali delle particelle, in particolare di muoni, che li attraversano. I segnali dei due rilevatori, se compatibili, vengono combinati dalle schede twinmux generando superprimitives (stubs) assegnando a ciascuna parametri spaziali e qualitativi.
+
+
+--Filling Scheme:
+È possibile innanzitutto determinare come sono disposte temporalmente queste stubs. Ogni fascio di protoni in LHC è formato al massimo da 3564 pacchetti discreti distanti 25ns l'uno dall'altro. Ma non tutti gli spazi vengono occupati per massimizzare le collisioni tra protoni, e quindi vi sono istanti temporali in cui non vi sono interazioni ovvero non vi sono stubs. Il modo in cui vengono occupati i pacchetti nel fascio è chiamato filling scheme. La distanza temporale tra pacchetti è chiamata Bunch Crossing. (discussione sui muoni cosmici)
 
 
 
 
 
 
+-Molteplicity:
+È possibile studiare la distribuzione della molteplicità di stubs per BX e per orbita. Sapendo che una scheda TwinMux può generare fino a 2 stubs per stazione notiamo che vi sono eventi che presentano 13 stubs in un singolo BX. Inoltre sulla destra viene mostrata la distribuzione delle stubs per orbita, ovver in 3564 BX. La distribuzione è simmetrica e centrata su 230 stubs per orbita.
 
 
----------Terza parte---------------
+-Occupancy:
+Infine è possibile studiare l'occupazione spaziale delle stubs nel corpo di CMS per verificare se ci sono regioni in cui vi è una maggiore densità di stubs. Notiamo che le Wheel +- 1 sono le più popolate in tutti i settori e nelle prime stazioni. (il motivo è puramente geometrico: l'interazione tra protoni avviene nell'origine del SDR di CMS in corrispondenza della wheel 0 in tutti i settori a causa della simmetria cilindrica)
 
-Dopo l'introduzione del sistema di Data Scouting introdotto con la Run 3 è possibile studiare le proprietà dei candidati muoni. Innanzitutto vengono validate le Trigger Superprimitives, ovvero le informazioni che vengono raccolte dalla regione di barrel di CMS.
 
-Trigger Superprimitives:
-Nella regione di barrel dove gli eventi di background sono minimi vengono usati Drift Tubes per la rilevazione di muoni. Questi permettono la rilevazione di un segnale a partire dalla traccia di  ionizzazione rilasciata dalla particella attraversando il rilevatore. Vengono utilizzate anche Resistive Plate Chamers e permettono una assegnazione definitiva del BX di appartenenza della particella rilevata grazie al loro rapido tempo di risposta.
-Nella regionei di endcap, dove il rate di eventi di background è elevato, sono impiegate Chatode Strip Chambers. Queste permettono di ricavare precise informazioni spaziali e temporali sulle tracce dei muoni nel range della pseudorapidità 1.2 < eta < 2.4
+
+
+
+VALIDAZIONE CANDIDATI MUONI:
+
+Avendo esplorato le proprietà delle stubs è possibile ora studiare le informazioni del sistema di tracking della zona di barrel (BMTF), che ha la funzione di ricostrutire i candidati muoni a partire dalle informazioni sulle stubs.
+
+
+-Candidati Muoni
+La ricostruzione del muone avviene in hardware o in software. In particolare le stubs generate dalle schede Twinmux vengono usate dal sistema di Tracking che ricerca i segnali compatibili, ovvero le stubs vicine, e utilizzando l'algoritmo di Kalman filter ricostruisce le tracce dei muoni. 
+
+La ricostruzione via software è generalmente più conveniente in quanto il sistema implementato in hardware deve sottostare ai requisiti di latenza e di banda del di Trigger di CMS. Generalmente quindi leproprietà dei candidati muoni emulati hanno una risoluzione maggiore.
+
+
+-BMTF Molteplicity
+Viene quindi mostrata la distribuzione della molteplicità dei candidati muoni emulati per BX e per orbita. Si nota che la maggior parte dei BX non possiede nessun muone, infatti non tutte le stubs sono associate a muoni. La distribuzione per orbita è ora centrata all'incirca a 30 muoni per orbita.
+
+
+
+CONFRONTO MUONI DEL BMTF CON MUONI DEL GMT
+
+Il GMT ha il compito di selezionare i migliori 108 candidati muoni dai 3 sistemi di tracking in base alla in base alla qualità, momento e regione di provenienza. Muoni con momento o qualità elevato sono indice di fenomeni interessanti, inoltre muoni provenienti dalla regione di barrel sono relativamente più probabili essere selezionati dal triggr.
+
+E' interessante verificare le differenze tra muoni del GMT, raccolti dal sistema di DS, e candidati muoni emulati del BMTF.
+
+
+-CONFRONTO:
+È possibile effettuare il confronto in due modi. In un detemrinato BX
+-----primo: fissare un muone del BMTFe verificare la presenza e la compatibilità del corrispondente muone del GMT 
+-----Secondo: Fissare un muone del GMT e verificare la presenza e la compatibilità del corrispondente muone del BMTF.
+
+La compatibilità è definita dal parametro deltaR che è una distanza nel piano phi-eta dei muoni che stiamo considerando. In figura è rappresentata la distribuzione di questa distanza. La maggiorparte degli eventi sono centrati nell'origine del piano, quindi la maggiorparte degli eventi presenta un match.
+
+Quantitativaente la percentuale di eventi con match nel primo caso è del 94% mentre nel secondo è più del 99%. Il motivo è da ricercare nel come è costruito il dataset: tutti i muoni del GMT derivano dalla regione di barrel e quindi ci si aspetta un match quasi perfetto, ma nonn tutti i muoni del BMTF sono selezionati dal GMT. Questo spiega la discrepanza. 
+
+
 
 
 
